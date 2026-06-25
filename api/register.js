@@ -1,20 +1,30 @@
-const handleSubmit = async (e) => {
-  e.preventDefault();
+import { Resend } from "resend";
 
-  const formData = new FormData(e.target);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-  };
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
-  await fetch("/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const { name, email } = req.body;
 
-  alert("Signed up!");
-};
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "rebecca.bergekrans@gmail.com",
+      subject: "New registration SynCHRO",
+      html: `
+        <h2>New signup</h2>
+        <p>Name: ${name}</p>
+        <p>Email: ${email}</p>
+      `,
+    });
+
+    res.status(200).json({ success: true });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+}
