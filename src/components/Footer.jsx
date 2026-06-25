@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="py-10">
       <div className="max-w-6xl mx-auto px-6 border-t border-white/10 pt-6 flex justify-between text-sm text-white/50">
         <div className="flex items-center gap-3">
-          <img src={asset} className="h-5" />
+          <img src={asset} className="h-5" alt=""/>
           <p>Lorem ipsum dolor sit amet</p>
         </div>
 
