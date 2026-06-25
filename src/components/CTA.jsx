@@ -157,7 +157,7 @@ export default function CTA() {
             ">
              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#4f94d9] to-[#cf6102]" />
                 <p>
-                Du är registrerad – håll koll på din mail.
+                You’re registered – keep an eye on your email
                 </p>
             </div>
             )}
