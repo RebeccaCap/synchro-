@@ -2,10 +2,9 @@ import asset from "../assets/ASSET.png";
 
 export default function Hero() {
   return (
-    <section className="py-10 md:py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
-        <div className="text-center md:text-left">
-
+    <section className="py-10 md:py-16 overflow-hidden">
+      <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
+        <div className="text-center md:text-left"> 
           <div className="flex items-center gap-2 justify-center md:justify-start">
             <span
               className="w-[14px] h-[14px]"
@@ -43,13 +42,27 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
-            <button className="
-              bg-orange-600 px-6 py-3 w-full sm:w-auto text-white rounded-md
-              transition-all duration-300
-              hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(207,97,2,0.35)]
-            ">
-              Request Invite
-            </button>
+          <a
+            href="#register"
+            className="
+                inline-flex items-center justify-center
+                px-6 py-3
+                rounded-md
+                bg-orange-600
+                text-white
+                font-medium
+
+                transition-all duration-300
+
+                hover:-translate-y-1
+                hover:shadow-[0_12px_40px_rgba(207,97,2,0.35)]
+                hover:brightness-105
+
+                active:translate-y-0 active:shadow-none
+            "
+            >
+            Request Invite
+            </a>
 
             <button className="
               border border-white/30 px-6 py-3 w-full sm:w-auto text-white rounded-md
@@ -60,26 +73,32 @@ export default function Hero() {
             </button>
           </div>
 
-          <div className="mt-6 overflow-hidden border border-white/10 bg-white/5">
-            <div className="whitespace-nowrap flex gap-8 animate-[marquee_20s_linear_infinite] py-3 px-4 text-xs tracking-[0.2em] uppercase text-white/60">
-              <span>
-                <strong className="text-white">Accelerating European Competitiveness</strong> / Lorem Ipsum /
-              </span>
-              <span>
-                <strong className="text-white">Accelerating European Competitiveness</strong> / Lorem Ipsum /
-              </span>
+         <div className="mt-6 hidden md:block border border-white/10 bg-white/5 overflow-hidden">
+            <div className="relative overflow-hidden">
+                <div className="whitespace-nowrap flex gap-8 animate-[marquee_20s_linear_infinite] py-3 px-4 text-xs tracking-[0.2em] uppercase text-white/60 min-w-full">
+                <span>
+                    <strong className="text-white">
+                    Accelerating European Competitiveness
+                    </strong> / Lorem Ipsum /
+                </span>
+                <span>
+                    <strong className="text-white">
+                    Accelerating European Competitiveness
+                    </strong> / Lorem Ipsum /
+                </span>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
 
         <div className="
+          hidden md:block
           relative
           border border-white/10
-          h-[300px] sm:h-[380px] md:h-[500px]
+          h-[500px]
           overflow-hidden
           bg-[radial-gradient(circle_at_16%_10%,rgba(3,107,207,.18),transparent_22%),radial-gradient(circle_at_78%_16%,rgba(207,97,2,.16),transparent_22%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))]
         ">
-
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#cf6102] to-[#036bcf]" />
           <img alt="" src={asset} className="absolute w-[60%] right-[-30px] top-[80px] opacity-95 animate-[glideA_10s_ease-in-out_infinite]" />
           <img alt="" src={asset} className="absolute w-[45%] left-[30px] top-[180px] opacity-95 animate-[glideB_11s_ease-in-out_infinite]" />
