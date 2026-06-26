@@ -9,7 +9,6 @@ export default function Footer() {
           <p>Lorem ipsum dolor sit amet</p>
         </div>
 
-        <p>#036bcf / #cf6102 / #283c4f</p>
       </div>
     </footer>
   );

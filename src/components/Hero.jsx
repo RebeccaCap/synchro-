@@ -1,5 +1,5 @@
 import asset from "../assets/ASSET1.svg";
-import logo from "../assets/LOGO1.svg";
+import logo from "../assets/LOGOLIGHT.svg";
 
 export default function Hero() {
   return (
