@@ -107,53 +107,6 @@ export default function Hero() {
           <img alt="" src={asset} className="absolute w-[30%] right-[40px] bottom-[160px] opacity-80 animate-[glideC_12s_ease-in-out_infinite]" />
           <img alt="" src={asset} className="absolute w-[50%] left-[80px] bottom-[80px] opacity-90 animate-[glideD_13s_ease-in-out_infinite]" />
           <img alt="" src={asset} className="absolute w-[35%] right-[-10px] bottom-[60px] opacity-70 animate-[driftYSlow_14s_ease-in-out_infinite]" />
-
-         <div className="absolute bottom-0 left-0 right-0 p-3 space-y-2">
-            {[1,2,3,4,5,6].map((i) => (
-                <div
-                key={i}
-                className="relative overflow-hidden border border-white/[0.05] bg-white/[0.03]"
-                style={{ height: `${18 + (i % 3) * 4}px` }}
-                >
-                <div
-                    className={`
-                    absolute inset-0 w-[220%]
-                    ${i % 2 === 0
-                        ? "animate-[scanR_28s_linear_infinite]"
-                        : "animate-[scanL_24s_linear_infinite]"
-                    }
-                    `}
-                    style={{
-                    backgroundImage: `
-                        linear-gradient(
-                        90deg,
-                        transparent 0%,
-                        transparent 6%,
-
-                        #036bcf 6% 14%,
-                        #cf6102 14% 22%,
-
-                        transparent 22% 28%,
-
-                        #cf6102 28% 36%,
-                        #036bcf 36% 48%,
-
-                        transparent 48% 55%,
-
-                        #036bcf 55% 62%,
-                        #cf6102 62% 72%,
-
-                        transparent 72% 80%,
-
-                        #cf6102 80% 90%,
-                        #036bcf 90% 100%
-                        )
-                    `
-                    }}
-                />
-                </div>
-            ))}
-            </div>
           </div>
         </div>
 
