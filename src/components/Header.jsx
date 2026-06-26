@@ -41,7 +41,7 @@ export default function Header() {
                 active:translate-y-0 active:shadow-none
             "
             >
-            Request Invite
+            Add to Calendar
             </a>
         </nav>
       </div>

@@ -1,4 +1,50 @@
 export default function CTA() {
+  const handleAddToCalendar = (e) => {
+    e.preventDefault();
+
+    const form = e.target.form;
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const company = form.company.value;
+
+    const start = "20261015T070000Z";
+    const end = "20261015T080000Z";
+
+    const now = new Date()
+      .toISOString()
+      .replace(/[-:]/g, "")
+      .split(".")[0] + "Z";
+
+    const uid = `${Date.now()}@chroforum.com`;
+
+    const event = `
+        BEGIN:VCALENDAR
+        VERSION:2.0
+        CALSCALE:GREGORIAN
+        BEGIN:VEVENT
+        UID:${uid}
+        DTSTAMP:${now}
+        SUMMARY:CHRO Forum
+        DESCRIPTION:Name: ${name}\\nEmail: ${email}\\nCompany: ${company}
+        LOCATION:Stockholm / Online
+        DTSTART:${start}
+        DTEND:${end}
+        END:VEVENT
+        END:VCALENDAR
+        `.trim();
+
+    const blob = new Blob([event], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "chro-forum.ics";
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <section id="register" className="py-24">
       <div
@@ -15,7 +61,7 @@ export default function CTA() {
 
         <div className="absolute right-[-10%] bottom-[-20%] w-[320px] h-[320px] rounded-full bg-[radial-gradient(circle,rgba(207,97,2,.2),transparent_70%)] pointer-events-none" />
 
-        <div>          
+        <div>
           <div className="flex items-center gap-2 mb-4">
             <span
               className="w-[14px] h-[14px]"
@@ -45,85 +91,30 @@ export default function CTA() {
           </p>
         </div>
 
-       <form className="flex flex-col gap-3 relative z-10">
-
-        <input
-            name="name"
-            className="
-            h-[52px]
-            px-4
-            rounded-md
-            border border-white/10
-            bg-[#283c4f]/40
-            text-white
-            placeholder:text-white/40
-            outline-none
-            transition
-            focus:border-blue-500
-            focus:ring-2 focus:ring-blue-500/20
-            "
-            placeholder="Name"
-        />
-
-        <input
-        name="email"
-        type="email"
-            className="
-            h-[52px]
-            px-4
-            rounded-md
-            border border-white/10
-            bg-[#283c4f]/40
-            text-white
-            placeholder:text-white/40
-            outline-none
-            transition
-            focus:border-blue-500
-            focus:ring-2 focus:ring-blue-500/20
-            "
-            placeholder="Email"
-        />
-
-        <input
-        name="company"
-            className="
-            h-[52px]
-            px-4
-            rounded-md
-            border border-white/10
-            bg-[#283c4f]/40
-            text-white
-            placeholder:text-white/40
-            outline-none
-            transition
-            focus:border-blue-500
-            focus:ring-2 focus:ring-blue-500/20
-            "
-            placeholder="Company"
-        />
-
+        <div className="flex flex-col justify-center h-full">
+        <div className="flex">
         <button
+            onClick={handleAddToCalendar}
             className="
-            mt-2
-            h-[52px]
+            h-[56px]
+            px-8
             rounded-md
             bg-orange-600
             text-white
             font-medium
-
+            text-lg
             transition-all duration-300
-
             hover:-translate-y-1
-            hover:shadow-[0_12px_40px_rgba(207,97,2,0.35)]
-            hover:brightness-105
+            hover:shadow-[0_16px_50px_rgba(207,97,2,0.35)]
             "
         >
-            Request Invite
+            Add to Calendar
         </button>
-        </form>
-
       </div>
-
+      <p className="mt-4 flex text-white/80">
+        Join us on October 1, 2026 to accelerate European competitiveness  </p>
+        </div>
+      </div>
     </section>
   );
 }

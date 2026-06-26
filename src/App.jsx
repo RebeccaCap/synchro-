@@ -6,6 +6,7 @@ import Highlight from "./components/Highlight";
 import Agenda from "./components/Agenda";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import CoHosts from "./components/CoHosts";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <About />
         <Highlight />
         <Agenda />
+        <CoHosts />
         <CTA />
       </main>
       <Footer />

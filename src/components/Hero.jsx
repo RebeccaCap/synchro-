@@ -1,7 +1,22 @@
 import asset from "../assets/ASSET1.svg";
 import logo from "../assets/LOGOLIGHT.svg";
+import BNPParibas from "../assets/BNPParibaslogo.png";
+import CreditAgricole from "../assets/CreditAgricolelogo.png";
+import HSBC from "../assets/HSBClogo.png";
+import IKEA from "../assets/IKEAlogo.png";
+import INGGroup from "../assets/INGGrouplogo.png";
+import Klarna from "../assets/Klarnalogo.png";
+import LEGO from "../assets/LEGOlogo.png";
+import Loreal from "../assets/Loreallogo.png";
+import NovoNordisk from "../assets/NovoNordisklogo.png";
+import Roche from "../assets/Rochelogo.png";
+import Shell from "../assets/Shelllogo.png";
+import Spotify from "../assets/Spotifylogo.png";
+import Vodafone from "../assets/Vodafonelogo.png";
+import Yara from "../assets/Yaralogo.png";
 
 export default function Hero() {
+const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
   return (
     <section className="py-10 md:py-16 overflow-hidden">
       <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
@@ -62,7 +77,7 @@ export default function Hero() {
                 active:translate-y-0 active:shadow-none
             "
             >
-            Request Invite
+            Add to Calendar
             </a>
 
             <button className="
@@ -73,21 +88,36 @@ export default function Hero() {
               Lorem Ipsum
             </button>
           </div>
-
-         <div className="mt-6 hidden md:block border border-white/10 bg-white/5 overflow-hidden">
+          <div className="mt-6 hidden md:block border border-white/10 bg-white/5 overflow-hidden">
             <div className="relative overflow-hidden">
-                <div className="whitespace-nowrap flex gap-8 animate-[marquee_20s_linear_infinite] py-3 px-4 text-xs tracking-[0.2em] uppercase text-white/60 min-w-full">
-                <span>
-                    <strong className="text-white">
-                    Accelerating European Competitiveness
-                    </strong> / Lorem Ipsum /
-                </span>
-                <span>
-                    <strong className="text-white">
-                    Accelerating European Competitiveness
-                    </strong> / Lorem Ipsum /
-                </span>
+                <div className="flex whitespace-nowrap animate-[marquee_18s_linear_infinite]">
+
+                {[...Array(2)].map((_, i) => (
+                    <div
+                    key={i}
+                    className="flex items-center gap-10 px-4 py-3 shrink-0"
+                    >
+                    {logos.map((logo, index) => (
+                        <img
+                        key={index}
+                        src={logo}
+                        alt="partner logo"
+                        className="
+                            h-8
+                            w-auto
+                            object-contain
+                            opacity-90
+                            hover:opacity-100
+                            hover:grayscale-0
+                            transition duration-300
+                        "
+                        />
+                    ))}
+                    </div>
+                ))}
+
                 </div>
+
             </div>
             </div>
         </div>
