@@ -112,7 +112,7 @@ export default function CTA() {
         </button>
       </div>
       <p className="mt-4 flex text-white/80">
-        Join us on October 1, 2026 to accelerate European competitiveness  </p>
+        Join us on October 15, 2026 to accelerate European competitiveness  </p>
         </div>
       </div>
     </section>
