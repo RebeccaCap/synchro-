@@ -1,4 +1,5 @@
-import asset from "../assets/ASSET.png";
+import asset from "../assets/ASSET1.svg";
+import logo from "../assets/LOGO1.svg";
 
 export default function Hero() {
   return (
@@ -19,7 +20,7 @@ export default function Hero() {
           </div>
 
           <img
-            src={asset}
+            src={logo}
             className="mt-6 mx-auto md:mx-0 max-w-[220px] sm:max-w-xs"
             alt="Logo"
           />

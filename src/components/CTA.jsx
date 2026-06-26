@@ -1,29 +1,6 @@
 import { useState } from "react";
 
 export default function CTA() {
-  const [success, setSuccess] = useState(false);
-
- const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-  };
-
-  await fetch("/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  setSuccess(true);
-};
-
   return (
     <section id="register" className="py-24">
       <div
@@ -70,7 +47,7 @@ export default function CTA() {
           </p>
         </div>
 
-       <form onSubmit={handleSubmit} className="flex flex-col gap-3 relative z-10">
+       <form className="flex flex-col gap-3 relative z-10">
 
         <input
             name="name"
@@ -145,23 +122,6 @@ export default function CTA() {
         >
             Request Invite
         </button>
-        {success && (
-            <div className="
-                mt-6
-                border border-white/10
-                bg-white/[0.06]
-                px-4 py-3
-                text-sm
-                text-white/80
-                relative
-            ">
-             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#4f94d9] to-[#cf6102]" />
-                <p>
-                You’re registered – keep an eye on your email
-                </p>
-            </div>
-            )}
-
         </form>
 
       </div>

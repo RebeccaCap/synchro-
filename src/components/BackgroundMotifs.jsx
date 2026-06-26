@@ -1,4 +1,4 @@
-import asset from "../assets/ASSET.png";
+import asset from "../assets/ASSET1.svg";
 
 export default function BackgroundMotifs() {
   return (
