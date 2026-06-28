@@ -28,12 +28,12 @@ export default function CTA() {
         "SUMMARY:CHRO Forum",
         `DESCRIPTION:Name: ${name}\\nEmail: ${email}\\nCompany: ${company}`,
         "LOCATION:Stockholm / Online",
-        "DTSTART:20261015T090000",
-        "DTEND:20261015T100000",
+        `DTSTART:${start}`,
+        `DTEND:${end}`,
         "END:VEVENT",
         "END:VCALENDAR"
         ].join("\r\n");
-        
+
     const blob = new Blob([event], { type: "text/calendar;charset=utf-8" });
     const url = URL.createObjectURL(blob);
 
