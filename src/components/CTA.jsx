@@ -16,22 +16,24 @@ export default function CTA() {
 
     const uid = `${Date.now()}@chroforum.com`;
 
-    const event = `
-    BEGIN:VCALENDAR
-    VERSION:2.0
-    CALSCALE:GREGORIAN
-    BEGIN:VEVENT
-    UID:${uid}
-    DTSTAMP:${now}
-    SUMMARY:CHRO Forum
-    DESCRIPTION:Name: ${name}\\nEmail: ${email}\\nCompany: ${company}
-    LOCATION:Stockholm / Online
-    DTSTART:${start}
-    DTEND:${end}
-    END:VEVENT
-    END:VCALENDAR
-    `.trim();
-
+    const event = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `UID:${uid}`,
+        `DTSTAMP:${now}`,
+        "STATUS:CONFIRMED",
+        "SUMMARY:CHRO Forum",
+        `DESCRIPTION:Name: ${name}\\nEmail: ${email}\\nCompany: ${company}`,
+        "LOCATION:Stockholm / Online",
+        "DTSTART:20261015T090000",
+        "DTEND:20261015T100000",
+        "END:VEVENT",
+        "END:VCALENDAR"
+        ].join("\r\n");
+        
     const blob = new Blob([event], { type: "text/calendar;charset=utf-8" });
     const url = URL.createObjectURL(blob);
 
