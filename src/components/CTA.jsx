@@ -1,38 +1,36 @@
 export default function CTA() {
-  const handleAddToCalendar = (e) => {
+    const handleAddToCalendar = (e) => {
     e.preventDefault();
 
-    const form = e.target.form;
-
-    const name = form.name.value;
-    const email = form.email.value;
-    const company = form.company.value;
+    const name = "";
+    const email = "";
+    const company = "";
 
     const start = "20261015T070000Z";
     const end = "20261015T080000Z";
 
     const now = new Date()
-      .toISOString()
-      .replace(/[-:]/g, "")
-      .split(".")[0] + "Z";
+        .toISOString()
+        .replace(/[-:]/g, "")
+        .split(".")[0] + "Z";
 
     const uid = `${Date.now()}@chroforum.com`;
 
     const event = `
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        CALSCALE:GREGORIAN
-        BEGIN:VEVENT
-        UID:${uid}
-        DTSTAMP:${now}
-        SUMMARY:CHRO Forum
-        DESCRIPTION:Name: ${name}\\nEmail: ${email}\\nCompany: ${company}
-        LOCATION:Stockholm / Online
-        DTSTART:${start}
-        DTEND:${end}
-        END:VEVENT
-        END:VCALENDAR
-        `.trim();
+    BEGIN:VCALENDAR
+    VERSION:2.0
+    CALSCALE:GREGORIAN
+    BEGIN:VEVENT
+    UID:${uid}
+    DTSTAMP:${now}
+    SUMMARY:CHRO Forum
+    DESCRIPTION:Name: ${name}\\nEmail: ${email}\\nCompany: ${company}
+    LOCATION:Stockholm / Online
+    DTSTART:${start}
+    DTEND:${end}
+    END:VEVENT
+    END:VCALENDAR
+    `.trim();
 
     const blob = new Blob([event], { type: "text/calendar;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -43,7 +41,7 @@ export default function CTA() {
     link.click();
 
     URL.revokeObjectURL(url);
-  };
+    };
 
   return (
     <section id="register" className="py-24">
