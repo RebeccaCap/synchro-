@@ -1,4 +1,4 @@
-import asset from "../assets/ASSET1.svg";
+import asset from "../assets/Graphic1.svg";
 
 export default function Agenda() {
   const items = [
@@ -15,11 +15,10 @@ export default function Agenda() {
 
           <div className="flex items-center gap-2 mb-4">
             <span
-              className="w-[14px] h-[14px]"
-              style={{
-                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)",
-                background: "linear-gradient(135deg, #cf6102, #036bcf)"
-              }}
+            className="w-[14px] h-[14px] bg-[#da410f]"
+            style={{
+                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
+            }}
             />
             <span className="uppercase text-xs tracking-[0.2em] text-white/60 font-medium">
               Agenda
@@ -35,10 +34,10 @@ export default function Agenda() {
             text-white/90
             mb-6
           ">
-            Lorem ipsum agenda preview.
+            Coming soon
           </h2>
 
-          <div className="space-y-3">
+          <div className="space-y-3 hidden">
             {items.map((item, i) => (
               <div
                 key={i}
@@ -70,6 +69,7 @@ export default function Agenda() {
 
         <div
           className="
+            hidden
             relative
             border border-white/10
             bg-white/[0.06]
@@ -78,8 +78,7 @@ export default function Agenda() {
             overflow-hidden
           "
         >
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#4f94d9] to-[#cf6102]" />
-
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#7a78ee] via-[#da410f] to-[#7a78ee]" />
           <div className="p-6">
             <p className="uppercase text-xs tracking-[0.2em] text-white/60">
               Visual

@@ -1,18 +1,34 @@
 export default function About() {
+  const items = [
+    {
+      number: "01",
+      title: "Format",
+      text: "The day combines short impulse talks with structured round table discussions. Content is shared in advance so the room can spend its time on debate, not briefing."
+    },
+    {
+      number: "02",
+      title: "Cadence",
+      text: "This is the first forum, with two forums per year planned for the future. Each edition is built around a single high-impact theme, with material connecting sessions between events."
+    },
+    {
+      number: "03",
+      title: "Who's in the room",
+      text: "CHROs from leading European organisations. Attendees are invited for the quality and diversity of perspective they bring, not sector representation alone."
+    }
+  ];
+
   return (
     <section id="about" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-          
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span
-                className="w-[14px] h-[14px]"
-                style={{
-                  clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)",
-                  background: "linear-gradient(135deg, #cf6102, #036bcf)"
-                }}
-              />
+            <span
+            className="w-[14px] h-[14px] bg-[#da410f]"
+            style={{
+                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
+            }}
+            />
               <span className="uppercase text-xs tracking-[0.2em] text-white/60 font-medium">
                 About
               </span>
@@ -26,21 +42,20 @@ export default function About() {
               max-w-[11ch]
               text-white/90
             ">
-              Lorem ipsum dolor sit amet.
+            A forum built for the moment Europe is in.
             </h2>
           </div>
 
-          <p className="text-white/70 max-w-xl leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p className="text-white/70 max-w-xl leading-relaxed">SynCHRO brings together a deliberately small group of senior CHROs drawn from across industries and geographies, to think seriously about what European organisations need to do differently. The conversations are frank, the perspectives are diverse, and everything stays in the room.
           </p>
 
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
 
-          {[1, 2, 3].map((n) => (
+          {items.map((item) => (
             <div
-              key={n}
+              key={item.number}
               className="
                 relative
                 p-6
@@ -50,24 +65,28 @@ export default function About() {
               "
             >
               
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] to-[#cf6102]" />
 
-              <p className="text-xs text-white/50">
-                0{n}
-              </p>
-
-              <h3 className="mt-3 text-xl font-medium tracking-tight text-white/80">
-                Lorem ipsum dolor sit amet
-              </h3>
-
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#7a78ee] via-[#da410f] to-[#7a78ee]" />
+            <p className="text-[0.74rem] tracking-[0.2em] text-[#fefaf5]/45 uppercase">
+            {item.number}
+            </p>
+               <h3 className="
+                    mt-3
+                    text-[1.28rem]
+                    font-semibold
+                    tracking-[-0.04em]
+                    leading-[1.08]
+                    max-w-[15ch]
+                    text-[#fefaf5]
+                    ">
+                    {item.title}
+                </h3>
               <p className="mt-3 text-white/70 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Non pulvinar neque laoreet suspendisse interdum.
+                {item.text}
               </p>
 
             </div>
           ))}
-
         </div>
 
       </div>

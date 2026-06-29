@@ -1,5 +1,5 @@
-import asset from "../assets/ASSET1.svg";
-import logo from "../assets/LOGOLIGHT.svg";
+import asset from "../assets/Graphic1.svg";
+import logo from "../assets/LOGOSPLIT.svg";
 import BNPParibas from "../assets/BNPParibaslogo.png";
 import CreditAgricole from "../assets/CreditAgricolelogo.png";
 import HSBC from "../assets/HSBClogo.png";
@@ -23,14 +23,13 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
         <div className="text-center md:text-left"> 
           <div className="flex items-center gap-2 justify-center md:justify-start">
             <span
-              className="w-[14px] h-[14px]"
-              style={{
-                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)",
-                background: "linear-gradient(135deg, #cf6102, #036bcf)"
-              }}
-            />
-            <p className="uppercase text-xs tracking-[0.2em] text-white/60 font-medium">
-              CHRO Forum
+                className="w-[14px] h-[14px] bg-[#da410f]"
+                style={{
+                    clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
+                }}
+                />
+            <p className="uppercase md:text-xs text-[10px]  tracking-[0.2em] text-white/40 font-medium">
+              CHRO Forum · October 15, 2026
             </p>
           </div>
 
@@ -47,16 +46,15 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
             tracking-[-0.05em]
             font-medium
             max-w-[18ch]
-            text-white/80
+            text-white/70
             mx-auto md:mx-0
           ">
             Accelerating European Competitiveness
           </h1>
 
           <p className="mt-4 text-white/80 max-w-md mx-auto md:mx-0">
-            Lorem ipsum dolor sit amet...
+          You have been invited to join a small, senior group of European CHROs for a day of candid peer exchange on the talent and organisational challenges shaping Europe's competitive future. We look forward to welcoming you.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
           <a
             href="#register"
@@ -77,18 +75,11 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
                 active:translate-y-0 active:shadow-none
             "
             >
-            Add to Calendar
+            Save the date
             </a>
 
-            <button className="
-              border border-white/30 px-6 py-3 w-full sm:w-auto text-white rounded-md
-              transition-all duration-300
-              hover:-translate-y-1 hover:bg-white/5
-            ">
-              Lorem Ipsum
-            </button>
           </div>
-          <div className="mt-6 hidden md:block border border-white/10 bg-white/5 overflow-hidden">
+          <div className="mt-6 hidden border border-white/10 bg-white/5 overflow-hidden">
             <div className="relative overflow-hidden">
                 <div className="flex whitespace-nowrap animate-[marquee_18s_linear_infinite]">
 
@@ -103,7 +94,7 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
                         src={logo}
                         alt="partner logo"
                         className="
-                            h-8
+                            h-10
                             w-auto
                             object-contain
                             opacity-90
@@ -122,22 +113,23 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
             </div>
         </div>
 
-        <div className="
-          hidden md:block
-          relative
-          border border-white/10
-          h-[500px]
-          overflow-hidden
-          bg-[radial-gradient(circle_at_16%_10%,rgba(3,107,207,.18),transparent_22%),radial-gradient(circle_at_78%_16%,rgba(207,97,2,.16),transparent_22%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))]
-        ">
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#cf6102] to-[#036bcf]" />
-          <img alt="" src={asset} className="absolute w-[60%] right-[-30px] top-[80px] opacity-95 animate-[glideA_10s_ease-in-out_infinite]" />
-          <img alt="" src={asset} className="absolute w-[45%] left-[30px] top-[180px] opacity-95 animate-[glideB_11s_ease-in-out_infinite]" />
-          <img alt="" src={asset} className="absolute w-[28%] left-[-10px] top-[60px] opacity-80 animate-[driftY_9s_ease-in-out_infinite]" />
-          <img alt="" src={asset} className="absolute w-[30%] right-[40px] bottom-[160px] opacity-80 animate-[glideC_12s_ease-in-out_infinite]" />
-          <img alt="" src={asset} className="absolute w-[50%] left-[80px] bottom-[80px] opacity-90 animate-[glideD_13s_ease-in-out_infinite]" />
-          <img alt="" src={asset} className="absolute w-[35%] right-[-10px] bottom-[60px] opacity-70 animate-[driftYSlow_14s_ease-in-out_infinite]" />
-          </div>
+            <div className="
+            hidden md:block
+            relative
+            border border-white/10
+            h-[500px]
+            overflow-hidden
+            bg-[radial-gradient(circle_at_16%_10%,rgba(122,120,238,.18),transparent_22%),radial-gradient(circle_at_78%_16%,rgba(218,65,15,.16),transparent_22%),linear-gradient(180deg,rgba(254,250,245,.05),rgba(254,250,245,.02))]
+            ">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#7a78ee] via-[#da410f] to-[#7a78ee]" />
+
+            <img alt="" src={asset} className="absolute w-[60%] right-[-30px] top-[80px] opacity-95 animate-[glideA_10s_ease-in-out_infinite]" />
+            <img alt="" src={asset} className="absolute w-[45%] left-[30px] top-[180px] opacity-95 animate-[glideB_11s_ease-in-out_infinite]" />
+            <img alt="" src={asset} className="absolute w-[28%] left-[-10px] top-[60px] opacity-80 animate-[driftY_9s_ease-in-out_infinite]" />
+            <img alt="" src={asset} className="absolute w-[30%] right-[40px] bottom-[160px] opacity-80 animate-[glideC_12s_ease-in-out_infinite]" />
+            <img alt="" src={asset} className="absolute w-[50%] left-[80px] bottom-[80px] opacity-90 animate-[glideD_13s_ease-in-out_infinite]" />
+            <img alt="" src={asset} className="absolute w-[35%] right-[-10px] bottom-[60px] opacity-70 animate-[driftYSlow_14s_ease-in-out_infinite]" />
+            </div>
         </div>
 
         <style>

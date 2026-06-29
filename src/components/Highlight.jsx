@@ -10,35 +10,32 @@ export default function Highlight() {
           overflow-hidden
         "
       >
-       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#4f94d9] to-[#cf6102]" />
-
         <div className="flex items-center gap-2 mb-4">
-          <span
-            className="w-[14px] h-[14px]"
+         <span
+            className="w-[14px] h-[14px] bg-[#da410f]"
             style={{
-              clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)",
-              background: "linear-gradient(135deg, #cf6102, #036bcf)"
+                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
             }}
-          />
+            />
           <span className="uppercase text-xs tracking-[0.2em] text-white/60 font-medium">
-            Highlight
+            Why this, why now?
           </span>
         </div>
-
+        
         <h2 className="
-          text-[clamp(2.2rem,1.6rem+2vw,4.4rem)]
-          leading-[0.92]
-          tracking-[-0.06em]
-          font-bold
-          max-w-[12ch]
-          text-white/90
-        ">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            mt-[10px]
+            text-[clamp(2.2rem,1.6rem+2vw,4.4rem)]
+            leading-[0.92]
+            tracking-[-0.065em]
+            font-bold
+            max-w-[12ch]
+            text-[#fefaf5]
+            ">
+          The decisions European CHROs make in the next two years can define how their organisations compete for the next decade.
         </h2>
 
-        <p className="mt-4 text-white/70 max-w-xl leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-          tempor incididunt ut labore et dolore magna aliqua.
+        <p className="mt-4 max-w-[58ch] leading-[1.8] text-[#fefaf5]/70">
+         Geopolitical uncertainty, regulatory change, and structural shifts in the labour market are landing on HR functions simultaneously, and most forums aren't designed to handle that complexity honestly. SynCHRO is built for exactly this moment: peer leaders, in a trusted setting, working through what it actually means to lead, and act.
         </p>
 
       </div>

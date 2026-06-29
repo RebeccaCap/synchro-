@@ -46,7 +46,7 @@ export default function CTA() {
     };
 
   return (
-    <section id="register" className="py-24">
+    <section id="register" className="py-17">
       <div
         className="
           relative
@@ -57,21 +57,18 @@ export default function CTA() {
           overflow-hidden
         "
       >
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#036bcf] via-[#4f94d9] to-[#cf6102]" />
-
         <div className="absolute right-[-10%] bottom-[-20%] w-[320px] h-[320px] rounded-full bg-[radial-gradient(circle,rgba(207,97,2,.2),transparent_70%)] pointer-events-none" />
 
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <span
-              className="w-[14px] h-[14px]"
-              style={{
-                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)",
-                background: "linear-gradient(135deg, #cf6102, #036bcf)"
-              }}
+             <span
+                className="w-[14px] h-[14px] bg-[#da410f]"
+                style={{
+                clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
+                }}
             />
             <span className="uppercase text-xs tracking-[0.2em] text-white/60 font-medium">
-              Register
+              Save the date
             </span>
           </div>
 
@@ -83,11 +80,11 @@ export default function CTA() {
             max-w-[9ch]
             text-white/90
           ">
-            Lorem ipsum dolor sit amet.
+           15 October, 2026
           </h2>
 
           <p className="mt-4 text-white/70 max-w-md leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          The forum will be held at Capgemini Offices in Paris, France. Full venue details to follow. Please hold the date and add it to your calendar now.
           </p>
         </div>
 
@@ -111,8 +108,15 @@ export default function CTA() {
             Add to Calendar
         </button>
       </div>
-      <p className="mt-4 flex text-white/80">
-        Join us on October 15, 2026 to accelerate European competitiveness  </p>
+        <p className="mt-4 text-[#fefaf5]/70 leading-[1.8]">
+        Questions? Reach us at{" "}
+        <a
+            href="mailto:info@synchroforum.eu"
+            className="text-[#da410f] hover:underline"
+        >
+            info@synchroforum.eu
+        </a>
+        </p>
         </div>
       </div>
     </section>
