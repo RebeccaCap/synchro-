@@ -34,7 +34,7 @@ export default function Agenda() {
             text-white/90
             mb-6
           ">
-            Coming soon
+            Details to be released soon.
           </h2>
 
           <div className="space-y-3 hidden">
