@@ -2,13 +2,13 @@ export default function About() {
   const items = [
     {
       number: "01",
-      title: "Format",
-      text: "The day combines short impulse talks with structured round table discussions. Content is shared in advance so the room can spend its time on debate, not briefing."
+      title: "Content",
+      text: "Curated content and discussion based on specific reports and optional insight pulses that describe CHRO opportunities and challenges. Content is shared in advance so the room can spend its time on debate, not briefing."
     },
     {
       number: "02",
       title: "Cadence",
-      text: "This is the first forum, with two forums per year planned for the future. Each edition is built around a single high-impact theme, with material connecting sessions between events."
+      text: "We are inviting you to our first session. This will mark the first of two in-person sessions per year. Each edition is built around a single high-impact theme, with material connecting sessions between events."
     },
     {
       number: "03",
@@ -46,7 +46,8 @@ export default function About() {
             </h2>
           </div>
 
-          <p className="text-white/70 max-w-xl leading-relaxed">SynCHRO brings together a deliberately small group of senior CHROs drawn from across industries and geographies, to think seriously about what European organisations need to do differently. The conversations are frank, the perspectives are diverse, and everything stays in the room.
+          <p className="text-white/70 max-w-xl leading-relaxed">
+          SynCHRO brings together an exclusive, curated group of experienced CHROs from across industries and geographies, to initiate concrete actions on what European organisations need to do differently.
           </p>
 
         </div>

@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 border-t border-white/10 pt-6 flex justify-between text-sm text-white/50">
         <div className="flex items-center gap-3">
           <img src={logo} className="h-5" alt="Logo"/>
-          <p>A Capgemini & Equinor initiative | SynCHRO Forum 2026</p>
+          <p>Accelerating European Competitiveness | SynCHRO Forum 2026</p>
         </div>
 
       </div>

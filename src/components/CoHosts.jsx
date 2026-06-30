@@ -22,8 +22,7 @@ export default function CoHost() {
             </p>
 
             <p className="mb-4">
-               Stenerud joined Equinor in 2008 and has held various leadership roles across the company. His most recent position, which he held from November 2021, was Vice President Employee Relations in Corporate PO. From August 2018, he was Vice President for PO in Exploration and Production International. He has also served as Vice President for Exploration and Production Norway from 2014-2018. Stenerud has had a long international career within HR and prior to this he served as an officer in the Norwegian Airforce.
-            </p>
+            Anne Lebel has been Capgemini’s Chief Human Resources Officer and a member of the Group Executive Board since July, 2020. She became Group Head of Ethics in January 2025.            </p>
 
             <p className="mb-4">
                 Prior to joining Capgemini in 2020, Anne was appointed by Natixis in
@@ -100,7 +99,7 @@ export default function CoHost() {
         </h2>
 
         <p className="mb-6 max-w-[66ch] leading-[1.76] text-[#fefaf5]/70">
-          SynCHRO is co-chaired by Capgemini and Equinor for its inaugural edition. Co-chairs will be selected from within the CHRO community in future forums — ensuring the agenda is always shaped by the people in the room.
+          SynCHRO is co-chaired by Capgemini and Equinor for its inaugural edition. Co-chairs will be selected from within the CHRO forum in future sessions – ensuring the agenda is always shaped by the people in the room.
         </p>
 
         <div className="grid md:grid-cols-2 gap-5">

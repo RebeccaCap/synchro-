@@ -52,8 +52,7 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
           </h1>
 
           <p className="mt-4 text-white/80 max-w-md mx-auto md:mx-0">
-          You have been invited to join a small, senior group of European CHROs for a day of candid peer exchange on the talent and organisational challenges shaping Europe's competitive future. We look forward to welcoming you.
-          </p>
+            You have been invited to an exclusive, curated forum of European CHROs, to initiate actions that strengthen European competitiveness. We would like you to join our first session for a day of candid peer exchange on how workforce leadership will shape Europe’s future. We look forward to welcoming you.          </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
           <a
             href="#register"
@@ -74,7 +73,7 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
                 active:translate-y-0 active:shadow-none
             "
             >
-            RSVP
+            Join the forum
             </a>
 
           </div>

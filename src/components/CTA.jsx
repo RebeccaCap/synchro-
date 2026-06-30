@@ -140,7 +140,7 @@ export default function CTA() {
               />
 
               <span className="uppercase text-xs tracking-[0.2em] text-white/60">
-                RSVP
+                Join the forum
               </span>
             </div>
 
@@ -158,8 +158,7 @@ export default function CTA() {
             </h2>
 
             <p className="mt-4 text-white/70 max-w-md leading-relaxed">
-              The forum will be held at Capgemini Offices in Paris,
-              France. Full venue details to follow.
+            The forum will meet in Paris,France. Full venue details to follow.
             </p>
 
             <p className="mt-8 text-[#fefaf5]/70">

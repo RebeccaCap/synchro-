@@ -37,7 +37,7 @@ export default function Header() {
                 active:translate-y-0 active:shadow-none
             "
             >
-            RSVP
+            Join the forum
             </a>
         </nav>
       </div>
