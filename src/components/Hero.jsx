@@ -1,4 +1,3 @@
-import asset from "../assets/Graphic1.svg";
 import logo from "../assets/LOGOSPLIT.svg";
 import BNPParibas from "../assets/BNPParibaslogo.png";
 import CreditAgricole from "../assets/CreditAgricolelogo.png";
