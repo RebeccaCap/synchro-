@@ -28,7 +28,7 @@ export default function Highlight() {
             leading-[0.92]
             tracking-[-0.065em]
             font-bold
-            max-w-[12ch]
+            max-w-[16ch]
             text-[#fefaf5]
             ">
           The decisions European CHROs make in the next two years can define how their organisations compete for the next decade.

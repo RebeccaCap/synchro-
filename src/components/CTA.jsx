@@ -68,7 +68,7 @@ export default function CTA() {
                 }}
             />
             <span className="uppercase text-xs tracking-[0.2em] text-white/60 font-medium">
-              Save the date
+              RSVP
             </span>
           </div>
 
@@ -105,7 +105,7 @@ export default function CTA() {
             hover:shadow-[0_16px_50px_rgba(207,97,2,0.35)]
             "
         >
-            Add to Calendar
+            Confirm your attendance
         </button>
       </div>
         <p className="mt-4 text-[#fefaf5]/70 leading-[1.8]">

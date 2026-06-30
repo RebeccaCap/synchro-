@@ -37,7 +37,7 @@ export default function Header() {
                 active:translate-y-0 active:shadow-none
             "
             >
-            Save the date
+            RSVP
             </a>
         </nav>
       </div>

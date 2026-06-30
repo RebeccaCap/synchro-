@@ -75,7 +75,7 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
                 active:translate-y-0 active:shadow-none
             "
             >
-            Save the date
+            RSVP
             </a>
 
           </div>
@@ -108,55 +108,10 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
                 ))}
 
                 </div>
-
             </div>
-            </div>
+          </div>
         </div>
-
-            <div className="
-            hidden md:block
-            relative
-            border border-white/10
-            h-[500px]
-            overflow-hidden
-            bg-[radial-gradient(circle_at_16%_10%,rgba(122,120,238,.18),transparent_22%),radial-gradient(circle_at_78%_16%,rgba(218,65,15,.16),transparent_22%),linear-gradient(180deg,rgba(254,250,245,.05),rgba(254,250,245,.02))]
-            ">
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#7a78ee] via-[#da410f] to-[#7a78ee]" />
-
-            <img alt="" src={asset} className="absolute w-[60%] right-[-30px] top-[80px] opacity-95 animate-[glideA_10s_ease-in-out_infinite]" />
-            <img alt="" src={asset} className="absolute w-[45%] left-[30px] top-[180px] opacity-95 animate-[glideB_11s_ease-in-out_infinite]" />
-            <img alt="" src={asset} className="absolute w-[28%] left-[-10px] top-[60px] opacity-80 animate-[driftY_9s_ease-in-out_infinite]" />
-            <img alt="" src={asset} className="absolute w-[30%] right-[40px] bottom-[160px] opacity-80 animate-[glideC_12s_ease-in-out_infinite]" />
-            <img alt="" src={asset} className="absolute w-[50%] left-[80px] bottom-[80px] opacity-90 animate-[glideD_13s_ease-in-out_infinite]" />
-            <img alt="" src={asset} className="absolute w-[35%] right-[-10px] bottom-[60px] opacity-70 animate-[driftYSlow_14s_ease-in-out_infinite]" />
-            </div>
-        </div>
-
-        <style>
-            {`
-            @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-
-            @keyframes glideA {0%,100%{transform:translate(0,0);}50%{transform:translate(-18px,12px);}}
-            @keyframes glideB {0%,100%{transform:translate(0,0);}50%{transform:translate(14px,-12px);}}
-            @keyframes glideC {0%,100%{transform:translate(0,0);}50%{transform:translate(-12px,-10px);}}
-            @keyframes glideD {0%,100%{transform:translate(0,0);}50%{transform:translate(16px,8px);}}
-            @keyframes driftY {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-            @keyframes driftYSlow {0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
-
-            @keyframes scanL {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-
-            @keyframes scanR {
-                0% { transform: translateX(-50%); }
-                100% { transform: translateX(0); }
-            }
-            `}
-        </style>
-        </section>
+      </div>
+    </section>
   );
 }
