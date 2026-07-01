@@ -1,21 +1,21 @@
 import logo from "../assets/LOGOSPLIT.svg";
-import BNPParibas from "../assets/BNPParibaslogo.png";
-import CreditAgricole from "../assets/CreditAgricolelogo.png";
-import HSBC from "../assets/HSBClogo.png";
-import IKEA from "../assets/IKEAlogo.png";
-import INGGroup from "../assets/INGGrouplogo.png";
-import Klarna from "../assets/Klarnalogo.png";
-import LEGO from "../assets/LEGOlogo.png";
-import Loreal from "../assets/Loreallogo.png";
-import NovoNordisk from "../assets/NovoNordisklogo.png";
-import Roche from "../assets/Rochelogo.png";
-import Shell from "../assets/Shelllogo.png";
-import Spotify from "../assets/Spotifylogo.png";
-import Vodafone from "../assets/Vodafonelogo.png";
-import Yara from "../assets/Yaralogo.png";
+//import BNPParibas from "../assets/BNPParibaslogo.png";
+//import CreditAgricole from "../assets/CreditAgricolelogo.png";
+//import HSBC from "../assets/HSBClogo.png";
+//import IKEA from "../assets/IKEAlogo.png";
+//import INGGroup from "../assets/INGGrouplogo.png";
+//import Klarna from "../assets/Klarnalogo.png";
+//import LEGO from "../assets/LEGOlogo.png";
+//import Loreal from "../assets/Loreallogo.png";
+//import NovoNordisk from "../assets/NovoNordisklogo.png";
+//import Roche from "../assets/Rochelogo.png";
+//import Shell from "../assets/Shelllogo.png";
+//import Spotify from "../assets/Spotifylogo.png";
+//import Vodafone from "../assets/Vodafonelogo.png";
+//import Yara from "../assets/Yaralogo.png";
 
 export default function Hero() {
-const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
+//const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
   return (
     <section className="py-10 md:py-16 overflow-hidden">
       <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
@@ -77,7 +77,9 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
             </a>
 
           </div>
-          <div className="mt-6 hidden border border-white/10 bg-white/5 overflow-hidden">
+            {/* Logo carousel - temporarily hidden
+
+            <div className="mt-6 hidden border border-white/10 bg-white/5 overflow-hidden">
             <div className="relative overflow-hidden">
                 <div className="flex whitespace-nowrap animate-[marquee_18s_linear_infinite]">
 
@@ -107,7 +109,9 @@ const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, Nov
 
                 </div>
             </div>
-          </div>
+            </div>
+
+            */}
         </div>
       </div>
     </section>

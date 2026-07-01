@@ -135,9 +135,9 @@ export default function CoHost() {
 
                 <div>
                 <div className="flex items-center gap-3 mb-2">
-            <p className="md:text-[1.28rem] sm:text-sm font-semibold tracking-[-0.025em] text-[#fefaf5]">
-                {host.name}
-            </p>
+                <p className="md:text-[1.28rem] sm:text-sm font-semibold tracking-[-0.025em] text-[#fefaf5]">
+                    {host.name}
+                </p>
 
                 <img
                     src={host.logo}
@@ -146,7 +146,7 @@ export default function CoHost() {
                 />
                 </div>
 
-                <p className="text-[0.9rem] font-medium text-[#da410f] mb-1">
+                <p className="text-[0.9rem] font-medium text-[#fefaf5] mb-1">
                 {host.title}
                 </p>
 

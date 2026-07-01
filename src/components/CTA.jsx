@@ -75,11 +75,11 @@ export default function CTA() {
       <section id="register" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="border border-white/10 bg-white/[0.06] p-12 text-center">
-            <div className="w-14 h-14 mx-auto flex items-center justify-center border-2 border-green-500 rounded-full text-green-500 text-xl">
+            <div className="w-14 h-14 mx-auto flex items-center justify-center border-2 border-white rounded-full text-[#fefaf5] text-xl">
               ✓
             </div>
 
-            <h2 className="mt-6 text-4xl font-bold tracking-tight">
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-[#fefaf5]">
               You're confirmed
             </h2>
 
@@ -98,7 +98,7 @@ export default function CTA() {
       <section id="register" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="border border-white/10 bg-white/[0.06] p-12 text-center">
-            <h2 className="text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl font-bold tracking-tight text-[#fefaf5]">
               Thank you for letting us know
             </h2>
 
