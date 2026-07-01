@@ -58,14 +58,15 @@ export default function CoHost() {
         { name: "Aksel Stenerud", company: "Equinor", title: "Executive Vice President, People & Organisation", image: AkselStenerud, logo: Equinorlogo, logoClass: "h-10 mb-2", description: (
             <>
             <p className="mb-4">
-               Stenerud joined Equinor in 2008 and has held various leadership roles across the company. His most recent position, which he held from November 2021, was Vice President Employee Relations in Corporate PO.
-            </p>
+            Aksel Stenerud has built his career through various leadership roles in projects, reward, development and deployment, industrial relations, and shared services. He became Executive Vice President for People and Organisation for Equinor in 2022.             </p>
               <p className="mb-4">
-              From August 2018, he was Vice President for PO in Exploration and Production International. He has also served as Vice President for Exploration and Production Norway from 2014-2018. 
-            </p>
+            He joined Equinor in 2008 and has held various leadership roles across the company including a corporate role as chief negotiator in industrial relations, as vice president for PO in exploration and production international and Norway.             </p>
               <p className="mb-4">
-
-            Stenerud has had a long international career within HR and prior to this he served as an officer in the Norwegian Airforce.</p>
+            Prior to joining Equinor he had various HR roles at Exxon Mobil and as an officer in the Norwegian Airforce. He has worked across business areas, value chains and geographies, including 4.5 years as an expatriate in Belgium and the Czech Republic.
+            </p>
+            <p className="mb-4">
+            Aksel is a graduate from the Air Defense academy, and has a minor and intermediate in psychology with the Norwegian University of Science and Technology in Trondheim. 
+            </p>
             </>
         ) },
     ];
