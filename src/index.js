@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { sendToVercelAnalytics } from './vitals';
 
+document.documentElement.classList.add("dark");
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

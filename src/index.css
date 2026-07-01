@@ -3,25 +3,44 @@
 @tailwind utilities;
 
 :root {
-  --primary: #7a78ee;
-  --accent: #da410f;
-  --ink: #17172d;
+  --primary: #9593f1;
+  --accent: #f5611a;
+
   --paper: #fefaf5;
+  --ink: #17172d;
+
+  --text-primary: #17172d;
+  --text-secondary: #4b5563;
 }
 
-body {
-  font-family: Inter, Arial, sans-serif;
+.dark {
+  --primary: #9593f1;
+  --accent: #f5611a;
+
+  --paper: #17172d;
+  --ink: #fefaf5;
+
+  --text-primary: rgba(255,255,255,.7);
+  --text-secondary: rgba(255,255,255,.8);
 }
 
-/* Gradient background */
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: Inter, Arial, sans-serif;
+
+  background: #fefaf5;
+  background-image:
+    radial-gradient(circle at 18% 8%, rgba(149,147,241,.12), transparent 26%),
+    radial-gradient(circle at 84% 12%, rgba(245,97,26,.10), transparent 22%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.dark body {
   background: #17172d;
   background-image:
     radial-gradient(circle at 18% 8%, rgba(122,120,238,.14), transparent 26%),
     radial-gradient(circle at 84% 12%, rgba(218,65,15,.12), transparent 22%),
     linear-gradient(180deg, #141428 0%, #17172d 45%, #17172d 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }

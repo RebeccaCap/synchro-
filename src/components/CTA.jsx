@@ -74,18 +74,18 @@ export default function CTA() {
     return (
       <section id="register" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="border border-white/10 bg-white/[0.06] p-12 text-center">
-            <div className="w-14 h-14 mx-auto flex items-center justify-center border-2 border-white rounded-full text-[#fefaf5] text-xl">
+          <div className="border border-ink/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.06] p-12 text-center">
+            <div className="w-14 h-14 mx-auto flex items-center justify-center border-2 border-ink dark:border-paper rounded-full text-ink dark:text-paper text-xl">
               ✓
             </div>
 
-            <h2 className="mt-6 text-4xl font-bold tracking-tight text-[#fefaf5]">
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-ink dark:text-paper">
               You're confirmed
             </h2>
 
-            <p className="mt-4 text-white/70 max-w-lg mx-auto">
-              Thank you. We look forward to welcoming you to
-              SYNCHRO on October 15, 2026.
+            <p className="mt-4 text-ink/70 dark:text-paper/70 max-w-lg mx-auto">
+              Thank you. We look forward to welcoming you to SYNCHRO on October
+              15, 2026.
             </p>
           </div>
         </div>
@@ -97,12 +97,12 @@ export default function CTA() {
     return (
       <section id="register" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="border border-white/10 bg-white/[0.06] p-12 text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-[#fefaf5]">
+          <div className="border border-ink/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.06] p-12 text-center">
+            <h2 className="text-4xl font-bold tracking-tight text-ink dark:text-paper">
               Thank you for letting us know
             </h2>
 
-            <p className="mt-4 text-white/70">
+            <p className="mt-4 text-ink/70 dark:text-paper/70">
               We're sorry you can't join us this time.
             </p>
           </div>
@@ -121,25 +121,27 @@ export default function CTA() {
           px-6
           py-12
           border
-          border-white/10
-          bg-white/[0.06]
+          border-ink/10
+          dark:border-white/10
+          bg-white/60
+          dark:bg-white/[0.06]
           overflow-hidden
         "
       >
-        <div className="absolute right-[-10%] bottom-[-20%] w-[320px] h-[320px] rounded-full bg-[radial-gradient(circle,rgba(207,97,2,.20),transparent_70%)]" />
+        <div className="absolute right-[-10%] bottom-[-20%] w-[320px] h-[320px] rounded-full bg-[radial-gradient(circle,rgba(218,65,15,.20),transparent_70%)] dark:bg-[radial-gradient(circle,rgba(225,103,49,.20),transparent_70%)]" />
 
         <div className="grid md:grid-cols-[1fr_1fr] gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span
-                className="w-[14px] h-[14px] bg-[#da410f]"
+                className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"
                 style={{
                   clipPath:
                     "polygon(14% 0, 100% 0, 86% 100%, 0 100%)",
                 }}
               />
 
-              <span className="uppercase text-xs tracking-[0.2em] text-white/60">
+              <span className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60">
                 Join the forum
               </span>
             </div>
@@ -151,21 +153,23 @@ export default function CTA() {
                 tracking-[-0.065em]
                 font-bold
                 max-w-[10ch]
-                text-[#fefaf5]
+                text-ink
+                dark:text-paper
               "
             >
               15 October, 2026
             </h2>
 
-            <p className="mt-4 text-white/70 max-w-md leading-relaxed">
-            The forum will meet in Paris,France. Full venue details to follow.
+            <p className="mt-4 text-ink/70 dark:text-paper/70 max-w-md leading-relaxed">
+              The forum will meet in Paris, France. Full venue details to
+              follow.
             </p>
 
-            <p className="mt-8 text-[#fefaf5]/70">
+            <p className="mt-8 text-ink/70 dark:text-paper/70">
               Questions?{" "}
               <a
                 href="mailto:info@synchroforum.eu"
-                className="text-[#da410f] hover:underline"
+                className="text-orangeLight dark:text-orangeDark hover:underline"
               >
                 info@synchroforum.eu
               </a>
@@ -183,7 +187,19 @@ export default function CTA() {
                 required
                 value={form.first_name}
                 onChange={handleChange}
-                className="h-14 px-4 bg-black/20 border border-white/10 text-white"
+                className="
+                  h-14
+                  px-4
+                  bg-white
+                  dark:bg-black/20
+                  border
+                  border-ink/10
+                  dark:border-white/10
+                  text-ink
+                  dark:text-paper
+                  placeholder:text-ink/40
+                  dark:placeholder:text-paper/40
+                "
               />
 
               <input
@@ -192,7 +208,19 @@ export default function CTA() {
                 required
                 value={form.last_name}
                 onChange={handleChange}
-                className="h-14 px-4 bg-black/20 border border-white/10 text-white"
+                className="
+                  h-14
+                  px-4
+                  bg-white
+                  dark:bg-black/20
+                  border
+                  border-ink/10
+                  dark:border-white/10
+                  text-ink
+                  dark:text-paper
+                  placeholder:text-ink/40
+                  dark:placeholder:text-paper/40
+                "
               />
             </div>
 
@@ -202,7 +230,19 @@ export default function CTA() {
               required
               value={form.company}
               onChange={handleChange}
-              className="h-14 px-4 bg-black/20 border border-white/10 text-white"
+              className="
+                h-14
+                px-4
+                bg-white
+                dark:bg-black/20
+                border
+                border-ink/10
+                dark:border-white/10
+                text-ink
+                dark:text-paper
+                placeholder:text-ink/40
+                dark:placeholder:text-paper/40
+              "
             />
 
             <input
@@ -212,11 +252,23 @@ export default function CTA() {
               required
               value={form.email}
               onChange={handleChange}
-              className="h-14 px-4 bg-black/20 border border-white/10 text-white"
+              className="
+                h-14
+                px-4
+                bg-white
+                dark:bg-black/20
+                border
+                border-ink/10
+                dark:border-white/10
+                text-ink
+                dark:text-paper
+                placeholder:text-ink/40
+                dark:placeholder:text-paper/40
+              "
             />
 
             <div className="flex gap-4">
-              <label className="flex items-center gap-2 text-white/80">
+              <label className="flex items-center gap-2 text-ink/80 dark:text-paper/80">
                 <input
                   type="radio"
                   name="attendance"
@@ -227,7 +279,7 @@ export default function CTA() {
                 Yes, I'll be there
               </label>
 
-              <label className="flex items-center gap-2 text-white/80">
+              <label className="flex items-center gap-2 text-ink/80 dark:text-paper/80">
                 <input
                   type="radio"
                   name="attendance"
@@ -240,7 +292,7 @@ export default function CTA() {
             </div>
 
             {error && (
-              <p className="text-red-400 text-sm">
+              <p className="text-red-500 text-sm">
                 {error}
               </p>
             )}
@@ -252,14 +304,15 @@ export default function CTA() {
                 h-[56px]
                 px-8
                 rounded-md
-                bg-orange-600
+                bg-orangeLight
+                dark:bg-orangeDark
                 text-white
                 font-medium
                 text-lg
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:shadow-[0_16px_50px_rgba(207,97,2,0.35)]
+                hover:shadow-[0_16px_50px_rgba(225,103,49,0.35)]
               "
             >
               {loading
