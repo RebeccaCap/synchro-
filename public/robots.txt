@@ -1,3 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt — synchroforum.eu
+# https://www.robotstxt.org
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin.php
+Disallow: /rsvp.php
+Disallow: /rsvp_responses.csv
+
+Sitemap: https://synchroforum.eu/sitemap.xml
