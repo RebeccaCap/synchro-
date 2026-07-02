@@ -33,25 +33,28 @@ export default function About() {
                 About
               </span>
             </div>
-
-            <h2
-              className="
-                text-[clamp(2rem,1.5rem+2vw,3.8rem)]
-                leading-[0.95]
-                tracking-[-0.05em]
-                font-bold
-                max-w-[11ch]
-                text-ink
-                dark:text-paper
-              "
-            >
-              A forum built for the moment Europe is in.
-            </h2>
+<div>
+     <h2
+          className="
+            mt-[10px]
+            text-[clamp(2.2rem,1.6rem+2vw,4.4rem)]
+            leading-[0.92]
+            tracking-[-0.065em]
+            font-bold
+            max-w-full
+            text-ink
+            dark:text-paper
+          "
+        >
+          The decisions European CHROs make in the next two years can define
+          how their organisations compete for the next decade.
+        </h2>
           </div>
 
-          <p className="text-ink/70 dark:text-paper/70 max-w-xl leading-relaxed">
+          <p className="text-ink/70 dark:text-paper/70 max-w-md leading-relaxed mt-8">
           SynCHRO brings together an exclusive, curated group of experienced CHROs from across industries and geographies, to initiate concrete actions on what European organisations need to do differently.
           </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
