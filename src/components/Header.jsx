@@ -66,7 +66,7 @@ export default function Header() {
                 active:shadow-none
               "
             >
-              Join the forum
+             Confirm attendance
             </a>
           </nav>
 

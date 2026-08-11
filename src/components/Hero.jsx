@@ -66,12 +66,10 @@ export default function Hero() {
           </h1>
 
           <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
-            You have been invited to an exclusive, curated forum of European
-            CHROs, to initiate actions that strengthen European competitiveness.
-            We would like you to join our first session for a day of candid peer
-            exchange on how workforce leadership will shape Europe’s future. We
-            look forward to welcoming you.
+           You are invited to join SynCHRO. Created by CHROs, for CHROs, SynCHRO brings together an exclusive and curated group of European CHROs to initiate actions that strengthen European competitiveness. 
           </p>
+          <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
+          By creating a trusted, non-commercial, peer-based setting, SynCHRO creates a confidential environment where CHROs can engage in meaningful dialogue, share learnings and reflect on the realities that are reshaping their roles as CHRO. </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
             <a
@@ -93,7 +91,7 @@ export default function Hero() {
                 active:shadow-none
               "
             >
-              Join the forum
+              Confirm attendance
             </a>
           </div>
 

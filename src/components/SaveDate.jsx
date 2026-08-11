@@ -40,7 +40,7 @@ export default function SaveDate() {
               />
 
               <span className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60">
-                Join the forum
+                Confirm attendance
               </span>
             </div>
 

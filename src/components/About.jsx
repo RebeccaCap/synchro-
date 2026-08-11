@@ -8,7 +8,7 @@ export default function About() {
     {
       number: "02",
       title: "Cadence",
-      text: "We are inviting you to our first session. This will mark the first of two in-person sessions per year. Each edition is built around a single high-impact theme, with material connecting sessions between events."
+      text: "We are inviting you to the inaugural session. The forum will convene twice a year. Each edition is built around a single high-impact theme, collectively identified and prioritised by the group."
     },
     {
       number: "03",
@@ -33,8 +33,8 @@ export default function About() {
                 About
               </span>
             </div>
-<div>
-     <h2
+      <div>
+          <h2
           className="
             mt-[10px]
             text-[clamp(2.2rem,1.6rem+2vw,4.4rem)]
@@ -52,7 +52,7 @@ export default function About() {
           </div>
 
           <p className="text-ink/70 dark:text-paper/70 max-w-md leading-relaxed mt-8">
-          SynCHRO brings together an exclusive, curated group of experienced CHROs from across industries and geographies, to initiate concrete actions on what European organisations need to do differently.
+          SynCHRO brings together an exclusive, curated group of experienced CHROs from across industries and geographies to initiate concrete actions on what European CHROs and their organisations need to do differently.
           </p>
           </div>
         </div>
