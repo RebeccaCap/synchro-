@@ -1,13 +1,4 @@
 export default function SaveDate() {
-  const handleSaveTheDate = () => {
-    const link = document.createElement("a");
-    link.href =
-      "https://synchroforum.eu/synchro-october-2026.ics";
-    link.download = "synchro-october-2026.ics";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <section id="register" className="py-17">
@@ -64,25 +55,7 @@ export default function SaveDate() {
             </p>
                  
             <div className="mt-6 md:mt-8">
-            <button
-              onClick={handleSaveTheDate}
-              className="
-                h-[56px]
-                px-8
-                rounded-md
-                bg-orangeLight
-                dark:bg-orangeDark
-                text-white
-                font-medium
-                text-lg
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-[0_16px_50px_rgba(225,103,49,0.35)]
-              "
-            >
-              Save the Date
-            </button>
+
             </div>
 
             <p className="mt-8 text-ink/70 dark:text-paper/70">
