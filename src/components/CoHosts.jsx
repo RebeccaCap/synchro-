@@ -167,7 +167,8 @@ export default function CoHost() {
                   <img
                     src={host.image}
                     alt={host.name}
-                    className              />
+                    className="w-full h-full object-cover"
+                    />
                 </div>
 
                 <div>

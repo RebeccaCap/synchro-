@@ -4,16 +4,19 @@ export default function CTA() {
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",
+    title: "",
     company: "",
     email: "",
+    phone: "",
+    dietary: "",
     attendance: "yes",
+    privacy_policy: false,
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [declined, setDeclined] = useState(false);
   const [error, setError] = useState("");
-
   const handleChange = (e) => {
     setForm((prev) => ({
       ...prev,
@@ -21,6 +24,12 @@ export default function CTA() {
     }));
   };
 
+  const handlePrivacyPolicyChange = (e) => {
+    setForm((prev) => ({
+      ...prev,
+      privacy_policy: e.target.checked,
+    }));
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -84,8 +93,7 @@ export default function CTA() {
             </h2>
 
             <p className="mt-4 text-ink/70 dark:text-paper/70 max-w-lg mx-auto">
-              Thank you. We look forward to welcoming you to SYNCHRO on October
-              15, 2026.
+             You can expect to receive a calendar invitation within 2 days.
             </p>
           </div>
         </div>
@@ -223,10 +231,29 @@ export default function CTA() {
                 "
               />
             </div>
+            <input
+            name="title"
+            placeholder="Job title"
+            value={form.title}
+            onChange={handleChange}
+            className="
+              h-14
+              px-4
+              bg-white
+              dark:bg-black/20
+              border
+              border-ink/10
+              dark:border-white/10
+              text-ink
+              dark:text-paper
+              placeholder:text-ink/40
+              dark:placeholder:text-paper/40
+            "
+          />
 
             <input
               name="company"
-              placeholder="Organisation"
+              placeholder="Company"
               required
               value={form.company}
               onChange={handleChange}
@@ -266,6 +293,47 @@ export default function CTA() {
                 dark:placeholder:text-paper/40
               "
             />
+            <input
+            type="tel"
+            name="phone"
+            placeholder="Phone number (e.g. +46 70 123 45 67)"
+            value={form.phone}
+            onChange={handleChange}
+            className="
+              h-14
+              px-4
+              bg-white
+              dark:bg-black/20
+              border
+              border-ink/10
+              dark:border-white/10
+              text-ink
+              dark:text-paper
+              placeholder:text-ink/40
+              dark:placeholder:text-paper/40
+            "
+          />
+          <textarea
+            name="dietary"
+            placeholder="Dietary requirements (optional)"
+            value={form.dietary}
+            onChange={handleChange}
+            rows={3}
+            className="
+              px-4
+              py-3
+              bg-white
+              dark:bg-black/20
+              border
+              border-ink/10
+              dark:border-white/10
+              text-ink
+              dark:text-paper
+              placeholder:text-ink/40
+              dark:placeholder:text-paper/40
+              resize-none
+            "
+          />
 
             <div className="flex gap-4">
               <label className="flex items-center gap-2 text-ink/80 dark:text-paper/80">
@@ -289,7 +357,41 @@ export default function CTA() {
                 />
                 Unable to attend
               </label>
+             </div>
+                        
+            <div className="flex items-start gap-3 text-sm text-ink/80 dark:text-paper/80">
+              <input
+                type="checkbox"
+                name="privacy_policy"
+                checked={form.privacy_policy}
+                onChange={handlePrivacyPolicyChange}
+                required
+                className="mt-1 cursor-pointer"
+              />
+
+         <label htmlFor="privacy_policy">
+          I accept the{" "}
+          <a
+            href="/privacy-policy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              text-orangeLight
+              dark:text-orangeDark
+              font-medium
+              border-b
+              border-orangeLight/50
+              dark:border-orangeDark/50
+              hover:border-orangeLight
+              dark:hover:border-orangeDark
+              transition-all
+            "
+          >
+            Privacy Policy
+          </a>
+        </label>
             </div>
+            
 
             {error && (
               <p className="text-red-500 text-sm">

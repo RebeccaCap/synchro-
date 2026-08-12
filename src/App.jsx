@@ -3,10 +3,10 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Agenda from "./components/Agenda";
-//import CTA from "./components/CTA";
+import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import CoHosts from "./components/CoHosts";
-import SaveDate from "./components/SaveDate";
+//import SaveDate from "./components/SaveDate";
 
 export default function App() {
   return (
@@ -18,8 +18,8 @@ export default function App() {
         <About />
         <Agenda />
         <CoHosts />
-        <SaveDate />
-        {/* <CTA /> */}
+        {/* <SaveDate /> */}
+        <CTA />
       </main>
       <Footer />
     </>

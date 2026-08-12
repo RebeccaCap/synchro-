@@ -32,7 +32,7 @@ export default function Agenda() {
                 }}
               />
               <span className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60 font-medium">
-                Agenda · Roundtable Session Breakdown
+                Agenda · Roundtable Session Breakdown · Full programme and timings to follow
               </span>
             </div>
             </div>
@@ -82,7 +82,7 @@ export default function Agenda() {
                 Transformation
               </h3>
 
-              <p className="mt-4 text-sm leading-relaxed text-ink/70 dark:text-paper/70">
+              <p className="mt-4 text-sm leading-relaxed text-ink/70 dark:text-paper/70 pt-7">
                 Practical lessons from large-scale transformations shared among
                 participants.
               </p>
@@ -148,7 +148,7 @@ export default function Agenda() {
                 Collaboration
               </h3>
 
-              <p className="mt-4 text-sm leading-relaxed text-ink/70 dark:text-paper/70">
+              <p className="mt-4 text-sm leading-relaxed text-ink/70 dark:text-paper/70 pt-7">
                 Perspectives and priorities collected from participants.
               </p>
             </div>
