@@ -61,12 +61,6 @@ export default function CTA() {
 
       if (form.attendance === "yes") {
         setSuccess(true);
-
-        const link = document.createElement("a");
-        link.href =
-          "https://synchroforum.eu/synchro-october-2026.ics";
-        link.download = "synchro-october-2026.ics";
-        link.click();
       } else {
         setDeclined(true);
       }
