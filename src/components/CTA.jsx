@@ -228,6 +228,7 @@ export default function CTA() {
             <input
             name="title"
             placeholder="Job title"
+            required
             value={form.title}
             onChange={handleChange}
             className="
@@ -290,6 +291,7 @@ export default function CTA() {
             <input
             type="tel"
             name="phone"
+            required
             placeholder="Phone number (e.g. +46 70 123 45 67)"
             value={form.phone}
             onChange={handleChange}
@@ -363,54 +365,53 @@ export default function CTA() {
                 className="mt-1 cursor-pointer"
               />
 
-         <label htmlFor="privacy_policy">
-          I accept the{" "}
-          <a
-            href="/privacy-policy.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              text-orangeLight
-              dark:text-orangeDark
-              font-medium
-              border-b
-              border-orangeLight/50
-              dark:border-orangeDark/50
-              hover:border-orangeLight
-              dark:hover:border-orangeDark
-              transition-all
-            "
-          >
-            Privacy Policy
-          </a>
-        </label>
+              <label htmlFor="privacy_policy">
+                I accept the{" "}
+                <a
+                  href="/privacy-policy.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    text-orangeLight
+                    dark:text-orangeDark
+                    font-medium
+                    border-b
+                    border-orangeLight/50
+                    dark:border-orangeDark/50
+                    hover:border-orangeLight
+                    dark:hover:border-orangeDark
+                    transition-all
+                  "
+                >
+                  Privacy Policy
+                </a>
+              </label>
             </div>
             
-
             {error && (
               <p className="text-red-500 text-sm">
                 {error}
               </p>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="
-                h-[56px]
-                px-8
-                rounded-md
-                bg-orangeLight
-                dark:bg-orangeDark
-                text-white
-                font-medium
-                text-lg
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-[0_16px_50px_rgba(225,103,49,0.35)]
-              "
-            >
+              <button
+                type="submit"
+                disabled={loading}
+                className="
+                  h-[56px]
+                  px-8
+                  rounded-md
+                  bg-orangeLight
+                  dark:bg-orangeDark
+                  text-white
+                  font-medium
+                  text-lg
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_16px_50px_rgba(225,103,49,0.35)]
+                "
+              >
               {loading
                 ? "Submitting..."
                 : "Confirm Attendance"}

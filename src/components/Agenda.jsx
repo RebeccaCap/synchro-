@@ -78,8 +78,7 @@ export default function Agenda() {
               </p>
 
               <h3 className="mt-5 text-xl font-semibold leading-tight text-ink dark:text-paper">
-                Architecting Trust and Confidence in Times of Workforce
-                Transformation
+                Building Trust and Confidence in Times of Transformation
               </h3>
 
               <p className="mt-4 text-sm leading-relaxed text-ink/70 dark:text-paper/70 pt-7">
