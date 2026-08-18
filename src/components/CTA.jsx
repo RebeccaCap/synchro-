@@ -400,39 +400,39 @@ export default function CTA() {
               className="mt-1 cursor-pointer"
             />
 
-          <label>
-            I consent to my contact details being shared with other forum members
-            for networking and follow-up purposes.
-          </label>
-        </div>
+              <label>
+                I consent to my contact details being shared with other forum members
+                for networking and follow-up purposes.
+              </label>
+            </div>
 
-        <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
-          <input
-            type="checkbox"
-            name="dietary_consent"
-            checked={form.dietary_consent}
-            onChange={handleCheckboxChange}
-            className="mt-1 cursor-pointer"
-          />
+            <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
+              <input
+                type="checkbox"
+                name="dietary_consent"
+                checked={form.dietary_consent}
+                onChange={handleCheckboxChange}
+                className="mt-1 cursor-pointer"
+              />
 
-          <label>
-            I consent to the processing of my dietary requirements for catering
-            purposes.
-          </label>
-        </div>
+              <label>
+                I consent to the processing of my dietary requirements for catering
+                purposes.
+              </label>
+            </div>
 
-        <p className="italic text-xs text-ink/60 dark:text-paper/60">
-          You may withdraw your consent at any time. For more information about how
-          we process your personal data and your rights, please see our{" "}
-          <a
-            href="/privacy-policy.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-orangeLight dark:hover:text-orangeDark"
-          >
-            Privacy Notice
-          </a>.
-        </p>
+            <p className="italic text-xs text-ink/60 dark:text-paper/60">
+              You may withdraw your consent at any time. For more information about how
+              we process your personal data and your rights, please see our{" "}
+              <a
+                href="/privacy-policy.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-orangeLight dark:hover:text-orangeDark"
+              >
+                Privacy Notice
+              </a>.
+            </p>
             
             {error && (
               <p className="text-red-500 text-sm">
