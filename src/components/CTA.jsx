@@ -11,6 +11,8 @@ export default function CTA() {
     dietary: "",
     attendance: "yes",
     privacy_policy: false,
+    share_contact_details: false,
+    dietary_consent: false,
   });
 
   const [loading, setLoading] = useState(false);
@@ -24,12 +26,13 @@ export default function CTA() {
     }));
   };
 
-  const handlePrivacyPolicyChange = (e) => {
+  const handleCheckboxChange = (e) => {
     setForm((prev) => ({
       ...prev,
-      privacy_policy: e.target.checked,
+      [e.target.name]: e.target.checked,
     }));
-  }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -355,18 +358,18 @@ export default function CTA() {
               </label>
              </div>
                         
-            <div className="flex items-start gap-3 text-sm text-ink/80 dark:text-paper/80">
+            <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
               <input
                 type="checkbox"
                 name="privacy_policy"
                 checked={form.privacy_policy}
-                onChange={handlePrivacyPolicyChange}
+                onChange={handleCheckboxChange}
                 required
                 className="mt-1 cursor-pointer"
               />
 
               <label htmlFor="privacy_policy">
-                I accept the{" "}
+                I have read the{" "}
                 <a
                   href="/privacy-policy.html"
                   target="_blank"
@@ -383,10 +386,53 @@ export default function CTA() {
                     transition-all
                   "
                 >
-                  Privacy Policy
+                  Privacy Notice
                 </a>
               </label>
             </div>
+
+            <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
+            <input
+              type="checkbox"
+              name="share_contact_details"
+              checked={form.share_contact_details}
+              onChange={handleCheckboxChange}
+              className="mt-1 cursor-pointer"
+            />
+
+          <label>
+            I consent to my contact details being shared with other forum members
+            for networking and follow-up purposes.
+          </label>
+        </div>
+
+        <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
+          <input
+            type="checkbox"
+            name="dietary_consent"
+            checked={form.dietary_consent}
+            onChange={handleCheckboxChange}
+            className="mt-1 cursor-pointer"
+          />
+
+          <label>
+            I consent to the processing of my dietary requirements for catering
+            purposes.
+          </label>
+        </div>
+
+        <p className="italic text-xs text-ink/60 dark:text-paper/60">
+          You may withdraw your consent at any time. For more information about how
+          we process your personal data and your rights, please see our{" "}
+          <a
+            href="/privacy-policy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-orangeLight dark:hover:text-orangeDark"
+          >
+            Privacy Notice
+          </a>.
+        </p>
             
             {error && (
               <p className="text-red-500 text-sm">
