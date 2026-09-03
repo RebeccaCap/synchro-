@@ -13,6 +13,7 @@ export default function CTA() {
     privacy_policy: false,
     share_contact_details: false,
     dietary_consent: false,
+    marketing_consent: false,
   });
 
   const [loading, setLoading] = useState(false);
@@ -418,6 +419,30 @@ export default function CTA() {
               <label>
                 I consent to the processing of my dietary requirements for catering
                 purposes.
+              </label>
+            </div>
+
+            <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
+              <input
+                type="checkbox"
+                name="marketing_consent"
+                checked={form.marketing_consent}
+                onChange={handleCheckboxChange}
+                className="mt-1 cursor-pointer"
+              />
+
+              <label htmlFor="marketing_consent">
+                I consent, on behalf of my organisation, to SynCHRO using our name and
+                logo in marketing materials and on the SynCHRO website, both for this
+                session and future editions of the forum, to acknowledge our
+                participation. I understand I can withdraw this permission at any time
+                by emailing{" "}
+                <a
+                  href="mailto:info@synchroforum.eu"
+                  className="text-orangeLight dark:text-orangeDark underline hover:no-underline"
+                >
+                  info@synchroforum.eu
+                </a>.
               </label>
             </div>
 
