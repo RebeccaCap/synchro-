@@ -6,6 +6,7 @@ import Equinorlogo from "../assets/Equinorlogo.png";
 
 export default function CoHost() {
   const [openCard, setOpenCard] = useState(null);
+  //const confirmedLogos = [Capgeminilogo, Equinorlogo, Yara, Kongstad];
 
   const coHosts = [
     {
@@ -253,7 +254,43 @@ export default function CoHost() {
             </div>
           ))}
         </div>
-      </div>
+
+         {/*  <div className="mt-8">
+            <div className="flex items-center gap-2 mb-4">
+              <span
+                className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"
+                style={{
+                  clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
+                }}
+              />
+              <span className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60 font-medium">
+                Our growing list of confirmed participants
+              </span>
+            </div>
+          <div className="mt-4 border border-white/10 dark:bg-[#fefaf5] overflow-hidden max-w-[50%]">
+            <div className="relative overflow-hidden">
+              <div className="flex whitespace-nowrap animate-marquee">
+                {[...Array(2)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-10 px-4 py-3 shrink-0"
+                  >
+                    {confirmedLogos.map((logo, index) => (
+                      <img
+                        key={index}
+                        src={logo}
+                        className="h-8"
+                        alt="Logo"
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          </div> */}
+          </div>
+
     </section>
   );
 }

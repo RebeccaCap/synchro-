@@ -14,10 +14,13 @@ import logo1 from "../assets/LOGO1.svg";
 //import Spotify from "../assets/Spotifylogo.png";
 //import Vodafone from "../assets/Vodafonelogo.png";
 //import Yara from "../assets/Yaralogo.png";
+//import Capgemini from "../assets/Capgeminilogo.png";
+//import Equinor from "../assets/Equinorlogo.png";
+//import Kongstad from "../assets/KONGSBERG_logo_horizontal.png";
 
 export default function Hero() {
   //const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
-
+  //const confirmedLogos = [Capgemini, Equinor, Yara, Kongstad];
   return (
     <section className="py-10 md:py-16 overflow-hidden">
       <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
@@ -95,17 +98,27 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Logo carousel - temporarily hidden
-
-          <div className="mt-6 hidden border border-white/10 bg-white/5 overflow-hidden">
+          {/* <div className="mt-36 ">
+            <div className="flex items-center gap-2 mb-4">
+              <span
+                className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"
+                style={{
+                  clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%)"
+                }}
+              />
+              <span className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60 font-medium">
+                Our growing list of confirmed participants
+              </span>
+            </div>
+          <div className="mt-4 border border-white/10 dark:bg-[#fefaf5] overflow-hidden">
             <div className="relative overflow-hidden">
-              <div className="flex whitespace-nowrap animate-[marquee_18s_linear_infinite]">
+              <div className="flex whitespace-nowrap animate-marquee">
                 {[...Array(2)].map((_, i) => (
                   <div
                     key={i}
                     className="flex items-center gap-10 px-4 py-3 shrink-0"
                   >
-                    {logos.map((logo, index) => (
+                    {confirmedLogos.map((logo, index) => (
                       <img
                         key={index}
                         src={logo}
@@ -118,8 +131,8 @@ export default function Hero() {
               </div>
             </div>
           </div>
+          </div> */}
 
-          */}
         </div>
       </div>
     </section>
