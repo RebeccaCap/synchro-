@@ -149,8 +149,6 @@ export default function Countdown() {
                     backdrop-blur
                   "
                 >
-                  <div className="absolute top-0 left-0 h-[2px] w-full bg-gradient-to-r from-purpleLight dark:from-purpleDark via-orangeLight dark:via-orangeDark to-transparent" />
-
                   <span
                     className="
                       text-[clamp(1.9rem,1.2rem+3vw,3.6rem)]
