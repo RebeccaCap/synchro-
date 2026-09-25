@@ -2,11 +2,9 @@ import asset from "../assets/Graphic1.svg";
 
 export default function Agenda() {
   return (
-    <section id="agenda" className="py-24">
+    <section id="agenda" className="py-24 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
-        <div
-
-        >
+        <div className="relative">
           {/* Decorative asset */}
           <img
             src={asset}

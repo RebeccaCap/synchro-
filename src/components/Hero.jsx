@@ -34,7 +34,7 @@ export default function Hero() {
             />
 
             <p className="uppercase md:text-xs text-[10px] tracking-[0.2em] text-ink/50 dark:text-paper/40 font-medium">
-              CHRO Forum · October 15, 2026
+              CHRO Forum · October 15, 2026 · Online
             </p>
           </div>
 
@@ -76,7 +76,7 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
             <a
-              href="#register"
+              href="#countdown"
               className="
                 inline-flex items-center justify-center
                 px-6 py-3
@@ -94,7 +94,7 @@ export default function Hero() {
                 active:shadow-none
               "
             >
-              Confirm attendance
+              Event details
             </a>
           </div>
 

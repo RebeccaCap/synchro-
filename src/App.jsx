@@ -3,7 +3,8 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Agenda from "./components/Agenda";
-import CTA from "./components/CTA";
+import Countdown from "./components/Countdown";
+//import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import CoHosts from "./components/CoHosts";
 //import SaveDate from "./components/SaveDate";
@@ -19,7 +20,8 @@ export default function App() {
         <Agenda />
         <CoHosts />
         {/* <SaveDate /> */}
-        <CTA />
+        <Countdown />
+        {/* <CTA /> */}
       </main>
       <Footer />
     </>

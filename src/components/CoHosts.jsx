@@ -174,7 +174,7 @@ export default function CoHost() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <p className="md:text-[1.28rem] sm:text-sm font-semibold tracking-[-0.025em] text-ink dark:text-paper">
+                    <p className="text-base md:text-[1.28rem] font-semibold tracking-[-0.025em] text-ink dark:text-paper">
                       {host.name}
                     </p>
 
