@@ -132,7 +132,7 @@ export default function CoHost() {
           in the room.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-5 items-start">
           {coHosts.map((host, i) => (
             <div
               key={i}
