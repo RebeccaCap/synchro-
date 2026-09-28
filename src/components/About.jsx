@@ -2,18 +2,18 @@ export default function About() {
   const items = [
     {
       number: "01",
-      title: "Content",
-      text: "Curated content and discussion based on specific reports and optional insight pulses that describe CHRO opportunities and challenges. Content is shared in advance so the room can spend its time on debate, not briefing."
+      title: "The Opportunity",
+      text: "The Founders' Edition brings together an exclusive group of CHROs to shape the establishment and future of the SynCHRO forum. As founding members, participants will help define the forum's long-term vision, strategic priorities, and areas of influence, while building a trusted community focused on Europe's most pressing workforce and competitiveness challenges."
     },
     {
       number: "02",
-      title: "Cadence",
-      text: "We are inviting you to the inaugural session. The forum will convene twice a year. Each edition is built around a single high-impact theme, collectively identified and prioritised by the group."
+      title: "The Ambition",
+      text: "Stand up a CHRO community to convene on a biannual basis with the aim of discussing critical priorities, exchanging experiences and perspectives, and co-creating actionable insights aimed at addressing shared challenges such as for example initiating social dialogue and influencing regulations."
     },
     {
       number: "03",
-      title: "Who's in the room",
-      text: "CHROs from leading European organisations. Attendees are invited for the quality and diversity of perspective they bring, not sector representation alone."
+      title: "Key Questions",
+      text: "What is the vision and success ambition for SynCHRO? How can SynCHRO create distinctive value and meaningful outcomes for Europe's leading CHROs? What priorities should define the future agenda, and how can the founders amplify the long-term impact of the series?"
     }
   ];
 
@@ -52,7 +52,7 @@ export default function About() {
           </div>
 
           <p className="text-ink/70 dark:text-paper/70 max-w-md leading-relaxed mt-8">
-          SynCHRO brings together an exclusive, curated group of experienced CHROs from across industries and geographies to initiate concrete actions on what European CHROs and their organisations need to do differently.
+          In the Founders Edition of SynCHRO, we will hold a concise session focused on aligning SynCHRO's vision, goals and success factors, discussing strategic themes, defining the timing of the first edition, and identifying additional organisations to join the community.
           </p>
           </div>
         </div>
