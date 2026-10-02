@@ -3,7 +3,7 @@ export default function About() {
     {
       number: "01",
       title: "The Opportunity",
-      text: "The Founders' Edition brings together an exclusive group of CHROs to shape the establishment and future of the SynCHRO forum. As founding members, participants will help define the forum's long-term vision, strategic priorities, and areas of influence, while building a trusted community focused on Europe's most pressing workforce and competitiveness challenges."
+      text: "The Founders Edition brings together an exclusive group of CHROs to shape the establishment and future of the SynCHRO forum. As founding members, participants will help define the forum's long-term vision, strategic priorities, and areas of influence, while building a trusted community focused on Europe's most pressing workforce and competitiveness challenges."
     },
     {
       number: "02",

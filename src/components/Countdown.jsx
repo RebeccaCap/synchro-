@@ -93,12 +93,12 @@ export default function Countdown() {
                 Online
               </span>
               <span className="inline-flex items-center px-3 py-1.5 border border-ink/10 dark:border-paper/15 text-sm font-medium text-ink/80 dark:text-paper/80">
-                11:00 CEST
+                11:00–13:30 CEST
               </span>
             </div>
 
             <p className="mt-6 text-ink/70 dark:text-paper/70 max-w-md leading-relaxed">
-              The forum will now take place online.
+              The Founders Edition will take place online.
             </p>
 
             <p className="mt-6 text-ink/70 dark:text-paper/70">
