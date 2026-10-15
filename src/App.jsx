@@ -8,8 +8,12 @@ import Countdown from "./components/Countdown";
 import Footer from "./components/Footer";
 import CoHosts from "./components/CoHosts";
 //import SaveDate from "./components/SaveDate";
+import PresentationPage from "./pages/PresentationPage";
 
 export default function App() {
+  const path = window.location.pathname.replace(/\/+$/, "");
+  if (path === "/presentation") return <PresentationPage />;
+
   return (
     <>
       <BackgroundMotifs />
