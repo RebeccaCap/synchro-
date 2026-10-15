@@ -12,7 +12,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "node scripts/postbuild.js",
+    "serve": "node scripts/serve.js",
+    "preview": "npm run build && npm run serve",
+    "get-php": "node scripts/get-php.js",
     "test": "react-scripts test",
+    "setup-admin": "node scripts/setup-admin.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

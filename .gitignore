@@ -27,3 +27,19 @@ yarn-error.log*
 .env
 .env.build
 .vercel
+
+# Server configuration (contains the admin password hash and secret)
+/server/config.php
+
+# Local admin/presentation data when running `npm run serve`
+/synchro-private
+
+# Copies of server files that contain secrets
+/server/legacy/
+
+# Portable PHP for local testing (npm run get-php)
+/.tools/
+
+# Only the lock file in the shipped private folder belongs in git
+/public/synchro-private/*
+!/public/synchro-private/.htaccess

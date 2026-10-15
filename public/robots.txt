@@ -5,6 +5,5 @@ User-agent: *
 Allow: /
 Disallow: /admin.php
 Disallow: /rsvp.php
-Disallow: /rsvp_responses.csv
 
 Sitemap: https://synchroforum.eu/sitemap.xml

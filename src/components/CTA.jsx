@@ -118,7 +118,7 @@ export default function CTA() {
   }
 
   return (
-    <section id="register" className="py-17">
+    <section id="register" className="py-16">
       <div
         className="
           relative
@@ -362,6 +362,7 @@ export default function CTA() {
             <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
               <input
                 type="checkbox"
+                id="privacy_policy"
                 name="privacy_policy"
                 checked={form.privacy_policy}
                 onChange={handleCheckboxChange}
@@ -395,13 +396,14 @@ export default function CTA() {
             <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
             <input
               type="checkbox"
+              id="share_contact_details"
               name="share_contact_details"
               checked={form.share_contact_details}
               onChange={handleCheckboxChange}
               className="mt-1 cursor-pointer"
             />
 
-              <label>
+              <label htmlFor="share_contact_details">
                 I consent to my contact details being shared with other forum members
                 for networking and follow-up purposes.
               </label>
@@ -410,13 +412,14 @@ export default function CTA() {
             <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
               <input
                 type="checkbox"
+                id="dietary_consent"
                 name="dietary_consent"
                 checked={form.dietary_consent}
                 onChange={handleCheckboxChange}
                 className="mt-1 cursor-pointer"
               />
 
-              <label>
+              <label htmlFor="dietary_consent">
                 I consent to the processing of my dietary requirements for catering
                 purposes.
               </label>
@@ -425,6 +428,7 @@ export default function CTA() {
             <div className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
               <input
                 type="checkbox"
+                id="marketing_consent"
                 name="marketing_consent"
                 checked={form.marketing_consent}
                 onChange={handleCheckboxChange}

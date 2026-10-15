@@ -49,7 +49,7 @@ export default function Header() {
             </a>
 
             <a
-              href="#register"
+              href="#countdown"
               className="
                 ml-2
                 px-4 py-2
@@ -66,7 +66,7 @@ export default function Header() {
                 active:shadow-none
               "
             >
-             Confirm attendance
+             Event details
             </a>
           </nav>
 

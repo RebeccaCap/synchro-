@@ -1,7 +1,7 @@
 export default function SaveDate() {
 
   return (
-    <section id="register" className="py-17">
+    <section id="register" className="py-16">
       <div
         className="
           relative

@@ -69,7 +69,12 @@ export default function BackgroundMotifs() {
               transform: translateY(0);
             }
             50% {
-              transform  0%,100% {
+              transform: translateY(-24px);
+            }
+          }
+
+          @keyframes glideB {
+            0%,100% {
               transform: translateX(0);
             }
             40% {
