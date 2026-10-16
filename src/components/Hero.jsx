@@ -34,7 +34,7 @@ export default function Hero() {
             />
 
             <p className="uppercase md:text-xs text-[10px] tracking-[0.2em] text-ink/50 dark:text-paper/40 font-medium">
-              CHRO Forum · October 15, 2026 · Online
+              New session to be announced soon
             </p>
           </div>
 
@@ -73,30 +73,6 @@ export default function Hero() {
           </p>
           <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
           By creating a trusted, non-commercial, peer-based setting, SynCHRO creates a confidential environment where CHROs can engage in meaningful dialogue, share learnings and reflect on the realities that are reshaping their roles as CHRO. </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 mt-6">
-            <a
-              href="#countdown"
-              className="
-                inline-flex items-center justify-center
-                px-6 py-3
-                rounded-md
-                bg-orangeLight
-                dark:bg-orangeDark
-                text-white
-                font-medium
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-lg
-                hover:brightness-105
-                active:translate-y-0
-                active:shadow-none
-              "
-            >
-              Event details
-            </a>
-          </div>
 
           {/* <div className="mt-36 ">
             <div className="flex items-center gap-2 mb-4">
