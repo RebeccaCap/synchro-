@@ -49,7 +49,7 @@ export default function Header() {
             </a>
 
             <a href="/presentation" className="relative group pb-1">
-              Downloads
+              Member Access
               <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </nav>
