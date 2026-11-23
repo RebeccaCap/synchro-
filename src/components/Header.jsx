@@ -10,6 +10,10 @@ const NAV_ITEMS = [
   { label: "Co-Chairs", id: "co-chairs" },
 ];
 
+// Same duration as the theme cross-fade (index.css) so the UI feels consistent.
+const menuTransition = "duration-[400ms] ease-in-out motion-reduce:transition-none";
+const barClass = `absolute left-0 h-[2px] w-6 rounded bg-current transition-all ${menuTransition}`;
+
 const underlineClass =
   "absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full";
 
@@ -170,42 +174,46 @@ export default function Header() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             className="md:hidden flex items-center justify-center w-10 h-10 text-ink dark:text-paper"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              {menuOpen ? (
-                <path d="M6 6l12 12M18 6L6 18" />
-              ) : (
-                <path d="M4 7h16M4 12h16M4 17h16" />
-              )}
-            </svg>
+            <span className="relative block w-6 h-5" aria-hidden="true">
+              <span className={`${barClass} ${menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"}`} />
+              <span className={`${barClass} top-1/2 -translate-y-1/2 ${menuOpen ? "opacity-0" : "opacity-100"}`} />
+              <span className={`${barClass} ${menuOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"}`} />
+            </span>
           </button>
         </div>
       </div>
 
-      {menuOpen && (
-        <nav
-          id="mobile-menu"
-          aria-label="Mobile"
-          className="
-            md:hidden absolute top-full left-0 right-0
-            bg-paper dark:bg-ink
-            border-b border-ink/10 dark:border-paper/10
-            text-ink/80 dark:text-paper/80
-          "
-        >
-          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-start gap-4 text-base">
-            {NAV_ITEMS.map(({ label, id }) => (
-              <NavLink
-                key={id}
-                href={`#${id}`}
-                label={label}
-                active={activeId === id}
-                onClick={() => setMenuOpen(false)}
-              />
-            ))}
-            <NavLink href="/presentation" label="Downloads" onClick={() => setMenuOpen(false)} />
-          </div>
-        </nav>
-      )}
+      <nav
+        id="mobile-menu"
+        aria-label="Mobile"
+        aria-hidden={!menuOpen}
+        inert={menuOpen ? undefined : ""}
+        className={`
+          md:hidden absolute top-full left-0 right-0
+          bg-paper dark:bg-ink
+          border-b border-ink/10 dark:border-paper/10
+          text-ink/80 dark:text-paper/80
+          transition-[opacity,transform,visibility] ${menuTransition}
+          ${
+            menuOpen
+              ? "opacity-100 translate-y-0 visible"
+              : "opacity-0 -translate-y-2 invisible pointer-events-none"
+          }
+        `}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-start gap-4 text-base">
+          {NAV_ITEMS.map(({ label, id }) => (
+            <NavLink
+              key={id}
+              href={`#${id}`}
+              label={label}
+              active={activeId === id}
+              onClick={() => setMenuOpen(false)}
+            />
+          ))}
+          <NavLink href="/presentation" label="Downloads" onClick={() => setMenuOpen(false)} />
+        </div>
+      </nav>
     </header>
   );
 }
