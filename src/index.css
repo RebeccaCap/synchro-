@@ -44,3 +44,10 @@ body {
     radial-gradient(circle at 84% 12%, rgba(218,65,15,.12), transparent 22%),
     linear-gradient(180deg, #141428 0%, #17172d 45%, #17172d 100%);
 }
+
+/* Cross-fade the whole page when switching light/dark (View Transitions API).
+   Browsers without support, or users who prefer reduced motion, switch instantly. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+}

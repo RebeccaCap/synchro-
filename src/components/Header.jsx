@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
 
@@ -11,6 +12,24 @@ export default function Header() {
       theme === "dark"
     );
   }, [theme]);
+
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    const apply = () => {
+      document.documentElement.classList.toggle("dark", next === "dark");
+      flushSync(() => setTheme(next));
+    };
+
+    const reduceMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (document.startViewTransition && !reduceMotion) {
+      document.startViewTransition(apply);
+    } else {
+      apply();
+    }
+  }
 
   return (
     <header
@@ -60,9 +79,7 @@ export default function Header() {
           </nav>
 
             <button
-            onClick={() =>
-                setTheme(theme === "dark" ? "light" : "dark")
-            }
+            onClick={toggleTheme}
             title={
                 theme === "dark"
                 ? "Switch to light mode"
