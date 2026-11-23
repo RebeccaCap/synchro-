@@ -1,6 +1,7 @@
 import BackgroundMotifs from "./components/BackgroundMotifs";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import WhoWeAre from "./components/WhoWeAre";
 import About from "./components/About";
 //import Agenda from "./components/Agenda";
 //import Countdown from "./components/Countdown";
@@ -21,6 +22,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <WhoWeAre />
         <About />
         {/* <Agenda /> */}
         <CoHosts />

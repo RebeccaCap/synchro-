@@ -43,6 +43,11 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center gap-6 text-[15.2px] text-ink/80 dark:text-paper/80">
+            <a href="#who-we-are" className="relative group pb-1">
+              Who we are
+              <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
             <a href="#about" className="relative group pb-1">
               About
               <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full"></span>

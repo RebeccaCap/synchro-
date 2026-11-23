@@ -8,6 +8,24 @@ test('renders the hero heading', () => {
   ).toBeInTheDocument();
 });
 
+test('renders the Who we are section with logos in order', () => {
+  render(<App />);
+  expect(
+    screen.getByRole('heading', { name: /the synchro community/i })
+  ).toBeInTheDocument();
+  const section = document.getElementById('who-we-are');
+  const alts = Array.from(section.querySelectorAll('img')).map((img) => img.alt);
+  expect(alts).toEqual([
+    'DNB',
+    'Crédit Agricole',
+    'Kongsberg',
+    'Shell',
+    'Yara',
+    'Equinor',
+    'Capgemini',
+  ]);
+});
+
 test('announces the next session and links to downloads', () => {
   render(<App />);
   expect(
