@@ -1,8 +1,6 @@
 import { useState } from "react";
 import AnneLebel from "../assets/AnneLebel.jpg";
 import AkselStenerud from "../assets/AkselStenerud.jpg";
-import Capgeminilogo from "../assets/Capgeminilogo.png";
-import Equinorlogo from "../assets/Equinorlogo.png";
 
 export default function CoHost() {
   const [openCard, setOpenCard] = useState(null);
@@ -10,12 +8,44 @@ export default function CoHost() {
 
   const coHosts = [
     {
+      name: "Aksel Stenerud",
+      company: "Equinor",
+      title: "Executive Vice President, People & Organisation",
+      image: AkselStenerud,
+      logo: "/logos/logo-equinor.svg",
+      description: (
+        <>
+          <p className="mb-4">
+            Aksel Stenerud has built his career through various leadership roles in projects, reward, development and deployment, industrial relations, and shared services. He became Executive Vice President for People and Organisation for Equinor in 2022.  </p>
+
+          <p className="mb-4">
+            He joined Equinor in 2008 and has held various leadership roles
+            across the company including a corporate role as chief negotiator in
+            industrial relations, as vice president for PO in exploration and
+            production international and Norway.
+          </p>
+
+          <p className="mb-4">
+            Prior to joining Equinor he had various HR roles at Exxon Mobil and
+            as an officer in the Norwegian Air Force. He has worked across
+            business areas, value chains and geographies, including 4.5 years
+            as an expatriate in Belgium and the Czech Republic.
+          </p>
+
+          <p className="mb-4">
+            Aksel is a graduate from the Air Defense Academy, and has a minor
+            and intermediate in psychology with the Norwegian University of
+            Science and Technology in Trondheim.
+          </p>
+        </>
+      ),
+    },
+    {
       name: "Anne Lebel",
       company: "Capgemini",
       title: "Chief Human Resources Officer & Ethics",
       image: AnneLebel,
-      logo: Capgeminilogo,
-      logoClass: "h-8",
+      logo: "/logos/logo-cap.svg",
       description: (
         <>
           <p className="mb-4">
@@ -54,40 +84,6 @@ export default function CoHost() {
             Directors. She is a graduate of the Institut d'Etudes Politiques in
             Strasbourg (France) and the Institut d'administration des entreprises (IAE)
             Paris.
-          </p>
-        </>
-      ),
-    },
-    {
-      name: "Aksel Stenerud",
-      company: "Equinor",
-      title: "Executive Vice President, People & Organisation",
-      image: AkselStenerud,
-      logo: Equinorlogo,
-      logoClass: "h-10 mb-2",
-      description: (
-        <>
-          <p className="mb-4">
-            Aksel Stenerud has built his career through various leadership roles in projects, reward, development and deployment, industrial relations, and shared services. He became Executive Vice President for People and Organisation for Equinor in 2022.  </p>
-
-          <p className="mb-4">
-            He joined Equinor in 2008 and has held various leadership roles
-            across the company including a corporate role as chief negotiator in
-            industrial relations, as vice president for PO in exploration and
-            production international and Norway.
-          </p>
-
-          <p className="mb-4">
-            Prior to joining Equinor he had various HR roles at Exxon Mobil and
-            as an officer in the Norwegian Air Force. He has worked across
-            business areas, value chains and geographies, including 4.5 years
-            as an expatriate in Belgium and the Czech Republic.
-          </p>
-
-          <p className="mb-4">
-            Aksel is a graduate from the Air Defense Academy, and has a minor
-            and intermediate in psychology with the Norwegian University of
-            Science and Technology in Trondheim.
           </p>
         </>
       ),
@@ -172,17 +168,18 @@ export default function CoHost() {
                     />
                 </div>
 
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-end justify-between gap-4 mb-2">
                     <p className="text-base md:text-[1.28rem] font-semibold tracking-[-0.025em] text-ink dark:text-paper">
                       {host.name}
                     </p>
 
-                <img
-                    src={host.logo}
-                    alt={`${host.company} logo`}
-                    className={`${host.logoClass} w-auto object-contain shrink-0`}
-                />
+                    <img
+                      src={host.logo}
+                      alt={`${host.company} logo`}
+                      loading="lazy"
+                      className="h-9 w-[104px] object-contain object-right shrink-0 invert dark:invert-0"
+                    />
                   </div>
 
                   <p className="text-[0.9rem] font-medium text-ink dark:text-paper mb-1">
