@@ -43,7 +43,7 @@ export default function WhoWeAre() {
                 src={src}
                 alt={name}
                 loading="lazy"
-                className="h-12 md:h-14 w-full max-w-[110px] object-contain"
+                className="h-12 md:h-14 w-full max-w-[110px] object-contain invert dark:invert-0"
               />
             </li>
           ))}
