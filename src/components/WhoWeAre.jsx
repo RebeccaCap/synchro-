@@ -36,14 +36,14 @@ export default function WhoWeAre() {
           actions that drive change.
         </p>
 
-        <ul className="mt-14 flex flex-wrap items-center gap-x-12 gap-y-8">
+        <ul className="mt-14 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-10 items-center">
           {LOGOS.map(({ name, src }) => (
-            <li key={name}>
+            <li key={name} className="flex items-center justify-center">
               <img
                 src={src}
                 alt={name}
                 loading="lazy"
-                className="h-12 md:h-14 w-auto object-contain"
+                className="h-12 md:h-14 w-full max-w-[110px] object-contain"
               />
             </li>
           ))}
