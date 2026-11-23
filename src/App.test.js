@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import App from './App';
 
 test('renders the hero heading', () => {
@@ -24,6 +24,31 @@ test('renders the Who we are section with logos in order', () => {
     'Equinor',
     'Capgemini',
   ]);
+});
+
+test('navbar links to the page sections and the logo links home', () => {
+  render(<App />);
+  const nav = screen.getByRole('navigation', { name: 'Main' });
+  expect(within(nav).getByRole('link', { name: 'Who We Are' })).toHaveAttribute('href', '#who-we-are');
+  expect(within(nav).getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about');
+  expect(within(nav).getByRole('link', { name: 'Co-Chairs' })).toHaveAttribute('href', '#co-chairs');
+  expect(screen.getByRole('link', { name: /synchro home/i })).toHaveAttribute('href', '/');
+  expect(document.getElementById('co-chairs')).toBeInTheDocument();
+});
+
+test('hamburger opens and closes the mobile menu', () => {
+  render(<App />);
+  const button = screen.getByRole('button', { name: /open menu/i });
+  expect(button).toHaveAttribute('aria-expanded', 'false');
+  expect(screen.queryByRole('navigation', { name: 'Mobile' })).not.toBeInTheDocument();
+
+  fireEvent.click(button);
+  const menu = screen.getByRole('navigation', { name: 'Mobile' });
+  expect(screen.getByRole('button', { name: /close menu/i })).toHaveAttribute('aria-expanded', 'true');
+  expect(within(menu).getByRole('link', { name: 'Co-Chairs' })).toHaveAttribute('href', '#co-chairs');
+
+  fireEvent.click(within(menu).getByRole('link', { name: 'About' }));
+  expect(screen.queryByRole('navigation', { name: 'Mobile' })).not.toBeInTheDocument();
 });
 
 test('announces the next session and links to downloads', () => {

@@ -1,10 +1,91 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
 
+// Anchors shown in the navbar, in page order. Edit this list as sections change.
+const NAV_ITEMS = [
+  { label: "Who We Are", id: "who-we-are" },
+  { label: "About", id: "about" },
+  { label: "Co-Chairs", id: "co-chairs" },
+];
+
+const underlineClass =
+  "absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full";
+
+function NavLink({ href, label, active, onClick }) {
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      aria-current={active ? "location" : undefined}
+      className="relative group pb-1 inline-flex flex-col items-center"
+    >
+      <span className={active ? "font-bold" : undefined}>{label}</span>
+      {/* Invisible bold copy reserves the bold width so the nav doesn't shift. */}
+      <span aria-hidden="true" className="h-0 overflow-hidden font-bold select-none">
+        {label}
+      </span>
+      <span className={underlineClass}></span>
+    </a>
+  );
+}
+
 export default function Header() {
   const [theme, setTheme] = useState("dark");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState(null);
+  const headerRef = useRef(null);
+
+  // Highlight the nav link of the section currently in view.
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return undefined;
+    const visible = new Set();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) =>
+          e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id)
+        );
+        const current = NAV_ITEMS.find((item) => visible.has(item.id));
+        setActiveId(current ? current.id : null);
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Close the mobile menu on Escape or a click outside the header.
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    const onPointer = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onPointer);
+    };
+  }, [menuOpen]);
+
+  function handleLogoClick(e) {
+    setMenuOpen(false);
+    if (window.location.pathname.replace(/\/+$/, "") === "") {
+      e.preventDefault();
+      if (window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+      // Smoothness comes from `scroll-behavior` in index.css (off for reduced motion).
+      window.scrollTo({ top: 0 });
+    }
+  }
 
   useEffect(() => {
     document.documentElement.classList.toggle(
@@ -33,6 +114,7 @@ export default function Header() {
 
   return (
     <header
+      ref={headerRef}
       className="
         sticky top-0 z-50 backdrop-blur
         bg-gradient-to-b
@@ -46,80 +128,84 @@ export default function Header() {
       "
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
-        <div>
-        <img
-            src={logo}
-            className="h-6 hidden dark:block"
-            alt="Logo"
-        />
-
-        <img
-            src={logo1}
-            className="h-6 block dark:hidden"
-            alt="Logo"
-        />
-        </div>
+        <a href="/" onClick={handleLogoClick} aria-label="SynCHRO home">
+          <img src={logo} className="h-6 hidden dark:block" alt="" />
+          <img src={logo1} className="h-6 block dark:hidden" alt="" />
+        </a>
 
         <div className="flex items-center gap-4">
-          <nav className="hidden md:flex items-center gap-6 text-[15.2px] text-ink/80 dark:text-paper/80">
-            <a href="#who-we-are" className="relative group pb-1">
-              Who we are
-              <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-
-            <a href="#about" className="relative group pb-1">
-              About
-              <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-
-            <a href="/presentation" className="relative group pb-1">
-              Downloads
-              <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-ink/80 dark:bg-paper/80 transition-all duration-300 group-hover:w-full"></span>
-            </a>
+          <nav
+            aria-label="Main"
+            className="hidden md:flex items-center gap-6 text-[15.2px] text-ink/80 dark:text-paper/80"
+          >
+            {NAV_ITEMS.map(({ label, id }) => (
+              <NavLink key={id} href={`#${id}`} label={label} active={activeId === id} />
+            ))}
+            <NavLink href="/presentation" label="Downloads" />
           </nav>
 
-            <button
+          <button
             onClick={toggleTheme}
-            title={
-                theme === "dark"
-                ? "Switch to light mode"
-                : "Switch to dark mode"
-            }
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             className={`
-                relative
-                w-14
-                h-8
-                rounded-full
-                transition-all
-                duration-300
-                ${
-                theme === "dark"
-                    ? "bg-purpleDark"
-                    : "bg-orangeLight"
-                }
+              relative w-14 h-8 rounded-full transition-all duration-300
+              ${theme === "dark" ? "bg-purpleDark" : "bg-orangeLight"}
             `}
-            >
+          >
             <span
-                className={`
-                absolute
-                top-1
-                h-6
-                w-6
-                rounded-full
-                bg-white
-                shadow-md
-                transition-all
-                duration-300
-                ${
-                    theme === "dark"
-                    ? "left-7"
-                    : "left-1"
-                }
-                `}
+              className={`
+                absolute top-1 h-6 w-6 rounded-full bg-white shadow-md
+                transition-all duration-300
+                ${theme === "dark" ? "left-7" : "left-1"}
+              `}
             />
-            </button>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="md:hidden flex items-center justify-center w-10 h-10 text-ink dark:text-paper"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              {menuOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {menuOpen && (
+        <nav
+          id="mobile-menu"
+          aria-label="Mobile"
+          className="
+            md:hidden absolute top-full left-0 right-0
+            bg-paper dark:bg-ink
+            border-b border-ink/10 dark:border-paper/10
+            text-ink/80 dark:text-paper/80
+          "
+        >
+          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-start gap-4 text-base">
+            {NAV_ITEMS.map(({ label, id }) => (
+              <NavLink
+                key={id}
+                href={`#${id}`}
+                label={label}
+                active={activeId === id}
+                onClick={() => setMenuOpen(false)}
+              />
+            ))}
+            <NavLink href="/presentation" label="Downloads" onClick={() => setMenuOpen(false)} />
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

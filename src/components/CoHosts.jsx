@@ -91,7 +91,7 @@ export default function CoHost() {
   ];
 
   return (
-    <section className="py-24">
+    <section id="co-chairs" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center gap-2 mb-6">
           <span
