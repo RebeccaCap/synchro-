@@ -14,6 +14,11 @@ function loadEvents() {
   return eventsPromise;
 }
 
+/** Test helper: forget the cached events so the next render fetches again. */
+export function resetEventsCache() {
+  eventsPromise = undefined;
+}
+
 /** All public events, or [] while loading or when the API is unavailable. */
 export function useEvents() {
   const [events, setEvents] = useState([]);

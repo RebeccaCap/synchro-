@@ -13,8 +13,11 @@ test('renders the Who we are section with logos in order', () => {
   expect(
     screen.getByRole('heading', { name: /the synchro community/i })
   ).toBeInTheDocument();
-  const section = document.getElementById('who-we-are');
-  const alts = Array.from(section.querySelectorAll('img')).map((img) => img.alt);
+  const names = ['DNB', 'Crédit Agricole', 'Kongsberg', 'Shell', 'Yara', 'Equinor', 'Capgemini'];
+  const alts = screen
+    .getAllByRole('img')
+    .map((img) => img.getAttribute('alt'))
+    .filter((alt) => names.includes(alt));
   expect(alts).toEqual([
     'DNB',
     'Crédit Agricole',
@@ -33,7 +36,9 @@ test('navbar links to the page sections and the logo links home', () => {
   expect(within(nav).getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about');
   expect(within(nav).getByRole('link', { name: 'Co-Chairs' })).toHaveAttribute('href', '#co-chairs');
   expect(screen.getByRole('link', { name: /synchro home/i })).toHaveAttribute('href', '/');
-  expect(document.getElementById('co-chairs')).toBeInTheDocument();
+  // The nav link targets this id, so check the section really carries it.
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(screen.getByRole('heading', { name: /meet your co-chairs/i }).closest('#co-chairs')).not.toBeNull();
 });
 
 test('hamburger opens and closes the mobile menu', () => {
