@@ -10,3 +10,5 @@ export { default as RegistrationForm } from "./RegistrationForm";
 export { default as RegistrationDialog } from "./RegistrationDialog";
 export { buildFields, STANDARD_FIELD_NAMES, PRIVACY_URL } from "./fields";
 export { submitRegistration } from "./submitRegistration";
+export { default as AddToCalendar } from "./AddToCalendar";
+export { calendarEntry, buildIcs, googleCalendarUrl, outlookCalendarUrl } from "./calendar";

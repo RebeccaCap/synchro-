@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { GradientLine } from "../../pages/shared";
 import Dialog from "./Dialog";
 import RegistrationForm from "./RegistrationForm";
+import AddToCalendar from "./AddToCalendar";
 
 /** Modal wrapper around RegistrationForm. Each opening starts a fresh form. */
 export default function RegistrationDialog({ event, open, onClose, ...formProps }) {
@@ -33,7 +34,13 @@ export default function RegistrationDialog({ event, open, onClose, ...formProps 
         </svg>
       </button>
       <div className="p-8 md:p-12">
-        <RegistrationForm key={session} event={event} onClose={onClose} {...formProps} />
+        <RegistrationForm
+          key={session}
+          event={event}
+          onClose={onClose}
+          successActions={<AddToCalendar event={event} />}
+          {...formProps}
+        />
       </div>
     </Dialog>
   );
