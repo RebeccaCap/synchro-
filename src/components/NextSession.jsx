@@ -1,4 +1,10 @@
+import { useUpcomingEvent } from "../hooks/useEvents";
+
 export default function NextSession() {
+  // Once a session is announced, the Hero shows it instead.
+  const event = useUpcomingEvent();
+  if (event) return null;
+
   return (
     <section id="next-session" className="py-16">
       <div

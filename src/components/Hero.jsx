@@ -1,5 +1,7 @@
 import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
+import EventCard from "./EventCard";
+import { useUpcomingEvent } from "../hooks/useEvents";
 //import BNPParibas from "../assets/BNPParibaslogo.png";
 //import CreditAgricole from "../assets/CreditAgricolelogo.png";
 //import HSBC from "../assets/HSBClogo.png";
@@ -19,12 +21,14 @@ import logo1 from "../assets/LOGO1.svg";
 //import Kongstad from "../assets/KONGSBERG_logo_horizontal.png";
 
 export default function Hero() {
+  const event = useUpcomingEvent();
   //const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
   //const confirmedLogos = [Capgemini, Equinor, Yara, Kongstad];
   return (
     <section className="py-10 md:py-16 overflow-hidden">
       <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
         <div className="text-center md:text-left">
+          {!event && (
           <div className="flex items-center gap-2 justify-center md:justify-start">
             <span
               className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"
@@ -37,6 +41,7 @@ export default function Hero() {
               New session to be announced soon
             </p>
           </div>
+          )}
 
      <div>
         <img
@@ -110,6 +115,12 @@ export default function Hero() {
           </div> */}
 
         </div>
+
+        {event && (
+          <div className="md:pt-6">
+            <EventCard event={event} />
+          </div>
+        )}
       </div>
     </section>
   );
