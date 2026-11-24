@@ -26,6 +26,14 @@ function load_events(): array
     return $events;
 }
 
+// Every configured event, published or not (admin only).
+function all_events(): array
+{
+    return array_values(array_filter(store_read('events'), function ($event) {
+        return is_array($event) && is_string($event['id'] ?? null);
+    }));
+}
+
 function find_event($id): ?array
 {
     foreach (load_events() as $event) {

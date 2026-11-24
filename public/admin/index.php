@@ -1,7 +1,8 @@
 <?php
 // ══════════════════════════════════════════════════════════════════════════
 //  SynCHRO — Admin
-//  Presentation materials (uploads + access passwords) and RSVP responses.
+//  Presentation materials (uploads + access passwords), event registrations
+//  and the older RSVP responses.
 //  Lives at /admin/ — the old /admin.php address redirects here.
 //
 //  The admin password is NOT stored here. It's a hash in
@@ -10,6 +11,7 @@
 
 define('SYNCHRO_HTML', true);
 require dirname(__DIR__) . '/api/bootstrap.php';
+require dirname(__DIR__) . '/api/events_lib.php';
 
 // rsvp.php writes this next to the website's index.html.
 define('CSV_FILE', dirname(__DIR__) . '/rsvp_responses.csv');
@@ -365,6 +367,61 @@ function respond_upload_error(string $message): void
     respond(['error' => $message], 413);
 }
 
+// Registrations: the selected event, its records and the columns to show.
+function csv_cell($value): string
+{
+    $text = (string) $value;
+    // Stop spreadsheet apps from running cells that start like a formula.
+    return $text !== '' && strpos("=+-@\t\r", $text[0]) !== false ? "'" . $text : $text;
+}
+
+$registrationEvents = $admin ? all_events() : [];
+$eventId = (string) ($_GET['event'] ?? '');
+$registrationEvent = null;
+foreach ($registrationEvents as $candidate) {
+    if ($candidate['id'] === $eventId || ($registrationEvent === null && $eventId === '')) {
+        $registrationEvent = $candidate;
+    }
+}
+$registrationRows = [];
+$extraColumns = [];
+if ($registrationEvent) {
+    $extraColumns = array_values(array_filter($registrationEvent['extraFields'] ?? [], function ($f) {
+        return is_array($f) && is_string($f['name'] ?? null);
+    }));
+    foreach (store_read('registrations') as $record) {
+        if (($record['event_id'] ?? '') === $registrationEvent['id']) {
+            $registrationRows[] = $record;
+        }
+    }
+    usort($registrationRows, function ($a, $b) {
+        return strcmp($b['created_at'] ?? '', $a['created_at'] ?? '');
+    });
+}
+
+if ($admin && $registrationEvent && isset($_GET['download_registrations'])) {
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="synchro-registrations-' . preg_replace('/[^a-z0-9_-]/i', '', $registrationEvent['id']) . '-' . date('Y-m-d') . '.csv"');
+    $out = fopen('php://output', 'w');
+    $head = ['Submitted', 'Updated', 'First name', 'Last name', 'Email', 'Organisation', 'Attending'];
+    foreach ($extraColumns as $f) {
+        $head[] = $f['label'] ?? $f['name'];
+    }
+    fputcsv($out, $head, ',', '"', '\\');
+    foreach ($registrationRows as $r) {
+        $line = [
+            $r['created_at'] ?? '', $r['updated_at'] ?? '', $r['first_name'] ?? '', $r['last_name'] ?? '',
+            $r['email'] ?? '', $r['organisation'] ?? '', ($r['attendance'] ?? '') === 'yes' ? 'Yes' : 'No',
+        ];
+        foreach ($extraColumns as $f) {
+            $line[] = $r['extra'][$f['name']] ?? '';
+        }
+        fputcsv($out, array_map('csv_cell', $line), ',', '"', '\\');
+    }
+    fclose($out);
+    exit;
+}
+
 // CSV download
 if ($admin && isset($_GET['download']) && file_exists(CSV_FILE)) {
     header('Content-Type: text/csv; charset=utf-8');
@@ -376,7 +433,8 @@ if ($admin && isset($_GET['download']) && file_exists(CSV_FILE)) {
 // ---------------------------------------------------------------------------
 // Page data
 
-$tab = ($_GET['tab'] ?? 'materials') === 'rsvp' ? 'rsvp' : 'materials';
+$tabParam = $_GET['tab'] ?? 'materials';
+$tab = in_array($tabParam, ['rsvp', 'registrations'], true) ? $tabParam : 'materials';
 $flash = $admin ? take_flash() : [];
 
 $rows = [];
@@ -652,6 +710,7 @@ $viewerLink = (is_https() ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 
 
   <nav class="tabs">
     <a class="tab <?= $tab === 'materials' ? 'active' : '' ?>" href="<?= h(admin_url(['tab' => 'materials'])) ?>">Presentation materials</a>
+    <a class="tab <?= $tab === 'registrations' ? 'active' : '' ?>" href="<?= h(admin_url(['tab' => 'registrations'])) ?>">Registrations</a>
     <a class="tab <?= $tab === 'rsvp' ? 'active' : '' ?>" href="<?= h(admin_url(['tab' => 'rsvp'])) ?>">RSVP responses</a>
   </nav>
 
@@ -660,7 +719,83 @@ $viewerLink = (is_https() ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 
     <?php if (!empty($flash['notice'])): ?><div class="flash flash-notice"><?= h($flash['notice']) ?></div><?php endif; ?>
     <?php if (!empty($flash['error'])): ?><div class="flash flash-error"><?= h($flash['error']) ?></div><?php endif; ?>
 
-  <?php if ($tab === 'rsvp'): ?>
+  <?php if ($tab === 'registrations'): ?>
+
+    <?php if (!$registrationEvent): ?>
+      <p class="empty">No events are configured. Add one to synchro-private/data/events.json (see README).</p>
+    <?php else: ?>
+      <?php
+        $regAttending = count(array_filter($registrationRows, function ($r) { return ($r['attendance'] ?? '') === 'yes'; }));
+        $regTotal = count($registrationRows);
+      ?>
+      <form method="GET" class="rsvp-head">
+        <input type="hidden" name="tab" value="registrations">
+        <select class="input" name="event" onchange="this.form.submit()" aria-label="Event" style="max-width:420px">
+          <?php foreach ($registrationEvents as $ev): ?>
+            <option value="<?= h($ev['id']) ?>" <?= $ev['id'] === $registrationEvent['id'] ? 'selected' : '' ?>>
+              <?= h($ev['name'] ?? $ev['id']) ?><?= ($ev['published'] ?? false) === true ? '' : ' (unpublished)' ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+        <?php if ($regTotal > 0): ?>
+          <a href="<?= h(admin_url(['tab' => 'registrations', 'event' => $registrationEvent['id'], 'download_registrations' => 1])) ?>" class="btn">Download CSV</a>
+        <?php endif; ?>
+      </form>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-num"><?= $regTotal ?></div>
+          <div class="stat-label">Total responses</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num green"><?= $regAttending ?></div>
+          <div class="stat-label">Attending</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num orange"><?= $regTotal - $regAttending ?></div>
+          <div class="stat-label">Unable to attend</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <?php if (!$registrationRows): ?>
+          <p class="empty">No registrations yet.</p>
+        <?php else: ?>
+          <table>
+            <thead>
+              <tr>
+                <th>Submitted</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Organisation</th>
+                <th>Attending</th>
+                <?php foreach ($extraColumns as $f): ?><th><?= h($f['label'] ?? $f['name']) ?></th><?php endforeach; ?>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($registrationRows as $r): ?>
+              <tr>
+                <td style="color:rgba(255,255,255,.45);white-space:nowrap"><?= h($r['created_at'] ?? '') ?></td>
+                <td><?= h(($r['first_name'] ?? '') . ' ' . ($r['last_name'] ?? '')) ?></td>
+                <td><?= h($r['email'] ?? '') ?></td>
+                <td><?= h($r['organisation'] ?? '') ?></td>
+                <td>
+                  <?php $yes = ($r['attendance'] ?? '') === 'yes'; ?>
+                  <span class="badge <?= $yes ? 'badge-yes' : 'badge-no' ?>"><?= $yes ? 'Yes' : 'No' ?></span>
+                </td>
+                <?php foreach ($extraColumns as $f): ?>
+                  <?php $v = $r['extra'][$f['name']] ?? ''; ?>
+                  <td style="color:rgba(255,255,255,.55)"><?= h($v !== '' ? $v : '—') ?></td>
+                <?php endforeach; ?>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php endif; ?>
+      </div>
+    <?php endif; ?>
+
+  <?php elseif ($tab === 'rsvp'): ?>
 
     <div class="stats">
       <div class="stat-card">
