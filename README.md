@@ -42,6 +42,37 @@ installed and on your PATH, `get-php` isn't needed.
 
 Local uploads and passwords are stored in `synchro-private/` (git-ignored).
 
+## Event registration
+
+The landing page shows the next announced event with a Register button that
+opens a registration dialog (`src/components/form`). Event details are **not
+stored in the repository**: they live on the server in
+`synchro-private/data/events.json` (git-ignored) and reach the page through
+`GET /api/events.php`. If there is no published event, or the API is
+unavailable, the page shows the "new session to be announced soon" copy.
+
+To add or change an event, edit `synchro-private/data/events.json` on the
+server. `server/events.sample.json` documents the format with a fictional
+event. Locally:
+
+```
+mkdir -p synchro-private/data
+cp server/events.sample.json synchro-private/data/events.json
+npm run serve
+```
+
+Per event you set `id`, `name`, `dateLabel`, `location`, `startDate`,
+`endDate`, the registration window (`opensAt` inclusive, `closesAt`
+exclusive), the confirmation messages and `extraFields`. Set `published` to
+`true` to show it. Every form always has first name, last name, work email,
+organisation, attending (yes/no) and the privacy confirmation; `extraFields`
+adds to those (types: text, email, tel, textarea, select, radio, checkbox).
+
+`POST /api/register.php` checks the event, its registration window and its
+fields, applies a per-IP rate limit and a honeypot, and saves to
+`synchro-private/data/registrations.json`. Registering again with the same
+email for the same event updates the earlier entry.
+
 ## Deploying to Hostinger
 
 1. `npm run build`

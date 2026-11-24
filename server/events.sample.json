@@ -1,0 +1,23 @@
+[
+  {
+    "id": "example-event",
+    "published": true,
+    "name": "SynCHRO Example Session",
+    "dateLabel": "1–2 January 2099",
+    "location": "Example City",
+    "startDate": "2099-01-01",
+    "endDate": "2099-01-02T23:59:59+00:00",
+    "opensAt": "2020-01-01T00:00:00+00:00",
+    "closesAt": "2099-01-01T00:00:00+00:00",
+    "successMessage": "You can expect to receive a calendar invitation within 2 days.",
+    "declinedMessage": "We're sorry you can't join us this time.",
+    "extraFields": [
+      { "name": "dietary", "type": "textarea", "label": "Dietary requirements", "optional": true, "maxLength": 300 }
+    ],
+    "calendar": {
+      "title": "SynCHRO Example Session",
+      "description": "Example calendar entry.",
+      "location": "Example City"
+    }
+  }
+]
