@@ -1,0 +1,30 @@
+import FormField from "./FormField";
+import { controlClass } from "./controlClass";
+
+export default function TextField({
+  name,
+  label,
+  type = "text",
+  required,
+  optional,
+  hint,
+  error,
+  className,
+  ...inputProps
+}) {
+  const id = `field-${name}`;
+  return (
+    <FormField id={id} label={label} required={required} optional={optional} hint={hint} error={error} className={className}>
+      <input
+        id={id}
+        name={name}
+        type={type}
+        required={required}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
+        className={controlClass}
+        {...inputProps}
+      />
+    </FormField>
+  );
+}
