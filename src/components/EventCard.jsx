@@ -10,8 +10,8 @@ export default function EventCard({ event }) {
   return (
     <div
       className="
-        relative overflow-hidden text-left md:max-w-[22rem] md:ml-auto
-        p-6 md:p-8
+        relative overflow-hidden text-left md:max-w-lg md:ml-auto
+        p-6 md:p-10
         border border-ink/10 dark:border-white/10
         bg-white/60 dark:bg-white/[0.06]
       "
