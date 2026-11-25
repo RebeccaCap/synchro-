@@ -50,9 +50,7 @@ export default function CoHost() {
       description: (
         <>
           <p className="mb-4">
-            Group Head of Ethics
             <br />
-            Member of the Group Executive Board
           </p>
 
           <p className="mb-4">
@@ -74,9 +72,9 @@ export default function CoHost() {
 
           <p className="mb-4">
             Anne started her career in 1987 at Bossard Consultants as an
-            organization and change management consultant. In 1997, Anne joined
+            organisation and change management consultant. In 1997, Anne joined
             Schering Plough France as Human Resources and Training Manager for
-            France before moving to head up HR Organization and Development in
+            France before moving to head up HR Organisation and Development in
             Europe.
           </p>
 
@@ -141,7 +139,7 @@ export default function CoHost() {
                 dark:border-white/10
                 rounded-[4px]
                 bg-white/50
-                
+
                 dark:bg-white/[0.06]
 
                 overflow-hidden

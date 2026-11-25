@@ -12,3 +12,10 @@ a constant as part of that change. Short single-use UI labels such as a
 
 Each page section gets an entry in `NAV_ITEMS` in `src/components/Header.jsx`
 (label plus the section's `id`), in page order.
+
+## UK English
+
+All user-visible text uses UK English: organisation, prioritised, programme,
+defence, centre, behaviour. Code identifiers and HTML/CSS attributes that
+follow web standards stay as they are (`autoComplete="organization"`,
+`text-center`, `color`). Proper nouns keep their official spelling.

@@ -8,7 +8,7 @@ const COLUMNS = [
   {
     heading: "How SynCHRO works",
     paragraphs: [
-      "SynCHRO creates a space where CHROs can connect, exchange perspectives and explore the future of HR together. In-person gatherings enable candid conversations, deeper peer learning and collective thinking around the challenges and opportunities ahead. Clear, prioritized action points are expected outcomes from the in-person peer dialogue, with the SynCHRO community having a collective responsibility for progressing these actions. Between gatherings, shorter virtual sessions sustain the dialogue and build a stronger, more connected community.",
+      "SynCHRO creates a space where CHROs can connect, exchange perspectives and explore the future of HR together. In-person gatherings enable candid conversations, deeper peer learning and collective thinking around the challenges and opportunities ahead. Clear, prioritised action points are expected outcomes from the in-person peer dialogue, with the SynCHRO community having a collective responsibility for progressing these actions. Between gatherings, shorter virtual sessions sustain the dialogue and build a stronger, more connected community.",
     ],
   },
   {
