@@ -9,7 +9,7 @@ export default function TextAreaField({
   hint,
   error,
   className,
-  rows = 2,
+  rows = 1,
   ...textareaProps
 }) {
   const id = `field-${name}`;
@@ -19,10 +19,11 @@ export default function TextAreaField({
         id={id}
         name={name}
         rows={rows}
+        placeholder=" "
         required={required}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
-        className={`${controlClass} field-auto !h-auto py-3 resize-none`}
+        className={`${controlClass} field-auto !h-auto pt-6 pb-2 resize-none`}
         {...textareaProps}
       />
     </FormField>

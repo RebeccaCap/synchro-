@@ -14,7 +14,7 @@ export default function SelectField({
 }) {
   const id = `field-${name}`;
   return (
-    <FormField id={id} label={label} required={required} optional={optional} hint={hint} error={error} className={className}>
+    <FormField id={id} label={label} required={required} optional={optional} hint={hint} error={error} floated className={className}>
       <select
         id={id}
         name={name}

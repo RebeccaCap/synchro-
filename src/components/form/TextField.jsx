@@ -19,6 +19,7 @@ export default function TextField({
         id={id}
         name={name}
         type={type}
+        placeholder=" "
         required={required}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}

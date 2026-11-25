@@ -125,5 +125,5 @@ html:has(dialog[open]) {
 }
 .field-auto {
   field-sizing: content;
-  min-height: 3rem;
+  min-height: 3.5rem;
 }
