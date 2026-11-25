@@ -19,12 +19,11 @@ async function fillIn(user, { attendance = 'yes' } = {}) {
 
 test('renders the event, the standard fields and the event-specific fields', () => {
   render(<RegistrationForm event={makeEvent()} />);
-  expect(screen.getByRole('heading', { name: 'Test Forum Session' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Register for SynCHRO' })).toBeInTheDocument();
   expect(screen.getByText('1–2 January 2099')).toBeInTheDocument();
-  ['first name', 'last name', 'work email'].forEach((label) => {
+  ['first name', 'last name', 'work email', 'organisation'].forEach((label) => {
     expect(screen.getByLabelText(new RegExp(label, 'i'))).toBeRequired();
   });
-  expect(screen.getByLabelText(/organisation/i)).not.toBeRequired();
   expect(screen.getByRole('radio', { name: /yes, i will attend/i })).toBeRequired();
   expect(screen.getByLabelText(/dietary requirements/i)).not.toBeRequired();
   expect(screen.getByRole('checkbox', { name: /privacy policy/i })).toBeRequired();

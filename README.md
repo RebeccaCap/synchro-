@@ -67,7 +67,7 @@ Per event you set `id`, `name`, `dateLabel`, `location`, `venue`, `sessions`
 `endDate`, the registration window (`opensAt` inclusive, `closesAt`
 exclusive), the confirmation messages and `extraFields`. Set `published` to
 `true` to show it. Every form always has first name, last name, work email,
-organisation (optional), attending (yes/no) and the privacy confirmation; `extraFields`
+organisation, attending (yes/no) and the privacy confirmation; `extraFields`
 adds to those (types: text, email, tel, textarea, select, radio, checkbox).
 Set `"collectAttendance": false` to leave out the yes/no attendance question;
 everyone who registers is then recorded as attending. An extra field with `"placement": "identity"` sits with the name and email

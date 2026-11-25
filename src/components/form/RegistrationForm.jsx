@@ -6,6 +6,7 @@ import { submitRegistration } from "./submitRegistration";
 
 const DEFAULT_SUCCESS = "You can expect to receive a calendar invitation within 2 days.";
 const DEFAULT_DECLINED = "We're sorry you can't join us this time.";
+const TITLE = "Register for SynCHRO";
 const CHECKBOX_ERROR = "Please tick this box to continue.";
 const REQUIRED_ERROR = "Please complete this field.";
 const CHOOSE_ERROR = "Please choose an option.";
@@ -128,7 +129,7 @@ export default function RegistrationForm({
         id={titleId}
         className="text-[clamp(1.8rem,1.4rem+1.6vw,2.6rem)] font-bold leading-tight tracking-[-0.04em] text-ink dark:text-paper"
       >
-        {event.name}
+        {TITLE}
       </h2>
       {event.dateLabel && (
         <p className="mt-3 font-medium text-ink dark:text-paper">{event.dateLabel}</p>

@@ -31,7 +31,7 @@ test('standard fields are required and cannot be removed or overridden by an eve
   expect(fields.filter((f) => f.name === 'email')).toHaveLength(1);
   expect(fields.find((f) => f.name === 'email').label).toBe('Work email');
   STANDARD_FIELD_NAMES.forEach((name) => {
-    expect(Boolean(fields.find((f) => f.name === name).required)).toBe(name !== 'organisation');
+    expect(fields.find((f) => f.name === name).required).toBe(true);
   });
   expect(fields.some((f) => f.name === 'role')).toBe(true);
 });

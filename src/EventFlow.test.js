@@ -36,7 +36,7 @@ test('Register opens the registration dialog for that event', async () => {
 
   await user.click((await screen.findAllByRole('button', { name: /register/i }))[0]);
   const dialog = await screen.findByRole('dialog');
-  expect(dialog).toHaveAccessibleName('Test Forum Session');
+  expect(dialog).toHaveAccessibleName('Register for SynCHRO');
   expect(screen.getByLabelText(/work email/i)).toBeInTheDocument();
 });
 
@@ -70,7 +70,7 @@ test('the Upcoming Session section shows the event details and its Register butt
   expect(screen.getByRole('link', { name: 'Join SynCHRO' })).toHaveAttribute('href', '#upcoming-session');
 
   await user.click(within(section).getByRole('button', { name: /register/i }));
-  expect(await screen.findByRole('dialog')).toHaveAccessibleName('Test Forum Session');
+  expect(await screen.findByRole('dialog')).toHaveAccessibleName('Register for SynCHRO');
   expect(screen.getAllByLabelText(/work email/i)).toHaveLength(1);
 });
 

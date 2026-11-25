@@ -19,7 +19,7 @@ const IDENTITY_FIELDS = [
   { name: "first_name", type: "text", label: "First name", required: true, width: "half", autoComplete: "given-name", maxLength: 100 },
   { name: "last_name", type: "text", label: "Last name", required: true, width: "half", autoComplete: "family-name", maxLength: 100 },
   { name: "email", type: "email", label: "Work email", required: true, width: "half", autoComplete: "email", maxLength: 254 },
-  { name: "organisation", type: "text", label: "Organisation", optional: true, width: "half", autoComplete: "organization", maxLength: 150 },
+  { name: "organisation", type: "text", label: "Organisation", required: true, width: "half", autoComplete: "organization", maxLength: 150 },
 ];
 
 function attendanceField(event) {

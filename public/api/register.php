@@ -6,7 +6,6 @@
 require __DIR__ . '/events_lib.php';
 
 const STANDARD_TEXT_FIELDS = ['first_name' => 100, 'last_name' => 100, 'organisation' => 150];
-const OPTIONAL_STANDARD_FIELDS = ['organisation'];
 
 require_method('POST');
 require_ajax();
@@ -32,7 +31,7 @@ if (!registration_open($event)) {
 $values = [];
 foreach (STANDARD_TEXT_FIELDS as $name => $max) {
     $values[$name] = clean_text($body[$name] ?? '', $max);
-    if ($values[$name] === '' && !in_array($name, OPTIONAL_STANDARD_FIELDS, true)) {
+    if ($values[$name] === '') {
         fail(422, 'Please complete all required fields.');
     }
 }
