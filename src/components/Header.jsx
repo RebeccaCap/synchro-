@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: "Who We Are", id: "who-we-are" },
   { label: "About", id: "about" },
   { label: "Format", id: "format" },
+  { label: "Themes", id: "themes" },
   { label: "Co-Chairs", id: "co-chairs" },
 ];
 

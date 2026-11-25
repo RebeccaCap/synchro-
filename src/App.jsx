@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import WhoWeAre from "./components/WhoWeAre";
 import About from "./components/About";
 import Format from "./components/Format";
+import Themes from "./components/Themes";
 //import Agenda from "./components/Agenda";
 //import Countdown from "./components/Countdown";
 import NextSession from "./components/NextSession";
@@ -26,6 +27,7 @@ export default function App() {
         <WhoWeAre />
         <About />
         <Format />
+        <Themes />
         {/* <Agenda /> */}
         <CoHosts />
         {/* <SaveDate /> */}
