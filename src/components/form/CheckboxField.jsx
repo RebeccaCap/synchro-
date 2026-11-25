@@ -29,8 +29,7 @@ export default function CheckboxField({
           {link && (
             <a
               href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(link.href.startsWith("mailto:") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
               className="underline underline-offset-2 hover:text-orangeLight dark:hover:text-orangeDark"
             >
               {link.text}

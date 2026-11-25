@@ -5,7 +5,11 @@
  * `event.extraFields`, but cannot remove or reorder the standard ones.
  *
  * Field shape: { name, type, label, required?, optional?, width?, hint?,
- *                options?, maxLength?, autoComplete? }
+ *                options?, maxLength?, autoComplete?, placement? }
+ * Set `collectAttendance: false` on an event to drop the yes/no attendance
+ * question; everyone who submits is then recorded as attending.
+ * `placement: "identity"` puts an extra field with the name/email fields,
+ * before the attendance question. Other extras come after it.
  * Types: text | email | tel | textarea | select | radio | checkbox
  */
 
@@ -15,7 +19,7 @@ const IDENTITY_FIELDS = [
   { name: "first_name", type: "text", label: "First name", required: true, width: "half", autoComplete: "given-name", maxLength: 100 },
   { name: "last_name", type: "text", label: "Last name", required: true, width: "half", autoComplete: "family-name", maxLength: 100 },
   { name: "email", type: "email", label: "Work email", required: true, width: "half", autoComplete: "email", maxLength: 254 },
-  { name: "organisation", type: "text", label: "Organisation", required: true, width: "half", autoComplete: "organization", maxLength: 150 },
+  { name: "organisation", type: "text", label: "Organisation", optional: true, width: "half", autoComplete: "organization", maxLength: 150 },
 ];
 
 function attendanceField(event) {
@@ -36,7 +40,7 @@ const PRIVACY_FIELD = {
   type: "checkbox",
   required: true,
   label: "I confirm that I have read the",
-  link: { text: "SynCHRO Privacy Notice", href: PRIVACY_URL },
+  link: { text: "SynCHRO Privacy Policy", href: PRIVACY_URL },
   suffix: ".",
 };
 
@@ -46,9 +50,20 @@ export const STANDARD_FIELD_NAMES = [
   PRIVACY_FIELD.name,
 ];
 
-/** Standard fields, then the event's extra fields, then the privacy confirmation. */
+/**
+ * Identity fields (plus any extras placed there), the attendance question,
+ * the remaining extras, then the privacy confirmation.
+ */
 export function buildFields(event) {
   const taken = new Set(STANDARD_FIELD_NAMES);
   const extras = (event.extraFields || []).filter((f) => f && f.name && !taken.has(f.name));
-  return [...IDENTITY_FIELDS, attendanceField(event), ...extras, PRIVACY_FIELD];
+  const identityExtras = extras.filter((f) => f.placement === "identity");
+  const laterExtras = extras.filter((f) => f.placement !== "identity");
+  return [
+    ...IDENTITY_FIELDS,
+    ...identityExtras,
+    ...(event.collectAttendance === false ? [] : [attendanceField(event)]),
+    ...laterExtras,
+    PRIVACY_FIELD,
+  ];
 }

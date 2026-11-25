@@ -10,7 +10,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 // Keys that may be sent to the browser. Anything else in events.json stays private.
 const PUBLIC_EVENT_KEYS = [
-    'id', 'name', 'dateLabel', 'location', 'startDate', 'endDate', 'opensAt', 'closesAt',
+    'id', 'name', 'dateLabel', 'collectAttendance', 'location', 'startDate', 'endDate', 'opensAt', 'closesAt',
     'attendanceQuestion', 'attendYesLabel', 'attendNoLabel', 'successMessage', 'declinedMessage',
     'extraFields', 'calendar',
 ];

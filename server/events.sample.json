@@ -12,6 +12,7 @@
     "successMessage": "You can expect to receive a calendar invitation within 2 days.",
     "declinedMessage": "We're sorry you can't join us this time.",
     "extraFields": [
+      { "name": "job_title", "type": "text", "label": "Job title", "optional": true, "width": "half", "placement": "identity", "maxLength": 150 },
       { "name": "dietary", "type": "textarea", "label": "Dietary requirements", "optional": true, "maxLength": 300 }
     ],
     "calendar": {

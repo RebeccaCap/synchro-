@@ -25,6 +25,21 @@ export default function RegistrationForm({
   const titleId = `registration-title-${event.id}`;
   const fields = buildFields(event);
 
+  // A checkbox with `impliedBy: "<field>"` is ticked, and becomes required,
+  // while that field has a value. Emptying the field releases it again.
+  function syncImpliedCheckboxes(form) {
+    for (const field of fields) {
+      if (field.type !== "checkbox" || !field.impliedBy) continue;
+      const source = form.elements[field.impliedBy];
+      const box = form.elements[field.name];
+      if (!source || !box) continue;
+      const filled = source.value.trim() !== "";
+      if (filled && !box.required) box.checked = true;
+      if (!filled && box.required) box.checked = false;
+      box.required = filled;
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus("submitting");
@@ -33,7 +48,9 @@ export default function RegistrationForm({
     const values = Object.fromEntries(new FormData(e.currentTarget));
     try {
       await submit({ ...values, event_id: event.id });
-      setStatus(values.attendance === "yes" ? "success" : "declined");
+      // Without the attendance question, submitting means attending.
+      const attending = event.collectAttendance === false || values.attendance === "yes";
+      setStatus(attending ? "success" : "declined");
     } catch (err) {
       setError(err.message || "Something went wrong. Please try again.");
       setStatus("idle");
@@ -63,7 +80,11 @@ export default function RegistrationForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-labelledby={titleId}>
+    <form
+      onSubmit={handleSubmit}
+      onInput={(e) => syncImpliedCheckboxes(e.currentTarget)}
+      aria-labelledby={titleId}
+    >
       <Eyebrow>Registration</Eyebrow>
       <h2
         id={titleId}

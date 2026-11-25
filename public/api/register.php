@@ -6,6 +6,7 @@
 require __DIR__ . '/events_lib.php';
 
 const STANDARD_TEXT_FIELDS = ['first_name' => 100, 'last_name' => 100, 'organisation' => 150];
+const OPTIONAL_STANDARD_FIELDS = ['organisation'];
 
 require_method('POST');
 require_ajax();
@@ -31,7 +32,7 @@ if (!registration_open($event)) {
 $values = [];
 foreach (STANDARD_TEXT_FIELDS as $name => $max) {
     $values[$name] = clean_text($body[$name] ?? '', $max);
-    if ($values[$name] === '') {
+    if ($values[$name] === '' && !in_array($name, OPTIONAL_STANDARD_FIELDS, true)) {
         fail(422, 'Please complete all required fields.');
     }
 }
@@ -42,14 +43,15 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 $values['email'] = $email;
 
-$attendance = $body['attendance'] ?? '';
+// Events that skip the attendance question treat every registration as attending.
+$attendance = ($event['collectAttendance'] ?? true) === false ? 'yes' : ($body['attendance'] ?? '');
 if (!in_array($attendance, ['yes', 'no'], true)) {
     fail(422, 'Please tell us whether you will attend.');
 }
 $values['attendance'] = $attendance;
 
 if (($body['privacy_policy'] ?? '') !== 'yes') {
-    fail(422, 'Please confirm that you have read the privacy notice.');
+    fail(422, 'Please confirm that you have read the privacy policy.');
 }
 
 // Event-specific fields: only those the event defines are accepted.
@@ -72,6 +74,12 @@ foreach (($event['extraFields'] ?? []) as $field) {
         if ($value !== '' && !in_array($value, $allowed, true)) {
             fail(422, 'Please choose a valid option.');
         }
+    }
+    // A checkbox implied by another field must be ticked whenever that field has a value.
+    $impliedBy = $field['impliedBy'] ?? '';
+    if ($type === 'checkbox' && is_string($impliedBy) && $impliedBy !== ''
+        && clean_text($body[$impliedBy] ?? '', 2000) !== '' && $value !== 'yes') {
+        fail(422, 'Please tick the consent that goes with the information you entered.');
     }
     if (($field['required'] ?? false) === true && $value === '') {
         fail(422, 'Please complete all required fields.');

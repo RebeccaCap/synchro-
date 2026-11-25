@@ -65,8 +65,13 @@ Per event you set `id`, `name`, `dateLabel`, `location`, `startDate`,
 `endDate`, the registration window (`opensAt` inclusive, `closesAt`
 exclusive), the confirmation messages and `extraFields`. Set `published` to
 `true` to show it. Every form always has first name, last name, work email,
-organisation, attending (yes/no) and the privacy confirmation; `extraFields`
+organisation (optional), attending (yes/no) and the privacy confirmation; `extraFields`
 adds to those (types: text, email, tel, textarea, select, radio, checkbox).
+Set `"collectAttendance": false` to leave out the yes/no attendance question;
+everyone who registers is then recorded as attending. An extra field with `"placement": "identity"` sits with the name and email
+fields; the others appear after the attendance question. A checkbox with
+`"impliedBy": "<field name>"` is ticked automatically, and required (in the
+form and on the server), whenever that field has a value.
 
 `POST /api/register.php` checks the event, its registration window and its
 fields, applies a per-IP rate limit and a honeypot, and saves to
