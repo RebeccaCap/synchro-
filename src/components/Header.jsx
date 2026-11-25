@@ -16,6 +16,8 @@ const NAV_ITEMS = [
   { label: "Join SynCHRO", id: "upcoming-session", requiresEvent: true },
 ];
 
+const MEMBER_ACCESS_LABEL = "Member Access";
+
 // Same duration as the theme cross-fade (index.css) so the UI feels consistent.
 const menuTransition = "duration-[400ms] ease-in-out motion-reduce:transition-none";
 const barClass = `absolute left-0 h-[2px] w-6 rounded bg-current transition-all ${menuTransition}`;
@@ -153,7 +155,7 @@ export default function Header() {
             {items.map(({ label, id }) => (
               <NavLink key={id} href={`#${id}`} label={label} active={activeId === id} />
             ))}
-            <NavLink href="/presentation" label="Downloads" />
+            <NavLink href="/presentation" label={MEMBER_ACCESS_LABEL} />
           </nav>
 
           <button
@@ -219,7 +221,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             />
           ))}
-          <NavLink href="/presentation" label="Downloads" onClick={() => setMenuOpen(false)} />
+          <NavLink href="/presentation" label={MEMBER_ACCESS_LABEL} onClick={() => setMenuOpen(false)} />
         </div>
       </nav>
     </header>

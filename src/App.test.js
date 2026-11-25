@@ -62,7 +62,7 @@ test('announces the next session and links to downloads', () => {
     screen.getByRole('heading', { name: /new session to be announced soon/i })
   ).toBeInTheDocument();
   expect(screen.queryByRole('timer')).not.toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Downloads' })).toHaveAttribute('href', '/presentation');
+  expect(screen.getByRole('link', { name: 'Member Access' })).toHaveAttribute('href', '/presentation');
 });
 
 describe('protected pages', () => {

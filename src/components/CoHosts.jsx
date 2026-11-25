@@ -50,10 +50,6 @@ export default function CoHost() {
       description: (
         <>
           <p className="mb-4">
-            <br />
-          </p>
-
-          <p className="mb-4">
             Anne Lebel has been Capgemini's Chief Human Resources Officer and a member of the Group Executive Board since July, 2020. She became Group Head of Ethics in January 2025.        </p>
 
           <p className="mb-4">
