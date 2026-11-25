@@ -11,6 +11,8 @@ import NextSession from "./components/NextSession";
 //import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import CoHosts from "./components/CoHosts";
+import UpcomingSession from "./components/UpcomingSession";
+import { RegistrationProvider } from "./components/RegistrationProvider";
 //import SaveDate from "./components/SaveDate";
 import PresentationPage from "./pages/PresentationPage";
 
@@ -19,7 +21,7 @@ export default function App() {
   if (path === "/presentation") return <PresentationPage />;
 
   return (
-    <>
+    <RegistrationProvider>
       <BackgroundMotifs />
       <Header />
       <main>
@@ -30,11 +32,12 @@ export default function App() {
         <Themes />
         {/* <Agenda /> */}
         <CoHosts />
+        <UpcomingSession />
         {/* <SaveDate /> */}
         <NextSession />
         {/* <CTA /> */}
       </main>
       <Footer />
-    </>
+    </RegistrationProvider>
   );
 }

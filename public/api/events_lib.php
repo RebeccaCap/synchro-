@@ -12,7 +12,7 @@ require_once __DIR__ . '/bootstrap.php';
 const PUBLIC_EVENT_KEYS = [
     'id', 'name', 'dateLabel', 'collectAttendance', 'location', 'startDate', 'endDate', 'opensAt', 'closesAt',
     'attendanceQuestion', 'attendYesLabel', 'attendNoLabel', 'successMessage', 'declinedMessage',
-    'extraFields', 'calendar',
+    'sessions', 'venue', 'detailsNote', 'extraFields', 'calendar',
 ];
 
 function load_events(): array

@@ -8,6 +8,12 @@ export function makeEvent(overrides = {}) {
     name: 'Test Forum Session',
     dateLabel: '1–2 January 2099',
     location: 'Test City',
+    venue: 'Test Venue',
+    sessions: [
+      { date: '1 January', time: 'From noon' },
+      { date: '2 January', time: 'Until noon' },
+    ],
+    detailsNote: 'Test details note.',
     startDate: '2099-01-01',
     endDate: '2099-01-02T23:59:59+00:00',
     opensAt: new Date(now - DAY).toISOString(),

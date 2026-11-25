@@ -61,7 +61,9 @@ cp server/events.sample.json synchro-private/data/events.json
 npm run serve
 ```
 
-Per event you set `id`, `name`, `dateLabel`, `location`, `startDate`,
+Per event you set `id`, `name`, `dateLabel`, `location`, `venue`, `sessions`
+(a `date` and `time` label each, shown in the Upcoming Session section),
+`detailsNote`, `startDate`,
 `endDate`, the registration window (`opensAt` inclusive, `closesAt`
 exclusive), the confirmation messages and `extraFields`. Set `published` to
 `true` to show it. Every form always has first name, last name, work email,

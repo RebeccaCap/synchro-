@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
+import { useUpcomingEvent } from "../hooks/useEvents";
 
 // Anchors shown in the navbar, in page order. Edit this list as sections change.
 const NAV_ITEMS = [
@@ -10,6 +11,8 @@ const NAV_ITEMS = [
   { label: "Format", id: "format" },
   { label: "Themes", id: "themes" },
   { label: "Co-Chairs", id: "co-chairs" },
+  // Only rendered while an event is announced, so the link is hidden otherwise.
+  { label: "Upcoming Session", id: "upcoming-session", requiresEvent: true },
 ];
 
 // Same duration as the theme cross-fade (index.css) so the UI feels consistent.
@@ -42,6 +45,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState(null);
   const headerRef = useRef(null);
+  const event = useUpcomingEvent();
+  const items = NAV_ITEMS.filter((item) => !item.requiresEvent || event);
 
   // Highlight the nav link of the section currently in view.
   useEffect(() => {
@@ -52,17 +57,17 @@ export default function Header() {
         entries.forEach((e) =>
           e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id)
         );
-        const current = NAV_ITEMS.find((item) => visible.has(item.id));
+        const current = items.find((item) => visible.has(item.id));
         setActiveId(current ? current.id : null);
       },
       { rootMargin: "-40% 0px -55% 0px" }
     );
-    NAV_ITEMS.forEach(({ id }) => {
+    items.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [items]);
 
   // Close the mobile menu on Escape or a click outside the header.
   useEffect(() => {
@@ -144,7 +149,7 @@ export default function Header() {
             aria-label="Main"
             className="hidden md:flex items-center gap-6 text-[15.2px] text-ink/80 dark:text-paper/80"
           >
-            {NAV_ITEMS.map(({ label, id }) => (
+            {items.map(({ label, id }) => (
               <NavLink key={id} href={`#${id}`} label={label} active={activeId === id} />
             ))}
             <NavLink href="/presentation" label="Downloads" />
@@ -204,7 +209,7 @@ export default function Header() {
         `}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-start gap-4 text-base">
-          {NAV_ITEMS.map(({ label, id }) => (
+          {items.map(({ label, id }) => (
             <NavLink
               key={id}
               href={`#${id}`}
