@@ -1,3 +1,5 @@
+import { CONTAINER, SECTION_SPACING } from "../layout";
+
 const EYEBROW = "Format";
 
 const TITLE_LINES = ["Shared challenges.", "Trusted perspectives."];
@@ -20,8 +22,8 @@ const COLUMNS = [
 
 export default function Format() {
   return (
-    <section id="format" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="format" className={SECTION_SPACING}>
+      <div className={CONTAINER}>
         <div className="flex items-center gap-2 mb-4">
           <span
             className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"

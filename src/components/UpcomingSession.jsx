@@ -1,5 +1,6 @@
 import RegisterButton from "./RegisterButton";
 import { useUpcomingEvent } from "../hooks/useEvents";
+import { CONTAINER, SECTION_SPACING } from "../layout";
 
 const EYEBROW = "Join SynCHRO";
 const TITLE = "Upcoming session";
@@ -20,8 +21,8 @@ export default function UpcomingSession() {
   const sessions = Array.isArray(event.sessions) ? event.sessions : [];
 
   return (
-    <section id="upcoming-session" aria-labelledby="upcoming-session-title" className="py-24">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-x-16 gap-y-10">
+    <section id="upcoming-session" aria-labelledby="upcoming-session-title" className={SECTION_SPACING}>
+      <div className={`${CONTAINER} grid md:grid-cols-2 gap-x-16 gap-y-10`}>
         <div>
           <div className="flex items-center gap-2 mb-4">
             <span

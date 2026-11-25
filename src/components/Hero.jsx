@@ -2,6 +2,7 @@ import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
 import EventCard from "./EventCard";
 import { useUpcomingEvent } from "../hooks/useEvents";
+import { CONTAINER, SECTION_SPACING } from "../layout";
 //import BNPParibas from "../assets/BNPParibaslogo.png";
 //import CreditAgricole from "../assets/CreditAgricolelogo.png";
 //import HSBC from "../assets/HSBClogo.png";
@@ -22,15 +23,17 @@ import { useUpcomingEvent } from "../hooks/useEvents";
 
 const HEADING = "Accelerating European Competitiveness";
 const INTRO =
-  "The CHRO landscape is experiencing relentless disruption. Technology and AI, skills transformation, regulations, geopolitical uncertainty, and shifts in talent dynamics are reshaping the workforce. These disruptions are happening all while mounting cost pressures demand clearer business value. As a consequence, the CHRO role is becoming more complex and more critical than ever.";
+  "The CHRO landscape is experiencing relentless disruption. Technology and AI, skills transformation, regulations, geopolitical uncertainty, and shifts in talent dynamics are reshaping the workforce. These disruptions are happening all while mounting cost pressures demand clearer business value.";
+const INTRO_EMPHASIS =
+  "As a consequence, the CHRO role is becoming more complex and more critical than ever.";
 
 export default function Hero() {
   const event = useUpcomingEvent();
   //const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
   //const confirmedLogos = [Capgemini, Equinor, Yara, Kongstad];
   return (
-    <section className="py-10 md:py-16 overflow-hidden">
-      <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
+    <section className={`${SECTION_SPACING} overflow-hidden`}>
+      <div className={`${CONTAINER} overflow-hidden grid md:grid-cols-2 gap-10`}>
         <div className="text-center md:text-left">
           {!event && (
           <div className="flex items-center gap-2 justify-center md:justify-start">
@@ -50,20 +53,20 @@ export default function Hero() {
      <div>
         <img
             src={logo}
-            className="mt-6 mx-auto md:mx-0 max-w-[220px] sm:max-w-xs hidden dark:block"
+            className="mt-6 mx-auto md:mx-0 max-w-[260px] sm:max-w-sm md:max-w-[26rem] hidden dark:block"
             alt="Logo"
         />
 
         <img
             src={logo1}
-            className="mt-6 mx-auto md:mx-0 max-w-[220px] sm:max-w-xs block dark:hidden"
+            className="mt-6 mx-auto md:mx-0 max-w-[260px] sm:max-w-sm md:max-w-[26rem] block dark:hidden"
             alt="Logo"
         />
         </div>
 
           <h1
             className="
-              mt-4
+              mt-8
               text-[clamp(1.8rem,1.35rem+1.8vw,3rem)]
               leading-[1.02]
               tracking-[-0.05em]
@@ -77,8 +80,8 @@ export default function Hero() {
             {HEADING}
           </h1>
 
-          <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
-          {INTRO}
+          <p className="mt-10 text-ink/80 dark:text-paper/80 max-w-xl leading-relaxed mx-auto md:mx-0">
+          {INTRO} <strong className="font-semibold text-ink dark:text-paper">{INTRO_EMPHASIS}</strong>
           </p>
           <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
           By creating a trusted, non-commercial, peer-based setting, SynCHRO creates a confidential environment where CHROs can engage in meaningful dialogue, share learnings and reflect on the realities that are reshaping their roles as CHRO. </p>

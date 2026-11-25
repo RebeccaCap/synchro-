@@ -1,4 +1,5 @@
 import ThemeCard from "./ThemeCard";
+import { CONTAINER, SECTION_SPACING } from "../layout";
 
 const EYEBROW = "Themes";
 const TITLE = "Shaping the CHRO agenda";
@@ -31,8 +32,8 @@ const THEMES = [
 
 export default function Themes() {
   return (
-    <section id="themes" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="themes" className={SECTION_SPACING}>
+      <div className={CONTAINER}>
         <div className="flex items-center gap-2 mb-4">
           <span
             className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"

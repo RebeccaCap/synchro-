@@ -1,3 +1,5 @@
+import { CONTAINER, SECTION_SPACING } from "../layout";
+
 const TITLE_LINES = ["Driving the agenda.", "Leading the conversation."];
 
 const COLUMNS = [
@@ -13,8 +15,8 @@ const COLUMNS = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className={SECTION_SPACING}>
+      <div className={CONTAINER}>
         <div className="flex items-center gap-2 mb-4">
           <span
             className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"

@@ -1,5 +1,7 @@
 import RegisterButton from "./RegisterButton";
 
+const EYEBROW = "Upcoming session";
+
 /**
  * Event summary with a Register call to action. The button only appears while
  * registration is open; clicking it opens the registration dialog.
@@ -8,8 +10,8 @@ export default function EventCard({ event }) {
   return (
     <div
       className="
-        relative overflow-hidden text-left
-        p-8 md:p-10
+        relative overflow-hidden text-left md:max-w-[22rem] md:ml-auto
+        p-6 md:p-8
         border border-ink/10 dark:border-white/10
         bg-white/60 dark:bg-white/[0.06]
       "
@@ -19,13 +21,16 @@ export default function EventCard({ event }) {
 
       <div className="relative">
         <p className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60 font-medium">
-          {event.name}
+          {EYEBROW}
         </p>
         <p className="mt-3 text-[clamp(1.8rem,1.4rem+1.8vw,3rem)] font-bold leading-[1.02] tracking-[-0.05em] text-ink dark:text-paper">
           {event.dateLabel}
         </p>
-        {event.location && (
-          <p className="mt-3 text-lg font-medium text-ink dark:text-paper">{event.location}</p>
+        {(event.venue || event.location) && (
+          <p className="mt-3 text-lg font-medium leading-snug text-ink dark:text-paper">
+            {event.venue && <span className="block">{event.venue}</span>}
+            {event.location && <span className="block">{event.location}</span>}
+          </p>
         )}
 
         <RegisterButton event={event} className="mt-8" />

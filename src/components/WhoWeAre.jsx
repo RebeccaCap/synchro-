@@ -1,4 +1,5 @@
 import { Eyebrow } from "../pages/shared";
+import { CONTAINER, SECTION_SPACING } from "../layout";
 
 const LOGOS = [
   { name: "DNB", src: "/logos/logo-dnb.svg" },
@@ -12,8 +13,8 @@ const LOGOS = [
 
 export default function WhoWeAre() {
   return (
-    <section id="who-we-are" className="pt-24 pb-8">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="who-we-are" className={SECTION_SPACING}>
+      <div className={CONTAINER}>
         <Eyebrow>Who we are</Eyebrow>
 
         <h2

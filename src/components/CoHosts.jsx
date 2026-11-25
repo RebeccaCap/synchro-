@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AnneLebel from "../assets/AnneLebel.jpg";
 import AkselStenerud from "../assets/AkselStenerud.jpg";
+import { CONTAINER, SECTION_SPACING } from "../layout";
 
 export default function CoHost() {
   const [openCard, setOpenCard] = useState(null);
@@ -91,8 +92,8 @@ export default function CoHost() {
   ];
 
   return (
-    <section id="co-chairs" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="co-chairs" className={SECTION_SPACING}>
+      <div className={CONTAINER}>
         <div className="flex items-center gap-2 mb-6">
           <span
             className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"

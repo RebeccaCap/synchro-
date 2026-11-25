@@ -67,7 +67,7 @@ test('the Upcoming Session section shows the event details and its Register butt
   expect(within(section).getByText('Until noon')).toBeInTheDocument();
   expect(within(section).getByText('Test Venue')).toBeInTheDocument();
   expect(within(section).getByText('Test details note.')).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Upcoming Session' })).toHaveAttribute('href', '#upcoming-session');
+  expect(screen.getByRole('link', { name: 'Join SynCHRO' })).toHaveAttribute('href', '#upcoming-session');
 
   await user.click(within(section).getByRole('button', { name: /register/i }));
   expect(await screen.findByRole('dialog')).toHaveAccessibleName('Test Forum Session');
@@ -80,5 +80,5 @@ test('without an event there is no Upcoming Session section or nav link', async 
 
   await screen.findByRole('heading', { name: /new session to be announced soon/i });
   expect(screen.queryByRole('heading', { name: 'Upcoming session' })).not.toBeInTheDocument();
-  expect(screen.queryByRole('link', { name: 'Upcoming Session' })).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: 'Join SynCHRO' })).not.toBeInTheDocument();
 });

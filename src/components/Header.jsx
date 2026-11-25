@@ -3,6 +3,7 @@ import { flushSync } from "react-dom";
 import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
 import { useUpcomingEvent } from "../hooks/useEvents";
+import { CONTAINER } from "../layout";
 
 // Anchors shown in the navbar, in page order. Edit this list as sections change.
 const NAV_ITEMS = [
@@ -12,7 +13,7 @@ const NAV_ITEMS = [
   { label: "Themes", id: "themes" },
   { label: "Co-Chairs", id: "co-chairs" },
   // Only rendered while an event is announced, so the link is hidden otherwise.
-  { label: "Upcoming Session", id: "upcoming-session", requiresEvent: true },
+  { label: "Join SynCHRO", id: "upcoming-session", requiresEvent: true },
 ];
 
 // Same duration as the theme cross-fade (index.css) so the UI feels consistent.
@@ -138,7 +139,7 @@ export default function Header() {
         dark:border-paper/10
       "
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
+      <div className={`${CONTAINER} flex items-center justify-between h-20`}>
         <a href="/" onClick={handleLogoClick} aria-label="SynCHRO home">
           <img src={logo} className="h-6 hidden dark:block" alt="" />
           <img src={logo1} className="h-6 block dark:hidden" alt="" />
@@ -208,7 +209,7 @@ export default function Header() {
           }
         `}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-start gap-4 text-base">
+        <div className={`${CONTAINER} py-4 flex flex-col items-start gap-4 text-base`}>
           {items.map(({ label, id }) => (
             <NavLink
               key={id}
