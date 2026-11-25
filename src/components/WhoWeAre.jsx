@@ -1,6 +1,9 @@
 import { Eyebrow } from "../pages/shared";
 import { CONTAINER, SECTION_SPACING_AFTER_HERO } from "../layout";
 
+// Every logo is drawn at the same height (--logo-h), so widths follow each
+// logo's proportions. `scale` (default 1) nudges one logo up or down when its
+// artwork looks heavier or lighter than the others.
 const LOGOS = [
   { name: "DNB", src: "/logos/logo-dnb.svg" },
   { name: "Crédit Agricole", src: "/logos/logo-creditagricole.svg" },
@@ -37,14 +40,15 @@ export default function WhoWeAre() {
           actions that drive change.
         </p>
 
-        <ul className="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-10 items-center">
-          {LOGOS.map(({ name, src }) => (
+        <ul className="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-10 items-center [--logo-h:2.5rem] md:[--logo-h:3rem]">
+          {LOGOS.map(({ name, src, scale = 1 }) => (
             <li key={name} className="flex items-center justify-center">
               <img
                 src={src}
                 alt={name}
                 loading="lazy"
-                className="h-12 md:h-14 w-full max-w-[110px] object-contain invert dark:invert-0"
+                style={{ "--s": scale }}
+                className="h-[calc(var(--logo-h)*var(--s))] w-auto max-w-full object-contain invert dark:invert-0"
               />
             </li>
           ))}
