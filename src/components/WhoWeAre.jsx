@@ -1,5 +1,5 @@
 import { Eyebrow } from "../pages/shared";
-import { CONTAINER, SECTION_SPACING } from "../layout";
+import { CONTAINER, SECTION_SPACING_AFTER_HERO } from "../layout";
 
 const LOGOS = [
   { name: "DNB", src: "/logos/logo-dnb.svg" },
@@ -13,7 +13,7 @@ const LOGOS = [
 
 export default function WhoWeAre() {
   return (
-    <section id="who-we-are" className={SECTION_SPACING}>
+    <section id="who-we-are" className={SECTION_SPACING_AFTER_HERO}>
       <div className={CONTAINER}>
         <Eyebrow>Who we are</Eyebrow>
 
@@ -31,13 +31,13 @@ export default function WhoWeAre() {
           The SynCHRO Community
         </h2>
 
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/70 dark:text-paper/70">
+        <p className="mt-5 max-w-3xl text-lg leading-relaxed text-ink/70 dark:text-paper/70">
           SynCHRO brings together CHROs from leading European organisations to
           discuss shared opportunities, assess priorities and develop clear
           actions that drive change.
         </p>
 
-        <ul className="mt-14 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-10 items-center">
+        <ul className="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-10 items-center">
           {LOGOS.map(({ name, src }) => (
             <li key={name} className="flex items-center justify-center">
               <img
