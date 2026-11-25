@@ -1,3 +1,5 @@
+import FieldMessage from "./FieldMessage";
+
 /** Label, required marker, hint and error text around a form control. */
 export default function FormField({
   id,
@@ -26,16 +28,7 @@ export default function FormField({
         )}
       </label>
       {children}
-      {hint && !error && (
-        <p id={`${id}-hint`} className="mt-1 text-sm text-ink/60 dark:text-paper/60">
-          {hint}
-        </p>
-      )}
-      {error && (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-sm text-red-400">
-          {error}
-        </p>
-      )}
+      <FieldMessage id={id} hint={hint} error={error} />
     </div>
   );
 }

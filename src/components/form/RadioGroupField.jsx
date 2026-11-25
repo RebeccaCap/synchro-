@@ -1,3 +1,5 @@
+import FieldMessage from "./FieldMessage";
+
 export default function RadioGroupField({
   name,
   label,
@@ -34,14 +36,7 @@ export default function RadioGroupField({
           </label>
         ))}
       </div>
-      {hint && !error && (
-        <p className="mt-1 text-sm text-ink/60 dark:text-paper/60">{hint}</p>
-      )}
-      {error && (
-        <p role="alert" className="mt-1 text-sm text-red-400">
-          {error}
-        </p>
-      )}
+      <FieldMessage hint={hint} error={error} />
     </fieldset>
   );
 }

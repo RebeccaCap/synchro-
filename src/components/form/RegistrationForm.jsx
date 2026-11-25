@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Eyebrow, primaryButtonClass, secondaryButtonClass } from "../../pages/shared";
 import FieldRenderer from "./FieldRenderer";
 import { buildFields } from "./fields";
@@ -6,6 +6,9 @@ import { submitRegistration } from "./submitRegistration";
 
 const DEFAULT_SUCCESS = "You can expect to receive a calendar invitation within 2 days.";
 const DEFAULT_DECLINED = "We're sorry you can't join us this time.";
+const CHECKBOX_ERROR = "Please tick this box to continue.";
+const REQUIRED_ERROR = "Please complete this field.";
+const CHOOSE_ERROR = "Please choose an option.";
 
 /**
  * Registration form for any event.
@@ -22,6 +25,8 @@ export default function RegistrationForm({
 }) {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | declined
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
+  const pendingInvalid = useRef(null);
   const titleId = `registration-title-${event.id}`;
   const fields = buildFields(event);
 
@@ -40,10 +45,42 @@ export default function RegistrationForm({
     }
   }
 
+  function messageFor(el) {
+    if (el.type === "checkbox") return CHECKBOX_ERROR;
+    if (el.type === "radio") return CHOOSE_ERROR;
+    return el.validity.valueMissing ? REQUIRED_ERROR : el.validationMessage;
+  }
+
+  // Show validation messages under each field instead of the browser's
+  // floating bubble, which can land on top of other controls. Every invalid
+  // field fires its own event, so collect them and apply once.
+  function handleInvalid(e) {
+    e.preventDefault();
+    if (!pendingInvalid.current) {
+      pendingInvalid.current = { first: e.target, errors: {} };
+      queueMicrotask(() => {
+        const { first, errors } = pendingInvalid.current;
+        pendingInvalid.current = null;
+        setFieldErrors(errors);
+        first.focus();
+      });
+    }
+    pendingInvalid.current.errors[e.target.name] = messageFor(e.target);
+  }
+
+  function handleInput(e) {
+    const name = e.target.name;
+    if (name && fieldErrors[name]) {
+      setFieldErrors(({ [name]: _cleared, ...rest }) => rest);
+    }
+    syncImpliedCheckboxes(e.currentTarget);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus("submitting");
     setError("");
+    setFieldErrors({});
 
     const values = Object.fromEntries(new FormData(e.currentTarget));
     try {
@@ -82,7 +119,8 @@ export default function RegistrationForm({
   return (
     <form
       onSubmit={handleSubmit}
-      onInput={(e) => syncImpliedCheckboxes(e.currentTarget)}
+      onInvalidCapture={handleInvalid}
+      onInput={handleInput}
       aria-labelledby={titleId}
     >
       <Eyebrow>Registration</Eyebrow>
@@ -95,14 +133,14 @@ export default function RegistrationForm({
       {event.dateLabel && (
         <p className="mt-3 font-medium text-ink dark:text-paper">{event.dateLabel}</p>
       )}
-      <p className="mt-6 mb-6 text-sm text-ink/60 dark:text-paper/60">
+      <p className="mt-4 mb-4 text-sm text-ink/60 dark:text-paper/60">
         <span className="text-orangeLight dark:text-orangeDark" aria-hidden="true">*</span>{" "}
         Required fields
       </p>
 
-      <div className="grid md:grid-cols-2 gap-x-6 gap-y-6">
+      <div className="grid md:grid-cols-2 gap-x-6 gap-y-0">
         {fields.map((field) => (
-          <FieldRenderer key={field.name} field={field} />
+          <FieldRenderer key={field.name} field={field} error={fieldErrors[field.name]} />
         ))}
 
         {/* Honeypot: hidden from people, tempting to bots. */}
@@ -115,18 +153,21 @@ export default function RegistrationForm({
       </div>
 
       {error && (
-        <p role="alert" className="mt-6 text-red-400">
+        <p role="alert" className="mt-4 text-red-400">
           {error}
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className={`${primaryButtonClass} mt-8`}
-      >
-        {status === "submitting" ? "Submitting…" : "Submit registration"}
-      </button>
+      {/* Pinned to the bottom of the dialog so it stays in reach without scrolling. */}
+      <div className="sticky bottom-0 z-10 mt-4 -mx-6 md:-mx-8 -mb-6 md:-mb-8 px-6 md:px-8 py-4 bg-paper dark:bg-[#1f1f3a] border-t border-ink/10 dark:border-white/10">
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className={primaryButtonClass}
+        >
+          {status === "submitting" ? "Submitting…" : "Submit registration"}
+        </button>
+      </div>
     </form>
   );
 }

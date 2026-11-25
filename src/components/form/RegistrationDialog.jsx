@@ -17,7 +17,7 @@ export default function RegistrationDialog({ event, open, onClose, ...formProps 
       onClose={onClose}
       labelledBy={`registration-title-${event.id}`}
       className="
-        relative m-auto w-[min(92vw,720px)] max-h-[90dvh] overflow-y-auto p-0
+        relative m-auto w-[min(94vw,880px)] max-h-[90dvh] overflow-y-auto p-0
         border border-ink/10 dark:border-white/10
         bg-paper dark:bg-[#1f1f3a] text-ink dark:text-paper
       "
@@ -27,13 +27,13 @@ export default function RegistrationDialog({ event, open, onClose, ...formProps 
         type="button"
         onClick={onClose}
         aria-label="Close registration"
-        className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center text-ink/70 hover:text-ink dark:text-paper/70 dark:hover:text-paper"
+        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center text-ink/70 hover:text-ink dark:text-paper/70 dark:hover:text-paper"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
           <path d="M6 6l12 12M18 6L6 18" />
         </svg>
       </button>
-      <div className="p-8 md:p-12">
+      <div className="p-6 md:p-8">
         <RegistrationForm
           key={session}
           event={event}

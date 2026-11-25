@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import RegistrationForm from './RegistrationForm';
 import AddToCalendar from './AddToCalendar';
@@ -125,4 +125,24 @@ test('a consent implied by another field is ticked and required while that field
   await user.clear(screen.getByLabelText(/dietary requirements/i));
   expect(consent).not.toBeChecked();
   expect(consent).not.toBeRequired();
+});
+
+test('an incomplete submission shows messages under the fields and does not submit', async () => {
+  const user = userEvent.setup();
+  const submit = jest.fn();
+  render(<RegistrationForm event={makeEvent()} submit={submit} />);
+
+  // jsdom doesn't block a click on submit, so run the browser's validation directly.
+  act(() => {
+    screen.getByRole('form').reportValidity();
+  });
+
+  expect(await screen.findAllByRole('alert')).not.toHaveLength(0);
+  expect(screen.getByText('Please tick this box to continue.')).toBeInTheDocument();
+  expect(screen.getByLabelText(/first name/i)).toHaveFocus();
+  expect(submit).not.toHaveBeenCalled();
+
+  // The message clears once the field is corrected.
+  await user.type(screen.getByLabelText(/first name/i), 'Ada');
+  expect(screen.getByLabelText(/first name/i)).not.toHaveAttribute('aria-invalid');
 });

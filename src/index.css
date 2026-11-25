@@ -118,7 +118,9 @@ html:has(dialog[open]) {
 }
 
 /* Form controls: flag invalid values only after the user has interacted. */
-.field-control:user-invalid {
+/* Doubled class: outranks the `dark:border-…` utility on the same element. */
+.field-control.field-control:user-invalid,
+.field-control.field-control[aria-invalid="true"] {
   border-color: #f87171;
 }
 .field-auto {
