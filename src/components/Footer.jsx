@@ -31,7 +31,7 @@ export default function Footer() {
         rel="noopener noreferrer"
         className="hover:text-ink dark:hover:text-paper transition-colors"
         >
-        Privacy Notice
+        Privacy Policy
         </a>
 
       </div>
