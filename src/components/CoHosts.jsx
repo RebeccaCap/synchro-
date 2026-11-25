@@ -132,16 +132,10 @@ export default function CoHost() {
             <div
               key={i}
               className="
+                glass
                 relative
                 p-[30px]
-                border
-                border-ink/10
-                dark:border-white/10
                 rounded-[4px]
-                bg-white/50
-
-                dark:bg-white/[0.06]
-
                 overflow-hidden
               "
             >

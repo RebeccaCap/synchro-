@@ -6,15 +6,11 @@ export default function ThemeCard({ title, description }) {
   return (
     <div
       className="
+        glass
         relative
         h-full
         p-6
         pt-8
-        border
-        border-ink/10
-        dark:border-white/10
-        bg-white/50
-        dark:bg-white/[0.06]
         overflow-hidden
       "
     >
