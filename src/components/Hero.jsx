@@ -20,6 +20,10 @@ import { useUpcomingEvent } from "../hooks/useEvents";
 //import Equinor from "../assets/Equinorlogo.png";
 //import Kongstad from "../assets/KONGSBERG_logo_horizontal.png";
 
+const HEADING = "Accelerating European Competitiveness";
+const INTRO =
+  "The CHRO landscape is experiencing relentless disruption. Technology and AI, skills transformation, regulations, geopolitical uncertainty, and shifts in talent dynamics are reshaping the workforce. These disruptions are happening all while mounting cost pressures demand clearer business value. As a consequence, the CHRO role is becoming more complex and more critical than ever.";
+
 export default function Hero() {
   const event = useUpcomingEvent();
   //const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
@@ -70,11 +74,11 @@ export default function Hero() {
               mx-auto md:mx-0
             "
           >
-            Accelerating European Competitiveness
+            {HEADING}
           </h1>
 
           <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
-           You are invited to join SynCHRO. Created by CHROs, for CHROs, SynCHRO brings together an exclusive and curated group of European CHROs to initiate actions that strengthen European competitiveness. 
+          {INTRO}
           </p>
           <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
           By creating a trusted, non-commercial, peer-based setting, SynCHRO creates a confidential environment where CHROs can engage in meaningful dialogue, share learnings and reflect on the realities that are reshaping their roles as CHRO. </p>
