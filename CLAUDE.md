@@ -7,3 +7,8 @@ User-visible text lives in named constants at the top of the component file
 written inline. Whenever you edit existing inline text in a file, move it into
 a constant as part of that change. Short single-use UI labels such as a
 "Close" button may stay inline.
+
+## Every section has a nav item
+
+Each page section gets an entry in `NAV_ITEMS` in `src/components/Header.jsx`
+(label plus the section's `id`), in page order.
