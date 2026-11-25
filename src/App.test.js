@@ -11,7 +11,7 @@ test('renders the hero heading', () => {
 test('renders the Who we are section with logos in order', () => {
   render(<App />);
   expect(
-    screen.getByRole('heading', { name: /the synchro community/i })
+    screen.getByRole('heading', { name: /^the synchro community$/i })
   ).toBeInTheDocument();
   const names = ['DNB', 'Crédit Agricole', 'Kongsberg', 'Shell', 'Yara', 'Equinor', 'Capgemini'];
   const alts = screen

@@ -7,6 +7,7 @@ import logo1 from "../assets/LOGO1.svg";
 const NAV_ITEMS = [
   { label: "Who We Are", id: "who-we-are" },
   { label: "About", id: "about" },
+  { label: "Format", id: "format" },
   { label: "Co-Chairs", id: "co-chairs" },
 ];
 
