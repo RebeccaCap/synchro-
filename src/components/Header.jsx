@@ -16,6 +16,8 @@ const NAV_ITEMS = [
   { label: "Join SynCHRO", id: "upcoming-session", requiresEvent: true },
 ];
 
+// The site is dark-only for now. Set to true to show the light/dark switch again.
+const SHOW_THEME_TOGGLE = false;
 const MEMBER_ACCESS_LABEL = "Member Access";
 
 // Same duration as the theme cross-fade (index.css) so the UI feels consistent.
@@ -158,23 +160,25 @@ export default function Header() {
             <NavLink href="/presentation" label={MEMBER_ACCESS_LABEL} />
           </nav>
 
-          <button
-            onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            className={`
-              relative w-14 h-8 rounded-full transition-all duration-300
-              ${theme === "dark" ? "bg-purpleDark" : "bg-orangeLight"}
-            `}
-          >
-            <span
+          {SHOW_THEME_TOGGLE && (
+            <button
+              onClick={toggleTheme}
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               className={`
-                absolute top-1 h-6 w-6 rounded-full bg-white shadow-md
-                transition-all duration-300
-                ${theme === "dark" ? "left-7" : "left-1"}
+                relative w-14 h-8 rounded-full transition-all duration-300
+                ${theme === "dark" ? "bg-purpleDark" : "bg-orangeLight"}
               `}
-            />
-          </button>
+            >
+              <span
+                className={`
+                  absolute top-1 h-6 w-6 rounded-full bg-white shadow-md
+                  transition-all duration-300
+                  ${theme === "dark" ? "left-7" : "left-1"}
+                `}
+              />
+            </button>
+          )}
 
           <button
             type="button"
