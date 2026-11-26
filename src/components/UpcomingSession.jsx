@@ -1,11 +1,15 @@
+import { Fragment } from "react";
 import RegisterButton from "./RegisterButton";
 import { useUpcomingEvent } from "../hooks/useEvents";
 import { CONTAINER, SECTION_SPACING } from "../layout";
 
 const EYEBROW = "Join SynCHRO";
 const TITLE = "Upcoming session";
-const INTRO =
-  "Be part of a trusted CHRO forum where peers exchange perspectives, share experiences and shape the agenda together.";
+// Entries are separated by a blank line.
+const INTRO_LINES = [
+  "Be part of a trusted CHRO forum where peers exchange perspectives, share experiences and shape the agenda together.",
+  "Join us for our first in-person session in April 2027.",
+];
 const QUESTIONS_LABEL = "Questions?";
 const CONTACT_EMAIL = "info@synchroforum.eu";
 
@@ -52,7 +56,19 @@ export default function UpcomingSession() {
             {TITLE}
           </h2>
 
-          <p className="mt-8 max-w-md leading-relaxed text-ink/70 dark:text-paper/70">{INTRO}</p>
+          <p className="mt-8 max-w-md leading-relaxed text-ink/70 dark:text-paper/70">
+            {INTRO_LINES.map((line, i) => (
+              <Fragment key={line}>
+                {i > 0 && (
+                  <>
+                    <br />
+                    <br />
+                  </>
+                )}
+                {line}
+              </Fragment>
+            ))}
+          </p>
         </div>
 
         <div className="md:pt-16">
