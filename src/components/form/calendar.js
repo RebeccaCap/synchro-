@@ -58,9 +58,9 @@ export function googleCalendarUrl(event) {
   return `https://calendar.google.com/calendar/render?${params}`;
 }
 
-export function outlookCalendarUrl(event) {
+function outlookParams(event) {
   const entry = calendarEntry(event);
-  const params = new URLSearchParams({
+  return new URLSearchParams({
     path: "/calendar/action/compose",
     rru: "addevent",
     subject: entry.title,
@@ -70,7 +70,10 @@ export function outlookCalendarUrl(event) {
     startdt: entry.allDay ? dashed(ymd(entry.start)) : entry.start.toISOString(),
     enddt: entry.allDay ? dashed(ymd(entry.end)) : entry.end.toISOString(),
   });
-  return `https://outlook.live.com/calendar/0/deeplink/compose?${params}`;
+}
+
+export function outlookCalendarUrl(event) {
+  return `https://outlook.live.com/calendar/0/deeplink/compose?${outlookParams(event)}`;
 }
 
 const escapeText = (s) =>
@@ -105,7 +108,9 @@ export function downloadIcs(event) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `${event.id}.ics`;
+  // "|" and similar characters are not allowed in file names on Windows.
+  const fileName = calendarEntry(event).title.replace(/[\\/:*?"<>|]+/g, "-").trim();
+  a.download = `${fileName || event.id}.ics`;
   document.body.appendChild(a);
   a.click();
   a.remove();

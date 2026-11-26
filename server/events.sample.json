@@ -15,7 +15,6 @@
     "endDate": "2099-01-02T23:59:59+00:00",
     "opensAt": "2020-01-01T00:00:00+00:00",
     "closesAt": "2099-01-01T00:00:00+00:00",
-    "successMessage": "You can expect to receive a calendar invitation within 2 days.",
     "declinedMessage": "We're sorry you can't join us this time.",
     "extraFields": [
       { "name": "job_title", "type": "text", "label": "Job title", "optional": true, "width": "half", "placement": "identity", "maxLength": 150 },

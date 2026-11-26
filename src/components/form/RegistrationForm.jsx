@@ -4,7 +4,7 @@ import FieldRenderer from "./FieldRenderer";
 import { buildFields } from "./fields";
 import { submitRegistration } from "./submitRegistration";
 
-const DEFAULT_SUCCESS = "You can expect to receive a calendar invitation within 2 days.";
+const DEFAULT_SUCCESS = "";
 const DEFAULT_DECLINED = "We're sorry you can't join us this time.";
 const TITLE = "Register for SynCHRO";
 const CHECKBOX_ERROR = "Please tick this box to continue.";
@@ -97,16 +97,17 @@ export default function RegistrationForm({
 
   if (status === "success" || status === "declined") {
     const confirmed = status === "success";
+    const message = confirmed
+      ? event.successMessage || DEFAULT_SUCCESS
+      : event.declinedMessage || DEFAULT_DECLINED;
     return (
       <div className="text-center py-6" role="status">
         <h2 id={titleId} className="text-3xl md:text-4xl font-bold tracking-tight text-ink dark:text-paper">
           {confirmed ? "You're confirmed" : "Thank you for letting us know"}
         </h2>
-        <p className="mt-4 mx-auto max-w-md text-ink/70 dark:text-paper/70">
-          {confirmed
-            ? event.successMessage || DEFAULT_SUCCESS
-            : event.declinedMessage || DEFAULT_DECLINED}
-        </p>
+        {message && (
+          <p className="mt-4 mx-auto max-w-md text-ink/70 dark:text-paper/70">{message}</p>
+        )}
         {confirmed && successActions}
         {onClose && (
           <button type="button" onClick={onClose} className={`${secondaryButtonClass} mt-8`}>
