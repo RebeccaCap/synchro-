@@ -31,8 +31,8 @@ export default function App() {
         <Format />
         <Themes />
         {/* <Agenda /> */}
-        <CoHosts />
         <UpcomingSession />
+        <CoHosts />
         {/* <SaveDate /> */}
         <NextSession />
         {/* <CTA /> */}

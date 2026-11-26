@@ -11,9 +11,9 @@ const NAV_ITEMS = [
   { label: "About", id: "about" },
   { label: "Format", id: "format" },
   { label: "Themes", id: "themes" },
-  { label: "Co-Chairs", id: "co-chairs" },
   // Only rendered while an event is announced, so the link is hidden otherwise.
   { label: "Join SynCHRO", id: "upcoming-session", requiresEvent: true },
+  { label: "Co-Chairs", id: "co-chairs" },
 ];
 
 // The site is dark-only for now. Set to true to show the light/dark switch again.
