@@ -38,7 +38,7 @@ test('navbar links to the page sections and the logo links home', () => {
   expect(screen.getByRole('link', { name: /synchro home/i })).toHaveAttribute('href', '/');
   // The nav link targets this id, so check the section really carries it.
   // eslint-disable-next-line testing-library/no-node-access
-  expect(screen.getByRole('heading', { name: /meet your co-chairs/i }).closest('#co-chairs')).not.toBeNull();
+  expect(screen.getByRole('heading', { name: /meet the co-chairs for april 2027/i }).closest('#co-chairs')).not.toBeNull();
 });
 
 test('hamburger opens and closes the mobile menu', () => {

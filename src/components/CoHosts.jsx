@@ -3,6 +3,11 @@ import AnneLebel from "../assets/AnneLebel.jpg";
 import AkselStenerud from "../assets/AkselStenerud.jpg";
 import { CONTAINER, SECTION_SPACING } from "../layout";
 
+const EYEBROW = "Co-Chairs";
+const TITLE = "Meet the Co-Chairs for April 2027";
+const INTRO =
+  "The session will be co-chaired by Equinor and Capgemini, represented by Aksel Stenerud and Anne Lebel. The co-chair roles will rotate within the SynCHRO community, ensuring the agenda continues to be shaped by the people in the room.";
+
 export default function CoHost() {
   const [openCard, setOpenCard] = useState(null);
   //const confirmedLogos = [Capgeminilogo, Equinorlogo, Yara, Kongstad];
@@ -97,7 +102,7 @@ export default function CoHost() {
           />
 
           <span className="uppercase text-[0.74rem] tracking-[0.2em] text-ink/45 dark:text-paper/45 font-medium">
-            Co-Chairs
+            {EYEBROW}
           </span>
         </div>
 
@@ -113,14 +118,11 @@ export default function CoHost() {
             max-w-[16ch]
           "
         >
-          Meet your co-chairs.
+          {TITLE}
         </h2>
 
         <p className="mb-6 max-w-[66ch] leading-[1.76] text-ink/70 dark:text-paper/70">
-          SynCHRO is co-chaired by Capgemini and Equinor for its inaugural
-          edition. Co-chairs will be selected from within the CHRO forum in
-          future sessions – ensuring the agenda is always shaped by the people
-          in the room.
+          {INTRO}
         </p>
 
         <div className="grid md:grid-cols-2 gap-5 items-start">
