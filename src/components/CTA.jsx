@@ -388,7 +388,7 @@ export default function CTA() {
                     transition-all
                   "
                 >
-                  Privacy Notice
+                  Privacy Policy
                 </a>
               </label>
             </div>
@@ -459,7 +459,7 @@ export default function CTA() {
                 rel="noopener noreferrer"
                 className="underline hover:text-orangeLight dark:hover:text-orangeDark"
               >
-                Privacy Notice
+                Privacy Policy
               </a>.
             </p>
             

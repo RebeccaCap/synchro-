@@ -1,5 +1,8 @@
 import logo from "../assets/LOGOSPLIT.svg";
 import logo1 from "../assets/LOGO1.svg";
+import EventCard from "./EventCard";
+import { useUpcomingEvent } from "../hooks/useEvents";
+import { CONTAINER, HERO_SPACING } from "../layout";
 //import BNPParibas from "../assets/BNPParibaslogo.png";
 //import CreditAgricole from "../assets/CreditAgricolelogo.png";
 //import HSBC from "../assets/HSBClogo.png";
@@ -18,13 +21,21 @@ import logo1 from "../assets/LOGO1.svg";
 //import Equinor from "../assets/Equinorlogo.png";
 //import Kongstad from "../assets/KONGSBERG_logo_horizontal.png";
 
+const HEADING = "Accelerating European Competitiveness";
+const INTRO =
+  "The CHRO landscape is experiencing relentless disruption. Technology and AI, skills transformation, regulations, geopolitical uncertainty, and shifts in talent dynamics are reshaping the workforce. These disruptions are happening all while mounting cost pressures demand clearer business value.";
+const INTRO_EMPHASIS =
+  "As a consequence, the CHRO role is becoming more complex and more critical than ever.";
+
 export default function Hero() {
+  const event = useUpcomingEvent();
   //const logos = [BNPParibas, CreditAgricole, HSBC, IKEA, Klarna, LEGO, Loreal, NovoNordisk, Roche, Shell, Spotify, Vodafone, INGGroup, Yara];
   //const confirmedLogos = [Capgemini, Equinor, Yara, Kongstad];
   return (
-    <section className="py-10 md:py-16 overflow-hidden">
-      <div className="max-w-md md:max-w-6xl mx-auto px-4 overflow-hidden grid md:grid-cols-2 gap-10">
+    <section className={`${HERO_SPACING} overflow-hidden`}>
+      <div className={`${CONTAINER} overflow-hidden grid md:grid-cols-2 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] gap-10`}>
         <div className="text-center md:text-left">
+          {!event && (
           <div className="flex items-center gap-2 justify-center md:justify-start">
             <span
               className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"
@@ -37,24 +48,25 @@ export default function Hero() {
               New session to be announced soon
             </p>
           </div>
+          )}
 
      <div>
         <img
             src={logo}
-            className="mt-6 mx-auto md:mx-0 max-w-[220px] sm:max-w-xs hidden dark:block"
+            className="mt-4 mx-auto md:mx-0 max-w-[260px] sm:max-w-sm md:max-w-[26rem] hidden dark:block"
             alt="Logo"
         />
 
         <img
             src={logo1}
-            className="mt-6 mx-auto md:mx-0 max-w-[220px] sm:max-w-xs block dark:hidden"
+            className="mt-4 mx-auto md:mx-0 max-w-[260px] sm:max-w-sm md:max-w-[26rem] block dark:hidden"
             alt="Logo"
         />
         </div>
 
           <h1
             className="
-              mt-4
+              mt-6
               text-[clamp(1.8rem,1.35rem+1.8vw,3rem)]
               leading-[1.02]
               tracking-[-0.05em]
@@ -65,14 +77,12 @@ export default function Hero() {
               mx-auto md:mx-0
             "
           >
-            Accelerating European Competitiveness
+            {HEADING}
           </h1>
 
-          <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
-           You are invited to join SynCHRO. Created by CHROs, for CHROs, SynCHRO brings together an exclusive and curated group of European CHROs to initiate actions that strengthen European competitiveness. 
+          <p className="mt-6 text-ink/80 dark:text-paper/80 max-w-xl lg:max-w-2xl leading-relaxed mx-auto md:mx-0">
+          {INTRO} <strong className="font-semibold text-ink dark:text-paper">{INTRO_EMPHASIS}</strong>
           </p>
-          <p className="mt-4 text-ink/80 dark:text-paper/80 max-w-md mx-auto md:mx-0">
-          By creating a trusted, non-commercial, peer-based setting, SynCHRO creates a confidential environment where CHROs can engage in meaningful dialogue, share learnings and reflect on the realities that are reshaping their roles as CHRO. </p>
 
           {/* <div className="mt-36 ">
             <div className="flex items-center gap-2 mb-4">
@@ -110,6 +120,12 @@ export default function Hero() {
           </div> */}
 
         </div>
+
+        {event && (
+          <div className="md:pt-6">
+            <EventCard event={event} />
+          </div>
+        )}
       </div>
     </section>
   );

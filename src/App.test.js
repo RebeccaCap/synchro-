@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import App from './App';
 
 test('renders the hero heading', () => {
@@ -8,13 +8,61 @@ test('renders the hero heading', () => {
   ).toBeInTheDocument();
 });
 
+test('renders the Who we are section with logos in order', () => {
+  render(<App />);
+  expect(
+    screen.getByRole('heading', { name: /^the synchro community$/i })
+  ).toBeInTheDocument();
+  const names = ['DNB', 'Crédit Agricole', 'Kongsberg', 'Shell', 'Yara', 'Equinor', 'Capgemini'];
+  const alts = screen
+    .getAllByRole('img')
+    .map((img) => img.getAttribute('alt'))
+    .filter((alt) => names.includes(alt));
+  expect(alts).toEqual([
+    'DNB',
+    'Crédit Agricole',
+    'Kongsberg',
+    'Shell',
+    'Yara',
+    'Equinor',
+    'Capgemini',
+  ]);
+});
+
+test('navbar links to the page sections and the logo links home', () => {
+  render(<App />);
+  const nav = screen.getByRole('navigation', { name: 'Main' });
+  expect(within(nav).getByRole('link', { name: 'Who We Are' })).toHaveAttribute('href', '#who-we-are');
+  expect(within(nav).getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about');
+  expect(within(nav).getByRole('link', { name: 'Co-Chairs' })).toHaveAttribute('href', '#co-chairs');
+  expect(screen.getByRole('link', { name: /synchro home/i })).toHaveAttribute('href', '/');
+  // The nav link targets this id, so check the section really carries it.
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(screen.getByRole('heading', { name: /meet the co-chairs for april 2027/i }).closest('#co-chairs')).not.toBeNull();
+});
+
+test('hamburger opens and closes the mobile menu', () => {
+  render(<App />);
+  const button = screen.getByRole('button', { name: /open menu/i });
+  expect(button).toHaveAttribute('aria-expanded', 'false');
+  expect(screen.queryByRole('navigation', { name: 'Mobile' })).not.toBeInTheDocument();
+
+  fireEvent.click(button);
+  const menu = screen.getByRole('navigation', { name: 'Mobile' });
+  expect(screen.getByRole('button', { name: /close menu/i })).toHaveAttribute('aria-expanded', 'true');
+  expect(within(menu).getByRole('link', { name: 'Co-Chairs' })).toHaveAttribute('href', '#co-chairs');
+
+  fireEvent.click(within(menu).getByRole('link', { name: 'About' }));
+  expect(screen.queryByRole('navigation', { name: 'Mobile' })).not.toBeInTheDocument();
+});
+
 test('announces the next session and links to downloads', () => {
   render(<App />);
   expect(
     screen.getByRole('heading', { name: /new session to be announced soon/i })
   ).toBeInTheDocument();
   expect(screen.queryByRole('timer')).not.toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Downloads' })).toHaveAttribute('href', '/presentation');
+  expect(screen.getByRole('link', { name: 'Member Access' })).toHaveAttribute('href', '/presentation');
 });
 
 describe('protected pages', () => {

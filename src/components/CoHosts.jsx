@@ -1,8 +1,12 @@
 import { useState } from "react";
 import AnneLebel from "../assets/AnneLebel.jpg";
 import AkselStenerud from "../assets/AkselStenerud.jpg";
-import Capgeminilogo from "../assets/Capgeminilogo.png";
-import Equinorlogo from "../assets/Equinorlogo.png";
+import { CONTAINER, SECTION_SPACING } from "../layout";
+
+const EYEBROW = "Co-Chairs";
+const TITLE = "Meet the Co-Chairs for April 2027";
+const INTRO =
+  "The session will be co-chaired by Equinor and Capgemini, represented by Aksel Stenerud and Anne Lebel. The co-chair roles will rotate within the SynCHRO community, ensuring the agenda continues to be shaped by the people in the room.";
 
 export default function CoHost() {
   const [openCard, setOpenCard] = useState(null);
@@ -10,61 +14,11 @@ export default function CoHost() {
 
   const coHosts = [
     {
-      name: "Anne Lebel",
-      company: "Capgemini",
-      title: "Chief Human Resources Officer & Ethics",
-      image: AnneLebel,
-      logo: Capgeminilogo,
-      logoClass: "h-8",
-      description: (
-        <>
-          <p className="mb-4">
-            Group Head of Ethics
-            <br />
-            Member of the Group Executive Board
-          </p>
-
-          <p className="mb-4">
-            Anne Lebel has been Capgemini's Chief Human Resources Officer and a member of the Group Executive Board since July, 2020. She became Group Head of Ethics in January 2025.        </p>
-
-          <p className="mb-4">
-            Prior to joining Capgemini in 2020, Anne was appointed by Natixis
-            in 2016 as Chief Human Resources Officer and Corporate Culture
-            Officer, and a member of the Senior Management Committee.
-          </p>
-
-          <p className="mb-4">
-            From 2012, Anne was the Global Head of Human Resources of Allianz
-            Global Corporate & Specialty. She joined the company in 2008 as Head
-            of Human Resources for France, Italy and Spain, and later for Europe
-            and Asia, after being the Head of Human Resources for Serono France
-            from 2004.
-          </p>
-
-          <p className="mb-4">
-            Anne started her career in 1987 at Bossard Consultants as an
-            organization and change management consultant. In 1997, Anne joined
-            Schering Plough France as Human Resources and Training Manager for
-            France before moving to head up HR Organization and Development in
-            Europe.
-          </p>
-
-          <p>
-            Anne is also Lead Independent Director of Nexans' Board of
-            Directors. She is a graduate of the Institut d'Etudes Politiques in
-            Strasbourg (France) and the Institut d'administration des entreprises (IAE)
-            Paris.
-          </p>
-        </>
-      ),
-    },
-    {
       name: "Aksel Stenerud",
       company: "Equinor",
       title: "Executive Vice President, People & Organisation",
       image: AkselStenerud,
-      logo: Equinorlogo,
-      logoClass: "h-10 mb-2",
+      logo: "/logos/logo-equinor.svg",
       description: (
         <>
           <p className="mb-4">
@@ -92,11 +46,53 @@ export default function CoHost() {
         </>
       ),
     },
+    {
+      name: "Anne Lebel",
+      company: "Capgemini",
+      title: "Chief Human Resources Officer & Ethics",
+      image: AnneLebel,
+      logo: "/logos/logo-cap.svg",
+      description: (
+        <>
+          <p className="mb-4">
+            Anne Lebel has been Capgemini's Chief Human Resources Officer and a member of the Group Executive Board since July, 2020. She became Group Head of Ethics in January 2025.        </p>
+
+          <p className="mb-4">
+            Prior to joining Capgemini in 2020, Anne was appointed by Natixis
+            in 2016 as Chief Human Resources Officer and Corporate Culture
+            Officer, and a member of the Senior Management Committee.
+          </p>
+
+          <p className="mb-4">
+            From 2012, Anne was the Global Head of Human Resources of Allianz
+            Global Corporate & Specialty. She joined the company in 2008 as Head
+            of Human Resources for France, Italy and Spain, and later for Europe
+            and Asia, after being the Head of Human Resources for Serono France
+            from 2004.
+          </p>
+
+          <p className="mb-4">
+            Anne started her career in 1987 at Bossard Consultants as an
+            organisation and change management consultant. In 1997, Anne joined
+            Schering Plough France as Human Resources and Training Manager for
+            France before moving to head up HR Organisation and Development in
+            Europe.
+          </p>
+
+          <p>
+            Anne is also Lead Independent Director of Nexans' Board of
+            Directors. She is a graduate of the Institut d'Etudes Politiques in
+            Strasbourg (France) and the Institut d'administration des entreprises (IAE)
+            Paris.
+          </p>
+        </>
+      ),
+    },
   ];
 
   return (
-    <section className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="co-chairs" className={SECTION_SPACING}>
+      <div className={CONTAINER}>
         <div className="flex items-center gap-2 mb-6">
           <span
             className="w-[14px] h-[14px] bg-orangeLight dark:bg-orangeDark"
@@ -106,7 +102,7 @@ export default function CoHost() {
           />
 
           <span className="uppercase text-[0.74rem] tracking-[0.2em] text-ink/45 dark:text-paper/45 font-medium">
-            Co-Chairs
+            {EYEBROW}
           </span>
         </div>
 
@@ -122,14 +118,11 @@ export default function CoHost() {
             max-w-[16ch]
           "
         >
-          Meet your co-chairs.
+          {TITLE}
         </h2>
 
         <p className="mb-6 max-w-[66ch] leading-[1.76] text-ink/70 dark:text-paper/70">
-          SynCHRO is co-chaired by Capgemini and Equinor for its inaugural
-          edition. Co-chairs will be selected from within the CHRO forum in
-          future sessions – ensuring the agenda is always shaped by the people
-          in the room.
+          {INTRO}
         </p>
 
         <div className="grid md:grid-cols-2 gap-5 items-start">
@@ -137,16 +130,10 @@ export default function CoHost() {
             <div
               key={i}
               className="
+                glass
                 relative
                 p-[30px]
-                border
-                border-ink/10
-                dark:border-white/10
                 rounded-[4px]
-                bg-white/50
-                
-                dark:bg-white/[0.06]
-
                 overflow-hidden
               "
             >
@@ -172,17 +159,18 @@ export default function CoHost() {
                     />
                 </div>
 
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-end justify-between gap-4 mb-2">
                     <p className="text-base md:text-[1.28rem] font-semibold tracking-[-0.025em] text-ink dark:text-paper">
                       {host.name}
                     </p>
 
-                <img
-                    src={host.logo}
-                    alt={`${host.company} logo`}
-                    className={`${host.logoClass} w-auto object-contain shrink-0`}
-                />
+                    <img
+                      src={host.logo}
+                      alt={`${host.company} logo`}
+                      loading="lazy"
+                      className="h-9 w-[104px] object-contain object-right shrink-0 invert dark:invert-0"
+                    />
                   </div>
 
                   <p className="text-[0.9rem] font-medium text-ink dark:text-paper mb-1">

@@ -44,3 +44,137 @@ body {
     radial-gradient(circle at 84% 12%, rgba(218,65,15,.12), transparent 22%),
     linear-gradient(180deg, #141428 0%, #17172d 45%, #17172d 100%);
 }
+
+/* Cross-fade the whole page when switching light/dark (View Transitions API).
+   Browsers without support, or users who prefer reduced motion, switch instantly. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+}
+
+/* Keep anchor targets clear of the sticky header (h-20 = 5rem). */
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Native <dialog> modal (src/components/form/Dialog.jsx) ───────────────
+   Animated with @starting-style + allow-discrete transitions so the dialog
+   fades/slides in and out at the same 0.4s as the menu and theme change. */
+.dialog-sheet {
+  opacity: 0;
+  translate: 0 12px;
+  transition:
+    opacity 0.4s ease-in-out,
+    translate 0.4s ease-in-out,
+    overlay 0.4s allow-discrete,
+    display 0.4s allow-discrete;
+}
+.dialog-sheet[open] {
+  opacity: 1;
+  translate: 0 0;
+}
+@starting-style {
+  .dialog-sheet[open] {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+.dialog-sheet::backdrop {
+  background: rgb(8 8 20 / 0.72);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition:
+    opacity 0.4s ease-in-out,
+    overlay 0.4s allow-discrete,
+    display 0.4s allow-discrete;
+}
+.dialog-sheet[open]::backdrop {
+  opacity: 1;
+}
+@starting-style {
+  .dialog-sheet[open]::backdrop {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog-sheet,
+  .dialog-sheet::backdrop {
+    transition: none;
+  }
+}
+
+/* Lock page scroll behind an open modal without the layout jumping. */
+html {
+  scrollbar-gutter: stable;
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Form controls: flag invalid values only after the user has interacted. */
+/* Doubled class: outranks the `dark:border-…` utility on the same element. */
+.field-control.field-control:user-invalid,
+.field-control.field-control[aria-invalid="true"] {
+  border-color: #f87171;
+}
+.field-auto {
+  field-sizing: content;
+  min-height: 3.5rem;
+}
+
+/*
+ * Glass card: a 135deg translucent gradient over a blurred, saturated copy of
+ * whatever is behind it, a hairline border with an inner highlight and a soft
+ * shadow. The dark theme fades from a light tint to a slightly darker one so
+ * text keeps its contrast.
+ */
+:root {
+  --glass-from: rgba(255, 255, 255, 0.68);
+  --glass-to: rgba(255, 255, 255, 0.26);
+  --glass-border: rgba(23, 23, 45, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  --glass-shadow: rgba(23, 23, 45, 0.12);
+}
+.dark {
+  --glass-from: rgba(255, 255, 255, 0.1);
+  --glass-to: rgba(10, 10, 30, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+}
+.glass {
+  background: linear-gradient(135deg, var(--glass-from), var(--glass-to));
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 12px 40px var(--glass-shadow);
+}
+/* Without blur support the gradient needs more body to stay readable. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    --glass-from: rgba(40, 40, 70, 0.92);
+    --glass-to: rgba(30, 30, 55, 0.85);
+  }
+  :root:not(.dark) .glass {
+    --glass-from: rgba(255, 255, 255, 0.95);
+    --glass-to: rgba(255, 255, 255, 0.85);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    --glass-from: rgba(40, 40, 70, 0.95);
+    --glass-to: rgba(30, 30, 55, 0.95);
+  }
+  :root:not(.dark) .glass {
+    --glass-from: rgba(255, 255, 255, 0.97);
+    --glass-to: rgba(255, 255, 255, 0.9);
+  }
+}
