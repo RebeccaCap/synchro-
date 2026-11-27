@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { RegistrationForm, AddToCalendar } from "./form";
 import { isRegistrationOpen, useUpcomingEvent } from "../hooks/useEvents";
 import { CONTAINER, SECTION_SPACING } from "../layout";
@@ -11,6 +11,7 @@ const INTRO_LINES = [
   "Join us for our first in-person session in April 2027.",
 ];
 const CLOSED_MESSAGE = "Registration is not open at the moment.";
+const SECTION_ID = "upcoming-session";
 const QUESTIONS_LABEL = "Questions?";
 const CONTACT_EMAIL = "info@synchroforum.eu";
 
@@ -21,13 +22,25 @@ const CONTACT_EMAIL = "info@synchroforum.eu";
  */
 export default function UpcomingSession() {
   const event = useUpcomingEvent();
+  const section = useRef(null);
+  const hasEvent = Boolean(event);
+
+  // The section only exists once the event has loaded, which is after the
+  // browser has already tried (and failed) to jump to #upcoming-session.
+  // Scroll to it as soon as it appears.
+  useEffect(() => {
+    if (hasEvent && window.location.hash === `#${SECTION_ID}`) {
+      section.current?.scrollIntoView();
+    }
+  }, [hasEvent]);
+
   if (!event) return null;
 
   const open = isRegistrationOpen(event);
   const sessions = Array.isArray(event.sessions) ? event.sessions : [];
 
   return (
-    <section id="upcoming-session" aria-labelledby="upcoming-session-title" className={SECTION_SPACING}>
+    <section ref={section} id={SECTION_ID} aria-labelledby="upcoming-session-title" className={SECTION_SPACING}>
       <div className={`${CONTAINER} grid md:grid-cols-2 gap-x-16 gap-y-10`}>
         <div>
           <div className="flex items-center gap-2 mb-4">
