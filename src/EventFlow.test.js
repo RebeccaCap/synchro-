@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 import { resetEventsCache } from './hooks/useEvents';
@@ -100,4 +100,16 @@ test('without an event there is no Upcoming Session section or nav link', async 
   await screen.findByRole('heading', { name: /new session to be announced soon/i });
   expect(screen.queryByRole('heading', { name: 'Upcoming session' })).not.toBeInTheDocument();
   expect(screen.queryByRole('link', { name: 'Join SynCHRO' })).not.toBeInTheDocument();
+});
+
+test('opening the page with #upcoming-session scrolls to the section once the event has loaded', async () => {
+  const scrollIntoView = jest.fn();
+  window.HTMLElement.prototype.scrollIntoView = scrollIntoView;
+  window.location.hash = '#upcoming-session';
+  mockEvents([makeEvent()]);
+  render(<App />);
+
+  await screen.findByRole('region', { name: 'Upcoming session' });
+  await waitFor(() => expect(scrollIntoView).toHaveBeenCalled());
+  window.location.hash = '';
 });
