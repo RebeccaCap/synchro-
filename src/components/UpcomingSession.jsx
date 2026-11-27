@@ -15,8 +15,8 @@ const QUESTIONS_LABEL = "Questions?";
 const CONTACT_EMAIL = "info@synchroforum.eu";
 
 /**
- * Join SynCHRO: intro text beside the registration form for the upcoming
- * event. The event comes from the API, not the repo, so the section only
+ * Join SynCHRO: intro text and session details beside the registration form
+ * for the upcoming event. The event comes from the API, not the repo, so the section only
  * renders once an event is published.
  */
 export default function UpcomingSession() {
@@ -24,6 +24,7 @@ export default function UpcomingSession() {
   if (!event) return null;
 
   const open = isRegistrationOpen(event);
+  const sessions = Array.isArray(event.sessions) ? event.sessions : [];
 
   return (
     <section id="upcoming-session" aria-labelledby="upcoming-session-title" className={SECTION_SPACING}>
@@ -70,6 +71,34 @@ export default function UpcomingSession() {
               </Fragment>
             ))}
           </p>
+
+          {sessions.length > 0 && (
+            <dl className="mt-10 flex flex-wrap gap-x-12 gap-y-4">
+              {sessions.map(({ date, time }) => (
+                <div key={date}>
+                  <dt className="uppercase text-xs tracking-[0.2em] text-ink/60 dark:text-paper/60 font-medium">
+                    {date}
+                  </dt>
+                  <dd className="mt-1 text-2xl font-bold tracking-tight text-ink dark:text-paper">
+                    {time}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
+          {(event.venue || event.location) && (
+            <p className="mt-8 text-lg font-medium leading-snug text-ink dark:text-paper">
+              {event.venue && <span className="block">{event.venue}</span>}
+              {event.location && <span className="block">{event.location}</span>}
+            </p>
+          )}
+
+          {event.detailsNote && (
+            <p className="mt-4 max-w-md leading-relaxed text-ink/60 dark:text-paper/60">
+              {event.detailsNote}
+            </p>
+          )}
 
           <p className="mt-6 text-ink/60 dark:text-paper/60">
             {QUESTIONS_LABEL}{" "}

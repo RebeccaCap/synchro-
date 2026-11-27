@@ -57,15 +57,17 @@ test('with no events the page keeps the "announced soon" copy', async () => {
   expect(screen.queryByRole('button', { name: /register/i })).not.toBeInTheDocument();
 });
 
-test('the Join SynCHRO section holds the registration form, not the event details', async () => {
+test('the Join SynCHRO section shows the session details beside the registration form', async () => {
   mockEvents([makeEvent()]);
   render(<App />);
 
   const section = await screen.findByRole('region', { name: 'Upcoming session' });
   expect(within(section).getByLabelText(/work email/i)).toBeInTheDocument();
   expect(within(section).getByRole('button', { name: /submit registration/i })).toBeInTheDocument();
-  expect(within(section).queryByText('From noon')).not.toBeInTheDocument();
-  expect(within(section).queryByText('Test Venue')).not.toBeInTheDocument();
+  expect(within(section).getByText('From noon')).toBeInTheDocument();
+  expect(within(section).getByText('Until noon')).toBeInTheDocument();
+  expect(within(section).getByText('Test Venue')).toBeInTheDocument();
+  expect(within(section).getByText('Test details note.')).toBeInTheDocument();
   expect(within(section).queryByRole('button', { name: /^register/i })).not.toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Join SynCHRO' })).toHaveAttribute('href', '#upcoming-session');
 });
