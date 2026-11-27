@@ -1,0 +1,60 @@
+# Builds the site and uploads it to Hostinger. Manual only: open the Actions
+# tab, pick "Deploy", and click "Run workflow" (see README, "Deploying").
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never run two uploads at once.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Optional approval gate: create an Environment called "production" with a
+    # required reviewer, then uncomment the next line (see README).
+    # environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # CI=true makes react-scripts run the tests once instead of watching.
+      - name: Test
+        run: npm test
+        env:
+          CI: "true"
+
+      - name: Build
+        run: npm run build
+
+      # Uploads only what changed. It never deletes files on the server, and it
+      # skips synchro-private/ so the live config.php, events.json, uploads and
+      # registrations are never touched.
+      - name: Upload to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Repository variables (not secrets); the defaults suit most accounts.
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.FTP_PORT || 21 }}
+          server-dir: ${{ vars.FTP_SERVER_DIR || '/public_html/' }}
+          local-dir: ./build/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            synchro-private/**
