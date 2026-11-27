@@ -82,6 +82,29 @@ email for the same event updates the earlier entry.
 
 ## Deploying to Hostinger
 
+### Automatic upload (GitHub Actions)
+
+After merging to `main`: GitHub → **Actions** → **Deploy** → **Run workflow**
+(branch `main`). It runs the tests, builds, and uploads `build/` to
+`public_html/`. It never deletes server files and skips `synchro-private/`, so
+`config.php`, `events.json`, uploads and registrations are untouched.
+
+One-time setup, in the repository's **Settings → Secrets and variables → Actions**:
+
+- Secrets: `FTP_SERVER` (host name only, no `ftp://` or port), `FTP_USERNAME`,
+  `FTP_PASSWORD`. Use a dedicated FTP account limited to `public_html` (hPanel →
+  Files → FTP Accounts). Never commit these.
+- Optional variables, if the defaults don't fit: `FTP_PROTOCOL` (`ftps`, or `ftp`),
+  `FTP_PORT` (`21`) and `FTP_SERVER_DIR` (`/public_html/`).
+- Optional approval step: create an Environment called `production` with a
+  required reviewer, move the secrets into it, and uncomment `environment:
+  production` in `.github/workflows/deploy.yml`.
+
+The uploader keeps a `.ftp-deploy-sync-state.json` file in the upload folder to
+remember what it sent. It lists file names and hashes only.
+
+### Manual upload
+
 1. `npm run build`
 2. Upload **everything inside `build/`** to `public_html/`, keeping the folder
    structure (including the `synchro-private/` folder and its `.htaccess`). That includes `admin.php`, `admin/`, `static/`, `api/` and `presentation/`.
