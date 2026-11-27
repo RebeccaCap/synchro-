@@ -23,8 +23,8 @@ test('with an open event, the card and Register button replace the "announced so
   // The (closed) dialog repeats the date, so look for at least one match.
   expect((await screen.findAllByText('1–2 January 2099')).length).toBeGreaterThan(0);
   expect(screen.getAllByText('Test City').length).toBeGreaterThan(0);
-  // One Register button in the hero card, one in the Upcoming Session section.
-  expect(screen.getAllByRole('button', { name: /register/i })).toHaveLength(2);
+  // The hero card has the Register button; the section holds the form itself.
+  expect(screen.getAllByRole('button', { name: /^register/i })).toHaveLength(1);
   expect(screen.queryByRole('heading', { name: /new session to be announced soon/i })).not.toBeInTheDocument();
   expect(global.fetch).toHaveBeenCalledWith('/api/events.php', expect.any(Object));
 });
@@ -34,10 +34,10 @@ test('Register opens the registration dialog for that event', async () => {
   mockEvents([makeEvent()]);
   render(<App />);
 
-  await user.click((await screen.findAllByRole('button', { name: /register/i }))[0]);
+  await user.click(await screen.findByRole('button', { name: /^register/i }));
   const dialog = await screen.findByRole('dialog');
   expect(dialog).toHaveAccessibleName('Register for SynCHRO');
-  expect(screen.getByLabelText(/work email/i)).toBeInTheDocument();
+  expect(within(dialog).getByLabelText(/work email/i)).toBeInTheDocument();
 });
 
 test('closed registration shows the event without a Register button', async () => {
@@ -57,21 +57,40 @@ test('with no events the page keeps the "announced soon" copy', async () => {
   expect(screen.queryByRole('button', { name: /register/i })).not.toBeInTheDocument();
 });
 
-test('the Upcoming Session section shows the event details and its Register button opens the same dialog', async () => {
-  const user = userEvent.setup();
+test('the Join SynCHRO section shows the session details beside the registration form', async () => {
   mockEvents([makeEvent()]);
   render(<App />);
 
   const section = await screen.findByRole('region', { name: 'Upcoming session' });
+  expect(within(section).getByLabelText(/work email/i)).toBeInTheDocument();
+  expect(within(section).getByRole('button', { name: /submit registration/i })).toBeInTheDocument();
   expect(within(section).getByText('From noon')).toBeInTheDocument();
   expect(within(section).getByText('Until noon')).toBeInTheDocument();
   expect(within(section).getByText('Test Venue')).toBeInTheDocument();
   expect(within(section).getByText('Test details note.')).toBeInTheDocument();
+  expect(within(section).queryByRole('button', { name: /^register/i })).not.toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Join SynCHRO' })).toHaveAttribute('href', '#upcoming-session');
+});
 
-  await user.click(within(section).getByRole('button', { name: /register/i }));
-  expect(await screen.findByRole('dialog')).toHaveAccessibleName('Register for SynCHRO');
-  expect(screen.getAllByLabelText(/work email/i)).toHaveLength(1);
+test('the dialog and the inline form can both be on the page without sharing ids', async () => {
+  const user = userEvent.setup();
+  mockEvents([makeEvent()]);
+  render(<App />);
+
+  await user.click(await screen.findByRole('button', { name: /^register/i }));
+  const emails = await screen.findAllByLabelText(/work email/i);
+  expect(emails).toHaveLength(2);
+  expect(emails[0].id).not.toBe(emails[1].id);
+});
+
+test('outside the registration window the section says registration is not open', async () => {
+  const past = new Date(Date.now() - 1000).toISOString();
+  mockEvents([makeEvent({ closesAt: past })]);
+  render(<App />);
+
+  const section = await screen.findByRole('region', { name: 'Upcoming session' });
+  expect(within(section).getByText(/registration is not open/i)).toBeInTheDocument();
+  expect(within(section).queryByLabelText(/work email/i)).not.toBeInTheDocument();
 });
 
 test('without an event there is no Upcoming Session section or nav link', async () => {

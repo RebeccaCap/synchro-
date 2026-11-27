@@ -1,5 +1,6 @@
 import FormField from "./FormField";
 import { controlClass } from "./controlClass";
+import { useFieldId } from "./fieldId";
 
 export default function SelectField({
   name,
@@ -12,7 +13,7 @@ export default function SelectField({
   className,
   ...selectProps
 }) {
-  const id = `field-${name}`;
+  const id = useFieldId(name);
   return (
     <FormField id={id} label={label} required={required} optional={optional} hint={hint} error={error} floated className={className}>
       <select
