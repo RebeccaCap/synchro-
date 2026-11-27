@@ -1,5 +1,6 @@
 import FormField from "./FormField";
 import { controlClass } from "./controlClass";
+import { useFieldId } from "./fieldId";
 
 export default function TextAreaField({
   name,
@@ -12,7 +13,7 @@ export default function TextAreaField({
   rows = 1,
   ...textareaProps
 }) {
-  const id = `field-${name}`;
+  const id = useFieldId(name);
   return (
     <FormField id={id} label={label} required={required} optional={optional} hint={hint} error={error} className={className}>
       <textarea

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { GradientLine } from "../../pages/shared";
 import Dialog from "./Dialog";
 import RegistrationForm from "./RegistrationForm";
@@ -7,6 +7,7 @@ import AddToCalendar from "./AddToCalendar";
 /** Modal wrapper around RegistrationForm. Each opening starts a fresh form. */
 export default function RegistrationDialog({ event, open, onClose, ...formProps }) {
   const [session, setSession] = useState(0);
+  const titleId = `${useId()}-registration-title`;
   useEffect(() => {
     if (open) setSession((s) => s + 1);
   }, [open]);
@@ -15,7 +16,7 @@ export default function RegistrationDialog({ event, open, onClose, ...formProps 
     <Dialog
       open={open}
       onClose={onClose}
-      labelledBy={`registration-title-${event.id}`}
+      labelledBy={titleId}
       className="
         relative m-auto w-[min(94vw,880px)] max-h-[90dvh] overflow-y-auto p-0
         border border-ink/10 dark:border-white/10
@@ -36,6 +37,7 @@ export default function RegistrationDialog({ event, open, onClose, ...formProps 
       <div className="p-6 md:p-8">
         <RegistrationForm
           key={session}
+          titleId={titleId}
           event={event}
           onClose={onClose}
           successActions={<AddToCalendar event={event} />}

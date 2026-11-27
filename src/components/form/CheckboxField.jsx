@@ -1,4 +1,5 @@
 import FieldMessage from "./FieldMessage";
+import { useFieldId } from "./fieldId";
 
 /**
  * Single checkbox. The label is `label`, then an optional inline link, then
@@ -13,7 +14,7 @@ export default function CheckboxField({
   error,
   className = "",
 }) {
-  const id = `field-${name}`;
+  const id = useFieldId(name);
   return (
     <div className={className}>
       <div className="flex items-start gap-3">
